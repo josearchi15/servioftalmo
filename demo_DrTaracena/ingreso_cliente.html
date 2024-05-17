@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de registro</title>
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    .registration-form {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .registration-form .form-group label {
+      font-weight: bold;
+    }
+    .registration-form .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .section-title {
+      font-size: 1.5em;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .form-step {
+      display: none;
+    }
+    .form-step.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="registration-form">
+    <h2 class="text-center">Formulario de registro</h2>
+    <form id="registrationForm">
+      <!-- Step 1 -->
+      <div class="form-step active" id="step-1">
+        <div class="form-group">
+          <label for="nombres">Nombres <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="nombres" placeholder="Ingrese sus nombres" required>
+        </div>
+        <div class="form-group">
+          <label for="apellidos">Apellidos <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="apellidos" placeholder="Ingrese sus apellidos" required>
+        </div>
+        <div class="form-group">
+          <label for="apellidoDeCasada">Apellido de casada</label>
+          <input type="text" class="form-control" id="apellidoDeCasada" placeholder="Ingrese su apellido de casada (si aplica)">
+        </div>
+        <div class="form-group">
+          <label for="fechaNacimiento">Fecha de nacimiento</label>
+          <input type="date" class="form-control" id="fechaNacimiento">
+        </div>
+        <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
+      </div>
+      
+      <!-- Step 2 -->
+      <div class="form-step" id="step-2">
+        <div class="form-group">
+          <label for="dpi">DPI <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="dpi" placeholder="Ingrese su DPI" required>
+        </div>
+        <div class="form-group">
+          <label for="telCel">Tel/Cel <span class="text-danger">*</span></label>
+          <input type="tel" class="form-control" id="telCel" placeholder="Ingrese su teléfono o celular" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email <span class="text-danger">*</span></label>
+          <input type="email" class="form-control" id="email" placeholder="Ingrese su email" required>
+        </div>
+        <div class="form-group">
+          <label for="direccion">Dirección</label>
+          <textarea class="form-control" id="direccion" rows="3" placeholder="Ingrese su dirección"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="profesion">Profesión y Oficio</label>
+          <input type="text" class="form-control" id="profesion" placeholder="Ingrese su profesión y oficio">
+        </div>
+        <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
+        <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
+      </div>
+      
+      <!-- Step 3 -->
+      <div class="form-step" id="step-3">
+        <div class="section-title">Datos de facturación</div>
+        <div class="form-group">
+          <label for="facturacionNombre">Nombre</label>
+          <input type="text" class="form-control" id="facturacionNombre" placeholder="Nombre para facturación">
+        </div>
+        <div class="form-group">
+          <label for="facturacionNit">NIT</label>
+          <input type="text" class="form-control" id="facturacionNit" placeholder="NIT para facturación">
+        </div>
+        <div class="form-group">
+          <label for="facturacionDireccion">Dirección de facturación</label>
+          <textarea class="form-control" id="facturacionDireccion" rows="3" placeholder="Dirección para facturación"></textarea>
+        </div>
+        <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
+        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (Optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  let currentStep = 1;
+  const totalSteps = 3;
+
+  function showStep(step) {
+    document.querySelectorAll('.form-step').forEach((element, index) => {
+      element.classList.remove('active');
+      if (index + 1 === step) {
+        element.classList.add('active');
+      }
+    });
+  }
+
+  function nextStep() {
+    if (currentStep < totalSteps) {
+      currentStep++;
+      showStep(currentStep);
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 1) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  }
+
+  document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('Formulario enviado exitosamente!');
+  });
+</script>
+
+</body>
+</html>
