@@ -68,11 +68,11 @@
       <div class="form-step" id="step-2">
         <div class="form-group">
           <label for="dpi">DPI <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="dpi" placeholder="Ingrese su DPI" required>
+          <input type="number" class="form-control" id="dpi" placeholder="Ingrese su DPI" required>
         </div>
         <div class="form-group">
           <label for="telCel">Tel/Cel <span class="text-danger">*</span></label>
-          <input type="tel" class="form-control" id="telCel" placeholder="Ingrese su teléfono o celular" required>
+          <input type="number" class="form-control" id="telCel" placeholder="Ingrese su teléfono o celular" required>
         </div>
         <div class="form-group">
           <label for="email">Email <span class="text-danger">*</span></label>
@@ -85,6 +85,22 @@
         <div class="form-group">
           <label for="profesion">Profesión y Oficio</label>
           <input type="text" class="form-control" id="profesion" placeholder="Ingrese su profesión y oficio">
+        </div>
+        <div class="form-group">
+          <label for="emergencyContact1">Contacto de emergencia 1</label>
+          <input type="text" class="form-control" id="emergencyContact1" placeholder="Ingrese el nombre del primer contacto de emergencia">
+        </div>
+        <div class="form-group">
+          <label for="emergencyContact1Tel">Tel/Cel del contacto de emergencia 1</label>
+          <input type="number" class="form-control" id="emergencyContact1Tel" placeholder="Ingrese el teléfono del primer contacto de emergencia">
+        </div>
+        <div class="form-group">
+          <label for="emergencyContact2">Contacto de emergencia 2</label>
+          <input type="text" class="form-control" id="emergencyContact2" placeholder="Ingrese el nombre del segundo contacto de emergencia">
+        </div>
+        <div class="form-group">
+          <label for="emergencyContact2Tel">Tel/Cel del contacto de emergencia 2</label>
+          <input type="number" class="form-control" id="emergencyContact2Tel" placeholder="Ingrese el teléfono del segundo contacto de emergencia">
         </div>
         <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
         <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
@@ -99,7 +115,7 @@
         </div>
         <div class="form-group">
           <label for="facturacionNit">NIT</label>
-          <input type="text" class="form-control" id="facturacionNit" placeholder="NIT para facturación">
+          <input type="text" class="form-control" id="facturacionNit" placeholder="Ingresar NIT sin guion">
         </div>
         <div class="form-group">
           <label for="facturacionDireccion">Dirección de facturación</label>
