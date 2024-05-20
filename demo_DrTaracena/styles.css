@@ -1,0 +1,49 @@
+/* styles.css */
+.registration-form {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.registration-form .form-group label {
+  font-weight: bold;
+}
+.registration-form .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.section-title {
+  font-size: 1.5em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.form-step {
+  display: none;
+}
+.form-step.active {
+  display: block;
+}
+
+
+/* search form */
+.search-form {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.search-form .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+#searchResult {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

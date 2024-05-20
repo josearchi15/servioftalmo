@@ -7,42 +7,14 @@
   <!-- Bootstrap CSS CDN -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom CSS -->
-  <style>
-    .registration-form {
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .registration-form .form-group label {
-      font-weight: bold;
-    }
-    .registration-form .btn-primary {
-      background-color: #007bff;
-      border-color: #007bff;
-    }
-    .section-title {
-      font-size: 1.5em;
-      margin-top: 20px;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-    .form-step {
-      display: none;
-    }
-    .form-step.active {
-      display: block;
-    }
-  </style>
+  <link href="styles.css" rel="stylesheet">
 </head>
 <body>
 
 <div class="container">
   <div class="registration-form">
     <h2 class="text-center">Formulario de registro</h2>
-    <form id="registrationForm">
+    <form id="registrationForm" action="buscar-paciente.html"></form>
       <!-- Step 1 -->
       <div class="form-step active" id="step-1">
         <div class="form-group">
@@ -122,6 +94,82 @@
           <textarea class="form-control" id="facturacionDireccion" rows="3" placeholder="Dirección para facturación"></textarea>
         </div>
         <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
+        <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
+      </div>
+      
+      <!-- Step 4 -->
+      <div class="form-step" id="step-4">
+        <div class="section-title">Información de asegurado</div>
+        <div class="form-group">
+          <label for="seguroAfiliado">Seguro Afiliado</label>
+          <input type="text" class="form-control" id="seguroAfiliado" placeholder="Ingrese su seguro afiliado">
+        </div>
+        <div class="form-group">
+          <label for="poliza">Póliza</label>
+          <input type="text" class="form-control" id="poliza" placeholder="Ingrese su póliza">
+        </div>
+        <div class="form-group">
+          <label for="idAsegurado">ID Asegurado</label>
+          <input type="text" class="form-control" id="idAsegurado" placeholder="Ingrese su ID de asegurado">
+        </div>
+        <div class="form-group">
+          <label for="noCarnet">No. Carnet</label>
+          <input type="text" class="form-control" id="noCarnet" placeholder="Ingrese su número de carnet">
+        </div>
+        <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
+        <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="form-step" id="step-5">
+        <div class="section-title">Historial clínico</div>
+        <div class="form-group">
+          <label>Indique si ha tenido cirugías previas, tratamientos, alergias o si ha padecido o padece de alguna de las siguientes afecciones:</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="diabetes">
+            <label class="form-check-label" for="diabetes">Diabetes</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="presionAltaBaja">
+            <label class="form-check-label" for="presionAltaBaja">Presión alta/baja</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="enfermedadesCardiacas">
+            <label class="form-check-label" for="enfermedadesCardiacas">Enfermedades cardíacas</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="dolorDeCabeza">
+            <label class="form-check-label" for="dolorDeCabeza">Dolor de cabeza severo</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="asma">
+            <label class="form-check-label" for="asma">Asma</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="fracturas">
+            <label class="form-check-label" for="fracturas">Fracturas</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="convulsiones">
+            <label class="form-check-label" for="convulsiones">Convulsiones</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="problemasTorax">
+            <label class="form-check-label" for="problemasTorax">Problemas en tórax, corazón, pulmones y abdomen</label>
+          </div>
+        </div>
+        
+        <div class="form-group mt-3">
+          <label for="especifique">Especifique</label>
+          <textarea class="form-control" id="especifique" rows="3" placeholder="Especifique detalles adicionales aquí"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="otrosAntecedentes">Mencione cualquier otro antecedente que considere importante</label>
+          <textarea class="form-control" id="otrosAntecedentes" rows="3" placeholder="Ingrese otros antecedentes importantes aquí"></textarea>
+        </div>
+        
+        <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
         <button type="submit" class="btn btn-primary btn-block">Enviar</button>
       </div>
     </form>
@@ -132,38 +180,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-  let currentStep = 1;
-  const totalSteps = 3;
-
-  function showStep(step) {
-    document.querySelectorAll('.form-step').forEach((element, index) => {
-      element.classList.remove('active');
-      if (index + 1 === step) {
-        element.classList.add('active');
-      }
-    });
-  }
-
-  function nextStep() {
-    if (currentStep < totalSteps) {
-      currentStep++;
-      showStep(currentStep);
-    }
-  }
-
-  function prevStep() {
-    if (currentStep > 1) {
-      currentStep--;
-      showStep(currentStep);
-    }
-  }
-
-  document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    alert('Formulario enviado exitosamente!');
-  });
-</script>
+<script src="scripts.js"></script>
 
 </body>
 </html>
