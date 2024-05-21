@@ -73,32 +73,32 @@ document.addEventListener('DOMContentLoaded', function() {
     renderPatientTable();
   };
 
-  pacienteForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const newPatient = {
-      idPaciente: updatingPatient ? updatingPatient.idPaciente : String(Date.now()),
-      nombres: pacienteForm.nombres.value,
-      apellidos: pacienteForm.apellidos.value,
-      apellidoDeCasada: pacienteForm.apellidoDeCasada.value,
-      fechaNacimiento: pacienteForm.fechaNacimiento.value,
-      dpi: pacienteForm.dpi.value,
-      telCel: pacienteForm.telCel.value,
-      email: pacienteForm.email.value,
-      direccion: pacienteForm.direccion.value,
-      profesion: pacienteForm.profesion.value
-    };
+  // pacienteForm.addEventListener('submit', function(event) {
+  //   event.preventDefault();
+  //   const newPatient = {
+  //     idPaciente: updatingPatient ? updatingPatient.idPaciente : String(Date.now()),
+  //     nombres: pacienteForm.nombres.value,
+  //     apellidos: pacienteForm.apellidos.value,
+  //     apellidoDeCasada: pacienteForm.apellidoDeCasada.value,
+  //     fechaNacimiento: pacienteForm.fechaNacimiento.value,
+  //     dpi: pacienteForm.dpi.value,
+  //     telCel: pacienteForm.telCel.value,
+  //     email: pacienteForm.email.value,
+  //     direccion: pacienteForm.direccion.value,
+  //     profesion: pacienteForm.profesion.value
+  //   };
 
-    if (updatingPatient) {
-      patients = patients.map(p => p.idPaciente === updatingPatient.idPaciente ? newPatient : p);
-      updatingPatient = null;
-      formTitle.innerText = 'Crear Paciente';
-    } else {
-      patients.push(newPatient);
-    }
+  //   if (updatingPatient) {
+  //     patients = patients.map(p => p.idPaciente === updatingPatient.idPaciente ? newPatient : p);
+  //     updatingPatient = null;
+  //     formTitle.innerText = 'Crear Paciente';
+  //   } else {
+  //     patients.push(newPatient);
+  //   }
 
-    pacienteForm.reset();
-    renderPatientTable();
-  });
+  //   pacienteForm.reset();
+  //   renderPatientTable();
+  // });
 
   cancelUpdate.addEventListener('click', function() {
     updatingPatient = null;

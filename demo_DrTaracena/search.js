@@ -47,6 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
         resultDiv.innerHTML = '<p class="text-danger">Paciente no encontrado</p>';
       }
     });
+
+    
+
   });
   
   const mockDatabase = [
