@@ -9,8 +9,55 @@
   <!-- Custom CSS -->
   <link href="styles.css" rel="stylesheet">
 </head>
-<body>
+<script>
+  
+let currentStep = 1;
+const totalSteps = 5;
 
+function showStep(step) {
+  document.querySelectorAll('.form-step').forEach((element, index) => {
+    element.classList.remove('active');
+    if (index + 1 === step) {
+      element.classList.add('active');
+    }
+  });
+}
+
+function nextStep() {
+  if (currentStep < totalSteps) {
+    currentStep++;
+    showStep(currentStep);
+  }
+}
+
+function prevStep() {
+  if (currentStep > 1) {
+    currentStep--;
+    showStep(currentStep);
+  }
+}
+</script>
+<body>
+  <header class="bg-primary text-white text-center py-4">
+    <h1>Servi Oftalmo</h1>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Servi Oftalmo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="formulario-paciente.html">Ingreso de Paciente</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="buscar-paciente.html">Buscar Paciente</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 <div class="container">
   <div class="registration-form">
     <h2 class="text-center">Formulario de registro</h2>
