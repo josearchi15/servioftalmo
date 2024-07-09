@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Pacientes</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <header class="bg-primary text-white text-center py-4">
+    <h1>Servi Oftalmo</h1>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Servi Oftalmo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="formulario-paciente.html">Ingreso de Paciente</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="buscar-paciente.html">Buscar Paciente</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <h1 class="mt-5">Gestión de Pacientes</h1>
+
+    <!-- Formulario para Crear/Actualizar Paciente -->
+    <div id="formContainer" class="mt-5">
+      <h2 id="formTitle">Editar Paciente</h2>
+      <form id="pacienteForm">
+        <input type="hidden" id="idPaciente" name="idPaciente">
+
+        <!-- Datos Personales -->
+        <div class="form-group">
+          <label for="nombres">Nombres</label>
+          <input type="text" class="form-control" id="nombres" name="nombres" required>
+        </div>
+        <div class="form-group">
+          <label for="apellidos">Apellidos</label>
+          <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+        </div>
+        <div class="form-group">
+          <label for="apellidoDeCasada">Apellido de Casada</label>
+          <input type="text" class="form-control" id="apellidoDeCasada" name="apellidoDeCasada">
+        </div>
+        <div class="form-group">
+          <label for="fechaNacimiento">Fecha de Nacimiento</label>
+          <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
+        </div>
+        <div class="form-group">
+          <label for="dpi">DPI</label>
+          <input type="text" class="form-control" id="dpi" name="dpi" required>
+        </div>
+        <div class="form-group">
+          <label for="telCel">Tel/Cel</label>
+          <input type="text" class="form-control" id="telCel" name="telCel" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="direccion">Dirección</label>
+          <input type="text" class="form-control" id="direccion" name="direccion">
+        </div>
+        <div class="form-group">
+          <label for="profesion">Profesión y Oficio</label>
+          <input type="text" class="form-control" id="profesion" name="profesion">
+        </div>
+
+        <!-- Contactos de Emergencia -->
+        <div class="form-group">
+          <label for="emergencyContact1">Contacto de Emergencia 1</label>
+          <input type="text" class="form-control" id="emergencyContact1" name="emergencyContact1">
+        </div>
+        <div class="form-group">
+          <label for="emergencyContact1Tel">Tel/Cel de Emergencia 1</label>
+          <input type="text" class="form-control" id="emergencyContact1Tel" name="emergencyContact1Tel">
+        </div>
+        <div class="form-group">
+          <label for="emergencyContact2">Contacto de Emergencia 2</label>
+          <input type="text" class="form-control" id="emergencyContact2" name="emergencyContact2">
+        </div>
+        <div class="form-group">
+          <label for="emergencyContact2Tel">Tel/Cel de Emergencia 2</label>
+          <input type="text" class="form-control" id="emergencyContact2Tel" name="emergencyContact2Tel">
+        </div>
+
+        <!-- Datos de Facturación -->
+        <div class="form-group">
+          <label for="facturacionNombre">Nombre de Facturación</label>
+          <input type="text" class="form-control" id="facturacionNombre" name="facturacionNombre">
+        </div>
+        <div class="form-group">
+          <label for="facturacionNit">NIT</label>
+          <input type="text" class="form-control" id="facturacionNit" name="facturacionNit">
+        </div>
+        <div class="form-group">
+          <label for="facturacionDireccion">Dirección de Facturación</label>
+          <input type="text" class="form-control" id="facturacionDireccion" name="facturacionDireccion">
+        </div>
+
+        <!-- Información de Asegurado -->
+        <div class="form-group">
+          <label for="seguroAfiliado">Seguro Afiliado</label>
+          <input type="text" class="form-control" id="seguroAfiliado" name="seguroAfiliado">
+        </div>
+        <div class="form-group">
+          <label for="poliza">Póliza</label>
+          <input type="text" class="form-control" id="poliza" name="poliza">
+        </div>
+        <div class="form-group">
+          <label for="idAsegurado">ID Asegurado</label>
+          <input type="text" class="form-control" id="idAsegurado" name="idAsegurado">
+        </div>
+        <div class="form-group">
+          <label for="noCarnet">No. Carnet</label>
+          <input type="text" class="form-control" id="noCarnet" name="noCarnet">
+        </div>
+
+        <!-- Historial Clínico -->
+        <div class="form-group">
+          <label>Historial Clínico</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="diabetes" name="diabetes">
+            <label class="form-check-label" for="diabetes">Diabetes</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="presionAltaBaja" name="presionAltaBaja">
+            <label class="form-check-label" for="presionAltaBaja">Presión Alta/Baja</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="enfermedadesCardiacas" name="enfermedadesCardiacas">
+            <label class="form-check-label" for="enfermedadesCardiacas">Enfermedades Cardíacas</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="dolorDeCabeza" name="dolorDeCabeza">
+            <label class="form-check-label" for="dolorDeCabeza">Dolor de Cabeza Severo</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="asma" name="asma">
+            <label class="form-check-label" for="asma">Asma</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="fracturas" name="fracturas">
+            <label class="form-check-label" for="fracturas">Fracturas</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="convulsiones" name="convulsiones">
+            <label class="form-check-label" for="convulsiones">Convulsiones</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="problemasTorax" name="problemasTorax">
+            <label class="form-check-label" for="problemasTorax">Problemas en Tórax, Corazón, Pulmones y Abdomen</label>
+          </div>
+          <div class="form-group">
+            <label for="especificar">Especifique</label>
+            <input type="text" class="form-control" id="especificar" name="especificar">
+          </div>
+          <div class="form-group">
+            <label for="antecedentesImportantes">Antecedentes Importantes</label>
+            <input type="text" class="form-control" id="antecedentesImportantes" name="antecedentesImportantes">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="reset" class="btn btn-secondary" id="cancelUpdate">Cancelar</button>
+      </form>
+    </div>
+
+    <!-- Tabla para Listar Pacientes -->
+    <div id="listContainer" class="mt-5">
+      <h2>Lista de Pacientes</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>DPI</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="patientTableBody">
+          <!-- Filas de pacientes se insertarán aquí -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="paciente.js"></script>
+</body>
+
+</html>
