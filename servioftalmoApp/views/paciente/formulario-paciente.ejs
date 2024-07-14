@@ -1,67 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulario de registro</title>
-  <!-- Bootstrap CSS CDN -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
-  <link href="styles.css" rel="stylesheet">
-</head>
-<script>
-  
-let currentStep = 1;
-const totalSteps = 5;
+<%- include("../partials/header") %>
 
-function showStep(step) {
-  document.querySelectorAll('.form-step').forEach((element, index) => {
-    element.classList.remove('active');
-    if (index + 1 === step) {
-      element.classList.add('active');
-    }
-  });
-}
-
-function nextStep() {
-  if (currentStep < totalSteps) {
-    currentStep++;
-    showStep(currentStep);
-  }
-}
-
-function prevStep() {
-  if (currentStep > 1) {
-    currentStep--;
-    showStep(currentStep);
-  }
-}
-</script>
-<body>
-  <header class="bg-primary text-white text-center py-4">
-    <h1>Servi Oftalmo</h1>
-  </header>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">Servi Oftalmo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="formulario-paciente.html">Ingreso de Paciente</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="buscar-paciente.html">Buscar Paciente</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-<div class="container">
-  <div class="registration-form">
-    <h2 class="text-center">Formulario de registro</h2>
-    <form id="registrationForm" action="buscar-paciente.html"></form>
+  <div class="container">
+    <div class="registration-form">
+      <h2 class="text-center">Formulario de registro</h2>
+      <form id="registrationForm" action="buscar-paciente.html"></form>
       <!-- Step 1 -->
       <div class="form-step active" id="step-1">
         <div class="form-group">
@@ -74,7 +16,8 @@ function prevStep() {
         </div>
         <div class="form-group">
           <label for="apellidoDeCasada">Apellido de casada</label>
-          <input type="text" class="form-control" id="apellidoDeCasada" placeholder="Ingrese su apellido de casada (si aplica)">
+          <input type="text" class="form-control" id="apellidoDeCasada"
+            placeholder="Ingrese su apellido de casada (si aplica)">
         </div>
         <div class="form-group">
           <label for="fechaNacimiento">Fecha de nacimiento</label>
@@ -82,7 +25,7 @@ function prevStep() {
         </div>
         <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
       </div>
-      
+
       <!-- Step 2 -->
       <div class="form-step" id="step-2">
         <div class="form-group">
@@ -107,24 +50,28 @@ function prevStep() {
         </div>
         <div class="form-group">
           <label for="emergencyContact1">Contacto de emergencia 1</label>
-          <input type="text" class="form-control" id="emergencyContact1" placeholder="Ingrese el nombre del primer contacto de emergencia">
+          <input type="text" class="form-control" id="emergencyContact1"
+            placeholder="Ingrese el nombre del primer contacto de emergencia">
         </div>
         <div class="form-group">
           <label for="emergencyContact1Tel">Tel/Cel del contacto de emergencia 1</label>
-          <input type="number" class="form-control" id="emergencyContact1Tel" placeholder="Ingrese el teléfono del primer contacto de emergencia">
+          <input type="number" class="form-control" id="emergencyContact1Tel"
+            placeholder="Ingrese el teléfono del primer contacto de emergencia">
         </div>
         <div class="form-group">
           <label for="emergencyContact2">Contacto de emergencia 2</label>
-          <input type="text" class="form-control" id="emergencyContact2" placeholder="Ingrese el nombre del segundo contacto de emergencia">
+          <input type="text" class="form-control" id="emergencyContact2"
+            placeholder="Ingrese el nombre del segundo contacto de emergencia">
         </div>
         <div class="form-group">
           <label for="emergencyContact2Tel">Tel/Cel del contacto de emergencia 2</label>
-          <input type="number" class="form-control" id="emergencyContact2Tel" placeholder="Ingrese el teléfono del segundo contacto de emergencia">
+          <input type="number" class="form-control" id="emergencyContact2Tel"
+            placeholder="Ingrese el teléfono del segundo contacto de emergencia">
         </div>
         <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
         <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
       </div>
-      
+
       <!-- Step 3 -->
       <div class="form-step" id="step-3">
         <div class="section-title">Datos de facturación</div>
@@ -138,12 +85,13 @@ function prevStep() {
         </div>
         <div class="form-group">
           <label for="facturacionDireccion">Dirección de facturación</label>
-          <textarea class="form-control" id="facturacionDireccion" rows="3" placeholder="Dirección para facturación"></textarea>
+          <textarea class="form-control" id="facturacionDireccion" rows="3"
+            placeholder="Dirección para facturación"></textarea>
         </div>
         <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
         <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
       </div>
-      
+
       <!-- Step 4 -->
       <div class="form-step" id="step-4">
         <div class="section-title">Información de asegurado</div>
@@ -171,7 +119,8 @@ function prevStep() {
       <div class="form-step" id="step-5">
         <div class="section-title">Historial clínico</div>
         <div class="form-group">
-          <label>Indique si ha tenido cirugías previas, tratamientos, alergias o si ha padecido o padece de alguna de las siguientes afecciones:</label>
+          <label>Indique si ha tenido cirugías previas, tratamientos, alergias o si ha padecido o padece de alguna de
+            las siguientes afecciones:</label>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="diabetes">
             <label class="form-check-label" for="diabetes">Diabetes</label>
@@ -205,29 +154,24 @@ function prevStep() {
             <label class="form-check-label" for="problemasTorax">Problemas en tórax, corazón, pulmones y abdomen</label>
           </div>
         </div>
-        
+
         <div class="form-group mt-3">
           <label for="especifique">Especifique</label>
-          <textarea class="form-control" id="especifique" rows="3" placeholder="Especifique detalles adicionales aquí"></textarea>
+          <textarea class="form-control" id="especifique" rows="3"
+            placeholder="Especifique detalles adicionales aquí"></textarea>
         </div>
-        
+
         <div class="form-group">
           <label for="otrosAntecedentes">Mencione cualquier otro antecedente que considere importante</label>
-          <textarea class="form-control" id="otrosAntecedentes" rows="3" placeholder="Ingrese otros antecedentes importantes aquí"></textarea>
+          <textarea class="form-control" id="otrosAntecedentes" rows="3"
+            placeholder="Ingrese otros antecedentes importantes aquí"></textarea>
         </div>
-        
+
         <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
         <button type="submit" class="btn btn-primary btn-block">Enviar</button>
       </div>
-    </form>
+      </form>
+    </div>
   </div>
-</div>
 
-<!-- Bootstrap JS and dependencies (Optional) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="scripts.js"></script>
-
-</body>
-</html>
+  <%- include("../partials/footer") %>
