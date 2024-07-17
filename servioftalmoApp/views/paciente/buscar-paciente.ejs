@@ -1,39 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buscar paciente</title>
-  <!-- Bootstrap CSS CDN -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
-  <link href="styles.css" rel="stylesheet">
-</head>
-
-<body>
-  <header class="bg-primary text-white text-center py-4">
-    <h1>Servi Oftalmo</h1>
-  </header>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">Servi Oftalmo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="formulario-paciente.html">Ingreso de Paciente</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="buscar-paciente.html">Buscar Paciente</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
+<%- include("../partials/header") %>
   <div class="container">
     <div class="search-form">
       <h2 class="text-center">Buscar paciente</h2>
@@ -62,17 +27,36 @@
         </thead>
         <tbody id="patientTableBody">
           <!-- Filas de pacientes se insertarán aquí -->
+          <% if(Pacientes) { %>
+            <tr>
+              <% Pacientes.forEach(paciente=> { %>
+                <td>
+                  <%= paciente.Id_paciente %>
+                </td>
+                <td>
+                  <%= paciente.Nombres %>
+                </td>
+                <td>
+                  <%= paciente.Apellidos %>
+                </td>
+                <td>
+                  <%= paciente.DPI %>
+                </td>
+                <td>
+                  <form class="succes-form" action="/pacientes/<%= paciente.Id_paciente %>?_method=PUT" method="GET">
+                    <button class="btn btn-sm btn-danger">Editar</button>
+                  </form>
+                  <form class="delete-form" action="/pacientes/<%= paciente.Id_paciente %>?_method=DELETE"
+                    method="POST">
+                    <button class="btn btn-sm btn-danger">Eliminar</button>
+                  </form>
+                </td>
+            </tr>
+
+            <% }) %>
+              <% } %>
         </tbody>
       </table>
     </div>
   </div>
-
-  <!-- Bootstrap JS and dependencies (Optional) -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="search.js"></script>
-
-</body>
-
-</html>
+  <%- include("../partials/footer") %>
