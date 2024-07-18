@@ -30,18 +30,16 @@ export const getPaciente = async (req, res) => {
 }
 
 export const createPaciente = async (req, res) => {
-    //     const pool = await getConnection()
-    //     const result = await pool.request().query
-    //         (`EXEC spCreatePaciente '${req.body.nombres}','${req.body.apellidos}','${req.body.apellidoDeCasada}',CAST('${req.body.fechaNacimiento}' AS DATE),'spRegistro',
-    // 	'${req.body.dpi}','${req.body.telCel}','${req.body.email}','${req.body.direccion}','${req.body.profesion}','${req.body.emergencyContact1}','${req.body.emergencyContact1Tel}','${req.body.emergencyContact2}','${req.body.emergencyContact1Tel}',
-    // 	'${req.body.diabetes}','${req.body.especifique}','${req.body.otrosAntecedentes}'
-    // GO`)
-    // const Paciente = req.body
-    // console.log(result)
-    console.log(`**************POST: 
-        ${req.body.nombres}','${req.body.apellidos}',
-        '${req.body.fechaNacimiento}','${req.body.dpi}',
-        '${req.body.telCel}','${req.body.email}'`)
+    // const bday = Date(req.body.fechaNacimiento)
+    const pool = await getConnection()
+    const spCreatePaciente = await pool.request().query
+        (`EXEC spCreatePaciente '${req.body.nombres}','${req.body.apellidos}','${req.body.apellidoDeCasada}','${req.body.fechaNacimiento}','spRegistro',
+    	'${req.body.dpi}','${req.body.telCel}','${req.body.email}','${req.body.direccion}','${req.body.profesion}','${req.body.emergencyContact1}','${req.body.emergencyContact1Tel}','${req.body.emergencyContact2}','${req.body.emergencyContact1Tel}',
+    	'${req.body.diabetes}','${req.body.especifique}','${req.body.otrosAntecedentes}'`)
+
+    const spCreateDatosFacturacion = await pool.request().query(`exec spCreateDatosFacturacion '${req.body.facturacionNombre}','${req.body.facturacionNit}','${req.body.facturacionDireccion}'`)
+
+    const spCreateDatosSeguro = await pool.request().query(`exec spCreateSeguroMedico '${req.body.seguroAfiliado}','${req.body.poliza}','${req.body.idAsegurado}','${req.body.noCarnet}'`)
     // res.send('Paciente created')
     // res.redirect("/pacientes/" + PacienteoId);
     res.redirect("/pacientes/");
