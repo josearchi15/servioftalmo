@@ -1,7 +1,8 @@
 import express from "express";
 import morgan from "morgan";
-import pacientesRoutes from "./routes/pacientes.js"
 import indexRoutes from "./routes/index.js"
+import pacientesRoutes from "./routes/pacientes.js"
+import consultaRoutes from "./routes/consulta.js"
 
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'node:url';
@@ -19,6 +20,7 @@ app.use(morgan('dev'))
 
 app.use("/", indexRoutes)
 app.use("/pacientes", pacientesRoutes)
+app.use("/pacientes/:id/consulta", consultaRoutes)
 app.use(express.static(join(__dirname, 'public')));
 
 

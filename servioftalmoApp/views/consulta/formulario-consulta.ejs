@@ -1,0 +1,181 @@
+<%- include("../partials/header") %>
+
+  <div class="container">
+    <div class="registration-form">
+      <h2 class="text-center">Formulario de registro</h2>
+      <form id="registrationForm" action="/pacientes/new" method="POST">
+        <!-- Step 1 -->
+        <div class="form-step active" id="step-1">
+          <div class="form-group">
+            <label for="nombres">Nombres <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" name="nombres" placeholder="Ingrese sus nombres" required>
+          </div>
+          <div class="form-group">
+            <label for="apellidos">Apellidos <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" name="apellidos" placeholder="Ingrese sus apellidos" required>
+          </div>
+          <div class="form-group">
+            <label for="apellidoDeCasada">Apellido de casada</label>
+            <input type="text" class="form-control" name="apellidoDeCasada"
+              placeholder="Ingrese su apellido de casada (si aplica)">
+          </div>
+          <div class="form-group">
+            <label for="fechaNacimiento">Fecha de nacimiento</label>
+            <input type="date" class="form-control" name="fechaNacimiento">
+          </div>
+          <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="form-step" id="step-2">
+          <div class="form-group">
+            <label for="dpi">DPI <span class="text-danger">*</span></label>
+            <input type="number" class="form-control" name="dpi" placeholder="Ingrese su DPI" required>
+          </div>
+          <div class="form-group">
+            <label for="telCel">Tel/Cel <span class="text-danger">*</span></label>
+            <input type="number" class="form-control" name="telCel" placeholder="Ingrese su teléfono o celular"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email <span class="text-danger">*</span></label>
+            <input type="email" class="form-control" name="email" placeholder="Ingrese su email" required>
+          </div>
+          <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <textarea class="form-control" name="direccion" rows="3" placeholder="Ingrese su dirección"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="profesion">Profesión y Oficio</label>
+            <input type="text" class="form-control" name="profesion" placeholder="Ingrese su profesión y oficio">
+          </div>
+          <div class="form-group">
+            <label for="emergencyContact1">Contacto de emergencia 1</label>
+            <input type="text" class="form-control" name="emergencyContact1"
+              placeholder="Ingrese el nombre del primer contacto de emergencia">
+          </div>
+          <div class="form-group">
+            <label for="emergencyContact1Tel">Tel/Cel del contacto de emergencia 1</label>
+            <input type="number" class="form-control" name="emergencyContact1Tel"
+              placeholder="Ingrese el teléfono del primer contacto de emergencia">
+          </div>
+          <div class="form-group">
+            <label for="emergencyContact2">Contacto de emergencia 2</label>
+            <input type="text" class="form-control" name="emergencyContact2"
+              placeholder="Ingrese el nombre del segundo contacto de emergencia">
+          </div>
+          <div class="form-group">
+            <label for="emergencyContact2Tel">Tel/Cel del contacto de emergencia 2</label>
+            <input type="number" class="form-control" name="emergencyContact2Tel"
+              placeholder="Ingrese el teléfono del segundo contacto de emergencia">
+          </div>
+          <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
+          <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="form-step" id="step-3">
+          <div class="section-title">Datos de facturación</div>
+          <div class="form-group">
+            <label for="facturacionNombre">Nombre</label>
+            <input type="text" class="form-control" name="facturacionNombre" placeholder="Nombre para facturación">
+          </div>
+          <div class="form-group">
+            <label for="facturacionNit">NIT</label>
+            <input type="text" class="form-control" name="facturacionNit" placeholder="Ingresar NIT sin guion">
+          </div>
+          <div class="form-group">
+            <label for="facturacionDireccion">Dirección de facturación</label>
+            <textarea class="form-control" name="facturacionDireccion" rows="3"
+              placeholder="Dirección para facturación"></textarea>
+          </div>
+          <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
+          <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="form-step" id="step-4">
+          <div class="section-title">Información de asegurado</div>
+          <div class="form-group">
+            <label for="seguroAfiliado">Seguro Afiliado</label>
+            <input type="text" class="form-control" name="seguroAfiliado" placeholder="Ingrese su seguro afiliado">
+          </div>
+          <div class="form-group">
+            <label for="poliza">Póliza</label>
+            <input type="text" class="form-control" name="poliza" placeholder="Ingrese su póliza">
+          </div>
+          <div class="form-group">
+            <label for="idAsegurado">ID Asegurado</label>
+            <input type="text" class="form-control" name="idAsegurado" placeholder="Ingrese su ID de asegurado">
+          </div>
+          <div class="form-group">
+            <label for="noCarnet">No. Carnet</label>
+            <input type="text" class="form-control" name="noCarnet" placeholder="Ingrese su número de carnet">
+          </div>
+          <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
+          <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="form-step" id="step-5">
+          <div class="section-title">Historial clínico</div>
+          <div class="form-group">
+            <label>Indique si ha tenido cirugías previas, tratamientos, alergias o si ha padecido o padece de alguna de
+              las siguientes afecciones:</label>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="diabetes">
+              <label class="form-check-label" for="diabetes">Diabetes</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="presionAltaBaja">
+              <label class="form-check-label" for="presionAltaBaja">Presión alta/baja</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="enfermedadesCardiacas">
+              <label class="form-check-label" for="enfermedadesCardiacas">Enfermedades cardíacas</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="dolorDeCabeza">
+              <label class="form-check-label" for="dolorDeCabeza">Dolor de cabeza severo</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="asma">
+              <label class="form-check-label" for="asma">Asma</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="fracturas">
+              <label class="form-check-label" for="fracturas">Fracturas</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="convulsiones">
+              <label class="form-check-label" for="convulsiones">Convulsiones</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="problemasTorax">
+              <label class="form-check-label" for="problemasTorax">Problemas en tórax, corazón, pulmones y
+                abdomen</label>
+            </div>
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="especifique">Especifique</label>
+            <textarea class="form-control" name="especifique" rows="3"
+              placeholder="Especifique detalles adicionales aquí"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="otrosAntecedentes">Mencione cualquier otro antecedente que considere importante</label>
+            <textarea class="form-control" name="otrosAntecedentes" rows="3"
+              placeholder="Ingrese otros antecedentes importantes aquí"></textarea>
+          </div>
+
+          <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
+          <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- <script src="/js/formulario-paciente.js"></script> -->
+  <%- include("../partials/footer") %>

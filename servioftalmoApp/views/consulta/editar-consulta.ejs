@@ -1,28 +1,28 @@
 <%- include("../partials/header") %>
 
   <div class="container">
-    <h1 class="mt-5">Gestión de Paciente</h1>
+    <h1 class="mt-5">Gestión de Consulta</h1>
 
-    <!-- Formulario para Crear/Actualizar Paciente -->
+    <!-- Formulario para Crear/Actualizar Consulta -->
     <div id="formContainer" class="mt-5">
-      <h2 id="formTitle">Editar Paciente</h2>
+      <h2 id="formTitle">Editar Consulta</h2>
       <form id="pacienteForm">
-        <input type="hidden" id="idPaciente" name="idPaciente">
+        <input type="hidden" id="idConsulta" name="idConsulta">
 
         <!-- Datos Personales -->
         <div class="form-group">
           <label for="nombres">Nombres</label>
-          <input type="text" class="form-control" id="nombres" name="nombres" value="<%= Paciente.Nombres %>">
+          <input type="text" class="form-control" id="nombres" name="nombres" value="<%= Consulta.Nombres %>">
           <!-- <input type="text" class="form-control" id="nombres" name="nombres"> -->
         </div>
         <div class="form-group">
           <label for="apellidos">Apellidos</label>
-          <input type="text" class="form-control" id="apellidos" name="apellidos" value="<%= Paciente.Apellidos %>">
+          <input type="text" class="form-control" id="apellidos" name="apellidos" value="<%= Consulta.Apellidos %>">
         </div>
         <div class="form-group">
           <label for="apellidoDeCasada">Apellido de Casada</label>
           <input type="text" class="form-control" id="apellidoDeCasada" name="apellidoDeCasada"
-            value="<%= Paciente.Apellidos_Casada %>">
+            value="<%= Consulta.Apellidos_Casada %>">
         </div>
         <div class="form-group">
           <label for="fechaNacimiento">Fecha de Nacimiento</label>
@@ -30,45 +30,45 @@
         </div>
         <div class="form-group">
           <label for="dpi">DPI</label>
-          <input type="text" class="form-control" id="dpi" name="dpi" value="<%= Paciente.DPI %>">
+          <input type="text" class="form-control" id="dpi" name="dpi" value="<%= Consulta.DPI %>">
         </div>
         <div class="form-group">
           <label for="telCel">Tel/Cel</label>
-          <input type="text" class="form-control" id="telCel" name="telCel" value="<%= Paciente.Celular %>" </div>
+          <input type="text" class="form-control" id="telCel" name="telCel" value="<%= Consulta.Celular %>" </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" value="<%= Paciente.Email %>">
+            <input type="email" class="form-control" id="email" name="email" value="<%= Consulta.Email %>">
           </div>
           <div class="form-group">
             <label for="direccion">Dirección</label>
-            <input type="text" class="form-control" id="direccion" name="direccion" value="<%= Paciente.Email %>">
+            <input type="text" class="form-control" id="direccion" name="direccion" value="<%= Consulta.Email %>">
           </div>
           <div class="form-group">
             <label for="profesion">Profesión y Oficio</label>
             <input type="text" class="form-control" id="profesion" name="profesion"
-              value="<%= Paciente.Profesion_u_oficio %>">
+              value="<%= Consulta.Profesion_u_oficio %>">
           </div>
 
           <!-- Contactos de Emergencia -->
           <div class="form-group">
             <label for="emergencyContact1">Contacto de Emergencia 1</label>
             <input type="text" class="form-control" id="emergencyContact1" name="emergencyContact1"
-              value="<%= Paciente.Contacto_emergencia1 %>">
+              value="<%= Consulta.Contacto_emergencia1 %>">
           </div>
           <div class="form-group">
             <label for="emergencyContact1Tel">Tel/Cel de Emergencia 1</label>
             <input type="text" class="form-control" id="emergencyContact1Tel" name="emergencyContact1Tel"
-              value="<%= Paciente.Telefono_emergencia1 %>">
+              value="<%= Consulta.Telefono_emergencia1 %>">
           </div>
           <div class="form-group">
             <label for="emergencyContact2">Contacto de Emergencia 2</label>
             <input type="text" class="form-control" id="emergencyContact2" name="emergencyContact2"
-              value="<%= Paciente.Contacto_emergencia2 %>">
+              value="<%= Consulta.Contacto_emergencia2 %>">
           </div>
           <div class="form-group">
             <label for="emergencyContact2Tel">Tel/Cel de Emergencia 2</label>
             <input type="text" class="form-control" id="emergencyContact2Tel" name="emergencyContact2Tel"
-              value="<%= Paciente.Telefono_emergencia2 %>">
+              value="<%= Consulta.Telefono_emergencia2 %>">
           </div>
 
           <!-- Datos de Facturación -->

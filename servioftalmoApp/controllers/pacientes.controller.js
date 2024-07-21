@@ -1,7 +1,7 @@
 import { getConnection } from "../database/connection.js"
 
 export const getPacientes = async (req, res) => {
-    console.log('ingresa a consulta')
+    console.log('Obtener todos los pacientes')
     const pool = await getConnection()
     const result = await pool.request().query("SELECT * FROM PACIENTE")
     //console.log(result.recordset)
@@ -16,16 +16,17 @@ export const newPaciente = async (req, res) => {
 }
 
 export const getPaciente = async (req, res) => {
-    // const pool = await getConnection()
-    // const result = await pool.request().query(`SELECT * FROM PACIENTE WHERE Id_paciente = ${req.params.id}`)
-    // // console.log(result.recordset)
-    // // res.send(result.recordset)
+
+    const pool = await getConnection()
+    const result = await pool.request().query(`SELECT * FROM PACIENTE WHERE Id_paciente = ${req.params.id}`)
+    console.log(result.recordset)
+    const Paciente = result.recordset[0]
 
     // if (result.rowsAffected[0] == 0) {
     //     return res.status(404).json({ message: "Paciente not found" })
     // }
 
-    res.render('paciente/editar-paciente')
+    res.render('paciente/editar-paciente', { Paciente: Paciente }) //{ Paciente: paciente }
 
 }
 
