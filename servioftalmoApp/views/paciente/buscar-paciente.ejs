@@ -44,12 +44,14 @@
                 </td>
                 <td>
                   <form class="succes-form" action="/pacientes/<%= paciente.Id_paciente %>?_method=PUT" method="GET">
-                    <button class="btn btn-sm btn-primaey btn-block">Editar</button>
+                    <button class="btn btn-sm btn-primary">Editar</button>
                   </form>
-                  <form class="delete-form" action="/pacientes/<%= paciente.Id_paciente %>?_method=DELETE"
+                  <!-- <form class="delete-form" action="/pacientes/<%= paciente.Id_paciente %>?_method=DELETE"
                     method="POST">
                     <button class="btn btn-sm btn-danger">Eliminar</button>
-                  </form>
+                  </form> -->
+                  <a href="/pacientes/<%= paciente.Id_paciente %>/consulta" class="btn btn-sm btn-primary">
+                    Nueva consulta</a>
                 </td>
             </tr>
 

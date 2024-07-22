@@ -1,11 +1,16 @@
 use SERVIOFTALMO_DRAFT4
+
+--TRUNCATE TABLE DATOS_DE_FACTURACION
+--TRUNCATE TABLE SEGURO_MEDICO
+--TRUNCATE TABLE PACIENTE
+
 SELECT * FROM PACIENTE
-SELECT * FROM SEGURO_MEDICO
 SELECT * FROM DATOS_DE_FACTURACION
+SELECT * FROM SEGURO_MEDICO
 go
 DECLARE @DATE DATE = CAST('2001-01-02' AS DATE)
 
-EXEC spCreatePaciente 'spPaciente4','apPrueba4','',@DATE,'SP00002',
+EXEC spCreatePaciente 'spPaciente5','apPrueba5','','2012-12-12','SP00005',
 	'2222444440101','51234567','spprueba3@gmail.com','BH zona 21','spEnfermero','Emergencia 1','55123456','Emergencia2','55512345',
 	'Diabetes;Asma','Enferemedad respiratoria','Familia de padre diabetica'
 GO

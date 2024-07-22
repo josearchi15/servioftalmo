@@ -18,8 +18,8 @@ export const newPaciente = async (req, res) => {
 export const getPaciente = async (req, res) => {
 
     const pool = await getConnection()
-    const result = await pool.request().query(`SELECT * FROM PACIENTE WHERE Id_paciente = ${req.params.id}`)
-    console.log(result.recordset)
+    const result = await pool.request().query(`SELECT * FROM GetPacienteByID(${req.params.id})`)
+    console.log(result.recordset[0])
     const Paciente = result.recordset[0]
 
     // if (result.rowsAffected[0] == 0) {
@@ -34,7 +34,7 @@ export const createPaciente = async (req, res) => {
     // const bday = Date(req.body.fechaNacimiento)
     const pool = await getConnection()
     const spCreatePaciente = await pool.request().query
-        (`EXEC spCreatePaciente '${req.body.nombres}','${req.body.apellidos}','${req.body.apellidoDeCasada}','${req.body.fechaNacimiento}','spRegistro',
+        (`EXEC spCreatePaciente '${req.body.nombres}','${req.body.apellidos}','${req.body.apellidoDeCasada}','${req.body.fechaNacimiento}','${req.body.No_Registro}',
     	'${req.body.dpi}','${req.body.telCel}','${req.body.email}','${req.body.direccion}','${req.body.profesion}','${req.body.emergencyContact1}','${req.body.emergencyContact1Tel}','${req.body.emergencyContact2}','${req.body.emergencyContact1Tel}',
     	'${req.body.diabetes}','${req.body.especifique}','${req.body.otrosAntecedentes}'`)
 

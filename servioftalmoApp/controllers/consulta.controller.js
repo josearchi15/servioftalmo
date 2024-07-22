@@ -6,7 +6,7 @@ export const getConsultas = async (req, res) => {
     const result = await pool.request().query("SELECT * FROM CONSULTA")
     //console.log(result.recordset)
     // res.send(result.recordset)
-    res.render('consulta/buscar-consulta', { Consultas: result.recordset })
+    res.render('consulta/formulario-consulta', { Consultas: result.recordset })
     // res.render('consulta/index')
 }
 
