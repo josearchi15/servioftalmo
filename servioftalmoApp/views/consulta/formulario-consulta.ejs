@@ -3,209 +3,166 @@
   <div class="container">
     <div class="registration-form">
       <h2 class="text-center">Consulta</h2>
-      <form id="registrationForm" action="/pacientes/new" method="POST">
+      <% if(Paciente) {%>
+        <form id="registrationForm" action="/pacientes/new" method="POST">
+          <div class="row bg-secondary">
+            <div class="form-group col">
+              <p>
+                <b>Nombres:</b>
+                <%= Paciente.Nombres %><br>
+                  <b>Apellidos:</b>
+                  <%= Paciente.Apellidos %><br>
+                    <b>DPI:</b>
+                    <%= Paciente.DPI %><br>
+                      <b>Celular:</b>
+                      <%= Paciente.Celular %><br>
+                        <b>Email:</b>
+                        <%= Paciente.Email %><br>
+                          <b>Direccion:</b>
+                          <%= Paciente.Direccion %><br>
+                            <b>Profesion u oficio:</b>
+                            <%= Paciente.Profesion %><br>
+              </p>
+            </div>
+          </div>
+          <% } %>
 
-        <div class="form-group">
-          <label for="nombres">Nombres <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" name="nombres" placeholder="Ingrese sus nombres" required>
-        </div>
-        <div class="form-group">
-          <label for="apellidos">Apellidos <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" name="apellidos" placeholder="Ingrese sus apellidos" required>
-        </div>
-        <div class="form-group">
-          <label for="apellidoDeCasada">Apellido de casada</label>
-          <input type="text" class="form-control" name="apellidoDeCasada"
-            placeholder="Ingrese su apellido de casada (si aplica)">
-        </div>
-        <div class="form-group">
-          <label for="fechaNacimiento">Fecha de nacimiento</label>
-          <input type="date" class="form-control" name="fechaNacimiento">
-        </div>
+            <div class="section-title">Historial clínico</div>
+
+            <h2>Examen Oftalmológico</h2>
+
+            <!-- Historia Clinica -->
+            <div class="form-group">
+              <label for="historiaClinica">Historia Clínica</label>
+              <textarea class="form-control" name="historiaClinica"
+                placeholder="Ingrese la historia clínica"></textarea>
+            </div>
+
+            <!-- Antecedentes -->
+            <div class="form-group">
+              <label for="antecedentes">Antecedentes</label>
+              <textarea class="form-control" name="antecedentes"
+                placeholder="Ingrese antecedentes relevantes"></textarea>
+            </div>
+
+            <!-- Ojos Izquierdo y derecho -->
+            <div class="row bg-info-subtle">
+              <!-- Ojo Izquierdo -->
+              <div class="col bg-light">
+
+                <h3>Ojo Izquierdo</h3>
+                <div class="form-group">
+                  <label for="agudezaVisualScOjoIzquierdo">Agudeza Visual SC</label>
+                  <input type="number" class="form-control" name="agudezaVisualScOjoIzquierdo"
+                    placeholder="Sin Corrección">
+                </div>
+                <div class="form-group">
+                  <label for="agudezaVisualOcOjoIzquierdo">Agudeza Visual OC</label>
+                  <input type="number" class="form-control" name="agudezaVisualOcOjoIzquierdo"
+                    placeholder="Con Corrección">
+                </div>
+                <div class="form-group">
+                  <label for="tensionOcularOjoIzquierdo">Tensión Ocular</label>
+                  <input type="number" class="form-control" name="tensionOcularOjoIzquierdo"
+                    placeholder="Medida en mmHg">
+                </div>
+              </div>
+
+              <!-- Ojo Derecho -->
+              <div class="col">
+                <h3>Ojo Derecho</h3>
+                <div class="form-group">
+                  <label for="agudezaVisualScOjoDerecho">Agudeza Visual SC</label>
+                  <input type="number" class="form-control" name="agudezaVisualScOjoDerecho"
+                    placeholder="Sin Corrección">
+                </div>
+                <div class="form-group">
+                  <label for="agudezaVisualOcOjoDerecho">Agudeza Visual OC</label>
+                  <input type="number" class="form-control" name="agudezaVisualOcOjoDerecho"
+                    placeholder="Con Corrección">
+                </div>
+                <div class="form-group">
+                  <label for="tensionOcularOjoDerecho">Tensión Ocular</label>
+                  <input type="number" class="form-control" name="tensionOcularOjoDerecho" placeholder="Medida en mmHg">
+                </div>
+
+              </div>
+            </div>
+
+            <!-- M, K, and W Values -->
+            <div class="row">
+              <!-- M Values -->
+              <div class="col">
+                <h3>M Values</h3>
+                <div class="form-group">
+                  <label for="mSph">SPH</label>
+                  <input type="number" step="0.01" class="form-control" name="mSph" placeholder="Esfera">
+                </div>
+                <div class="form-group">
+                  <label for="mCyl">CYL</label>
+                  <input type="number" step="0.01" class="form-control" name="mCyl" placeholder="Cilindro">
+                </div>
+                <div class="form-group">
+                  <label for="mAxs">AXS</label>
+                  <input type="number" step="0.01" class="form-control" name="mAxs" placeholder="Eje">
+                </div>
+
+              </div>
+              <!-- K Values -->
+              <div class="col">
+                <h3>K Values</h3>
+                <div class="form-group">
+                  <label for="k1">K1</label>
+                  <input type="number" step="0.01" class="form-control" name="k1" placeholder="K1">
+                </div>
+                <div class="form-group">
+                  <label for="k2">K2</label>
+                  <input type="number" step="0.01" class="form-control" name="k2" placeholder="K2">
+                </div>
+              </div>
+              <!-- W Values -->
+              <div class="col">
+                <h3>W Values</h3>
+                <div class="form-group">
+                  <label for="wSph">W SPH</label>
+                  <input type="number" step="0.01" class="form-control" name="wSph" placeholder="W Esfera">
+                </div>
+                <div class="form-group">
+                  <label for="wCyl">W CYL</label>
+                  <input type="number" step="0.01" class="form-control" name="wCyl" placeholder="W Cilindro">
+                </div>
+                <div class="form-group">
+                  <label for="wAxs">W AXS</label>
+                  <input type="number" step="0.01" class="form-control" name="wAxs" placeholder="W Eje">
+                </div>
+                <div class="form-group">
+                  <label for="wPsm">W PSM</label>
+                  <input type="number" step="0.01" class="form-control" name="wPsm" placeholder="W Prisma">
+                </div>
+                <div class="form-group">
+                  <label for="wBas">W BAS</label>
+                  <input type="number" step="0.01" class="form-control" name="wBas" placeholder="W Base">
+                </div>
+              </div>
+            </div>
 
 
 
-        <div class="form-group">
-          <label for="dpi">DPI <span class="text-danger">*</span></label>
-          <input type="number" class="form-control" name="dpi" placeholder="Ingrese su DPI" required>
-        </div>
-        <div class="form-group">
-          <label for="telCel">Tel/Cel <span class="text-danger">*</span></label>
-          <input type="number" class="form-control" name="telCel" placeholder="Ingrese su teléfono o celular" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email <span class="text-danger">*</span></label>
-          <input type="email" class="form-control" name="email" placeholder="Ingrese su email" required>
-        </div>
-        <div class="form-group">
-          <label for="direccion">Dirección</label>
-          <textarea class="form-control" name="direccion" rows="3" placeholder="Ingrese su dirección"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="profesion">Profesión y Oficio</label>
-          <input type="text" class="form-control" name="profesion" placeholder="Ingrese su profesión y oficio">
-        </div>
 
-
-
-        <div class="section-title">Historial clínico</div>
-        <div class="form-group">
-          <label>Indique si ha tenido cirugías previas, tratamientos, alergias o si ha padecido o padece de alguna
-            de
-            las siguientes afecciones:</label>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="diabetes">
-            <label class="form-check-label" for="diabetes">Diabetes</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="presionAltaBaja">
-            <label class="form-check-label" for="presionAltaBaja">Presión alta/baja</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="enfermedadesCardiacas">
-            <label class="form-check-label" for="enfermedadesCardiacas">Enfermedades cardíacas</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="dolorDeCabeza">
-            <label class="form-check-label" for="dolorDeCabeza">Dolor de cabeza severo</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="asma">
-            <label class="form-check-label" for="asma">Asma</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="fracturas">
-            <label class="form-check-label" for="fracturas">Fracturas</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="convulsiones">
-            <label class="form-check-label" for="convulsiones">Convulsiones</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="problemasTorax">
-            <label class="form-check-label" for="problemasTorax">Problemas en tórax, corazón, pulmones y
-              abdomen</label>
-          </div>
-
-          <div class="form-group mt-3">
-            <label for="especifique">Especifique</label>
-            <textarea class="form-control" name="especifique" rows="3"
-              placeholder="Especifique detalles adicionales aquí"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="otrosAntecedentes">Mencione cualquier otro antecedente que considere importante</label>
-            <textarea class="form-control" name="otrosAntecedentes" rows="3"
-              placeholder="Ingrese otros antecedentes importantes aquí"></textarea>
-          </div>
-
-          <h2>Examen Oftalmológico</h2>
-
-          <!-- Historia Clinica -->
-          <div class="form-group">
-            <label for="historiaClinica">Historia Clínica</label>
-            <textarea class="form-control" name="historiaClinica" placeholder="Ingrese la historia clínica"></textarea>
-          </div>
-
-          <!-- Antecedentes -->
-          <div class="form-group">
-            <label for="antecedentes">Antecedentes</label>
-            <textarea class="form-control" name="antecedentes" placeholder="Ingrese antecedentes relevantes"></textarea>
-          </div>
-
-          <!-- Ojo Izquierdo -->
-          <h3>Ojo Izquierdo</h3>
-          <div class="form-group">
-            <label for="agudezaVisualScOjoIzquierdo">Agudeza Visual SC</label>
-            <input type="number" class="form-control" name="agudezaVisualScOjoIzquierdo" placeholder="Sin Corrección">
-          </div>
-          <div class="form-group">
-            <label for="agudezaVisualOcOjoIzquierdo">Agudeza Visual OC</label>
-            <input type="number" class="form-control" name="agudezaVisualOcOjoIzquierdo" placeholder="Con Corrección">
-          </div>
-          <div class="form-group">
-            <label for="tensionOcularOjoIzquierdo">Tensión Ocular</label>
-            <input type="number" class="form-control" name="tensionOcularOjoIzquierdo" placeholder="Medida en mmHg">
-          </div>
-
-          <!-- Ojo Derecho -->
-          <h3>Ojo Derecho</h3>
-          <div class="form-group">
-            <label for="agudezaVisualScOjoDerecho">Agudeza Visual SC</label>
-            <input type="number" class="form-control" name="agudezaVisualScOjoDerecho" placeholder="Sin Corrección">
-          </div>
-          <div class="form-group">
-            <label for="agudezaVisualOcOjoDerecho">Agudeza Visual OC</label>
-            <input type="number" class="form-control" name="agudezaVisualOcOjoDerecho" placeholder="Con Corrección">
-          </div>
-          <div class="form-group">
-            <label for="tensionOcularOjoDerecho">Tensión Ocular</label>
-            <input type="number" class="form-control" name="tensionOcularOjoDerecho" placeholder="Medida en mmHg">
-          </div>
-
-          <!-- M Values -->
-          <h3>M Values</h3>
-          <div class="form-group">
-            <label for="mSph">SPH</label>
-            <input type="number" step="0.01" class="form-control" name="mSph" placeholder="Esfera">
-          </div>
-          <div class="form-group">
-            <label for="mCyl">CYL</label>
-            <input type="number" step="0.01" class="form-control" name="mCyl" placeholder="Cilindro">
-          </div>
-          <div class="form-group">
-            <label for="mAxs">AXS</label>
-            <input type="number" step="0.01" class="form-control" name="mAxs" placeholder="Eje">
-          </div>
-
-          <!-- K Values -->
-          <h3>K Values</h3>
-          <div class="form-group">
-            <label for="k1">K1</label>
-            <input type="number" step="0.01" class="form-control" name="k1" placeholder="K1">
-          </div>
-          <div class="form-group">
-            <label for="k2">K2</label>
-            <input type="number" step="0.01" class="form-control" name="k2" placeholder="K2">
-          </div>
-
-          <!-- W Values -->
-          <h3>W Values</h3>
-          <div class="form-group">
-            <label for="wSph">W SPH</label>
-            <input type="number" step="0.01" class="form-control" name="wSph" placeholder="W Esfera">
-          </div>
-          <div class="form-group">
-            <label for="wCyl">W CYL</label>
-            <input type="number" step="0.01" class="form-control" name="wCyl" placeholder="W Cilindro">
-          </div>
-          <div class="form-group">
-            <label for="wAxs">W AXS</label>
-            <input type="number" step="0.01" class="form-control" name="wAxs" placeholder="W Eje">
-          </div>
-          <div class="form-group">
-            <label for="wPsm">W PSM</label>
-            <input type="number" step="0.01" class="form-control" name="wPsm" placeholder="W Prisma">
-          </div>
-          <div class="form-group">
-            <label for="wBas">W BAS</label>
-            <input type="number" step="0.01" class="form-control" name="wBas" placeholder="W Base">
-          </div>
-
-          <!-- Diagnostico y Tratamiento -->
-          <div class="form-group">
-            <label for="diagnostico">Diagnóstico</label>
-            <input type="text" class="form-control" name="diagnostico" placeholder="Diagnóstico del examen">
-          </div>
-          <div class="form-group">
-            <label for="tratamiento">Tratamiento</label>
-            <input type="text" class="form-control" name="tratamiento" placeholder="Tratamiento sugerido">
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">Enviar</button>
-        </div>
-      </form>
-
+            <!-- Diagnostico y Tratamiento -->
+            <div class="form-group">
+              <label for="diagnostico">Diagnóstico</label>
+              <input type="text" class="form-control" name="diagnostico" placeholder="Diagnóstico del examen">
+            </div>
+            <div class="form-group">
+              <label for="tratamiento">Tratamiento</label>
+              <input type="text" class="form-control" name="tratamiento" placeholder="Tratamiento sugerido">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
     </div>
+    </form>
+
+  </div>
   </div>
 
   <!-- <script src="/js/formulario-paciente.js"></script> -->

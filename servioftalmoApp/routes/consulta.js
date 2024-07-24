@@ -1,11 +1,10 @@
 import { Router } from "express"
-import { getPacientes, getPaciente, createPaciente, updatePaciente, deletePaciente, newPaciente } from "../controllers/pacientes.controller.js"
 import { createConsulta, deleteConsulta, getConsulta, getConsultas, newConsulta, updateConsulta } from "../controllers/consulta.controller.js"
 
 
-const router = Router()
+const router = Router({ mergeParams: true })
 
-router.get("/", getConsultas)
+router.get("/", newConsulta)
 
 router.get("/new", newConsulta)
 

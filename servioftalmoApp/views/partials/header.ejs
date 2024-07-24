@@ -6,28 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servi Oftalmo</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    <header class="bg-primary text-white text-center py-4">
-        <h1>Servi Oftalmo</h1>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand align-middle" href="/"><i class="bi bi-eyeglasses h2"></i></a>
+            <a class="navbar-brand align-middle" href="/">Servi Oftalmo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="/pacientes">Pacientes</a>
+                    <a class="nav-item nav-link" href="/pacientes/new">Nuevo Paciente</a>
+                    <a class="nav-item nav-link" href="/consultas">Consultas</a>
+                </div>
+            </div>
+        </nav>
     </header>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Servi Oftalmo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/pacientes/new"">Ingreso de Paciente</a>
-                </li>
-                <li class=" nav-item">
-                        <a class="nav-link" href="/pacientes/">Buscar Paciente</a>
-                </li>
-            </ul>
-        </div>
-    </nav>

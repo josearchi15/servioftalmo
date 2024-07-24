@@ -43,15 +43,15 @@
                   <%= paciente.DPI %>
                 </td>
                 <td>
-                  <form class="succes-form" action="/pacientes/<%= paciente.Id_paciente %>?_method=PUT" method="GET">
-                    <button class="btn btn-sm btn-primary">Editar</button>
-                  </form>
+                  <a href="/pacientes/<%= paciente.Id_paciente %>/consulta" class="btn btn-primary"
+                    title="Nueva consulta">
+                    <i class="bi bi-file-earmark-plus-fill"></i></a>
+                  <a href="/pacientes/<%= paciente.Id_paciente %>" class="btn btn-secondary" title="Editar paciente">
+                    <i class="bi bi-pencil-square"></i></a>
                   <!-- <form class="delete-form" action="/pacientes/<%= paciente.Id_paciente %>?_method=DELETE"
                     method="POST">
                     <button class="btn btn-sm btn-danger">Eliminar</button>
                   </form> -->
-                  <a href="/pacientes/<%= paciente.Id_paciente %>/consulta" class="btn btn-sm btn-primary">
-                    Nueva consulta</a>
                 </td>
             </tr>
 

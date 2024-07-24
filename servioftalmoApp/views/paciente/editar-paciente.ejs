@@ -10,27 +10,33 @@
         <input type="hidden" id="idPaciente" name="idPaciente">
 
         <!-- Datos Personales -->
-        <div class="form-group">
-          <label for="nombres">Nombres</label>
-          <input type="text" class="form-control" id="nombres" name="nombres" value="<%= Paciente.Nombres %>" readonly>
-          <!-- <input type="text" class="form-control" id="nombres" name="nombres"> -->
+        <div class="row">
+          <div class="form-group col">
+            <label for="nombres">Nombres</label>
+            <input type="text" class="form-control" id="nombres" name="nombres" value="<%= Paciente.Nombres %>"
+              readonly>
+            <!-- <input type="text" class="form-control" id="nombres" name="nombres"> -->
+          </div>
+          <div class="form-group col">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" class="form-control" id="apellidos" name="apellidos" value="<%= Paciente.Apellidos %>">
+          </div>
+          <div class="form-group col">
+            <label for="apellidoDeCasada">Apellido de Casada</label>
+            <input type="text" class="form-control" id="apellidoDeCasada" name="apellidoDeCasada"
+              value="<%= Paciente.Apellidos_Casada %>">
+          </div>
         </div>
-        <div class="form-group">
-          <label for="apellidos">Apellidos</label>
-          <input type="text" class="form-control" id="apellidos" name="apellidos" value="<%= Paciente.Apellidos %>">
-        </div>
-        <div class="form-group">
-          <label for="apellidoDeCasada">Apellido de Casada</label>
-          <input type="text" class="form-control" id="apellidoDeCasada" name="apellidoDeCasada"
-            value="<%= Paciente.Apellidos_Casada %>">
-        </div>
+
+
         <div class="form-group">
           <label for="fechaNacimiento">Fecha de Nacimiento</label>
-          <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento">
+          <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento"
+            value="<%= Paciente.Fecha_Nacimiento %>">
         </div>
         <div class="form-group">
           <label for="No_Registro">No. Registro</label>
-          <input type="date" class="form-control" name="No_Registro" value="<%= Paciente.No_Registro %>">
+          <input type="text" class="form-control" name="No_Registro" value="<%= Paciente.No_Registro %>">
         </div>
         <div class="form-group">
           <label for="dpi">DPI</label>

@@ -11,8 +11,10 @@ export const getConsultas = async (req, res) => {
 }
 
 export const newConsulta = async (req, res) => {
-    console.log('Nuevo Consulta')
-    res.render('consulta/formulario-consulta')
+    const pool = await getConnection()
+    const result = await pool.request().query(`SELECT * FROM GetPacienteByID(${req.params.id})`)
+    const paciente = result.recordset[0]
+    res.render('consulta/formulario-consulta', { Paciente: paciente })
 }
 
 export const getConsulta = async (req, res) => {
