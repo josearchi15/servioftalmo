@@ -4,8 +4,8 @@
     <div class="registration-form">
       <h2 class="text-center">Consulta</h2>
       <% if(Paciente) {%>
-        <form id="registrationForm" action="/pacientes/new" method="POST">
-          <div class="row bg-secondary">
+        <form id="registrationForm" action="/pacientes/<%= Paciente.Id_paciente %>/consulta/new" method="POST">
+          <div class="row">
             <div class="form-group col">
               <p>
                 <b>Nombres:</b>
@@ -46,30 +46,28 @@
             </div>
 
             <!-- Ojos Izquierdo y derecho -->
-            <div class="row bg-info-subtle">
+            <div class="row">
               <!-- Ojo Izquierdo -->
-              <div class="col bg-light">
+              <div class="col border-left border-primary rounded">
 
                 <h3>Ojo Izquierdo</h3>
                 <div class="form-group">
                   <label for="agudezaVisualScOjoIzquierdo">Agudeza Visual SC</label>
-                  <input type="number" class="form-control" name="agudezaVisualScOjoIzquierdo"
-                    placeholder="Sin Corrección">
+                  <input type="number" class="form-control" name="Agudeza_sc_OjoIzquierdo" placeholder="Sin Corrección">
                 </div>
                 <div class="form-group">
-                  <label for="agudezaVisualOcOjoIzquierdo">Agudeza Visual OC</label>
-                  <input type="number" class="form-control" name="agudezaVisualOcOjoIzquierdo"
-                    placeholder="Con Corrección">
+                  <label for="agudezaVisualOcOjoIzquierdo">Agudeza Visual CC</label>
+                  <input type="number" class="form-control" name="Agudeza_cc_OjoIzquierdo" placeholder="Con Corrección">
                 </div>
                 <div class="form-group">
                   <label for="tensionOcularOjoIzquierdo">Tensión Ocular</label>
-                  <input type="number" class="form-control" name="tensionOcularOjoIzquierdo"
+                  <input type="number" class="form-control" name="TensionOcular_OjoIzquierdo"
                     placeholder="Medida en mmHg">
                 </div>
               </div>
 
               <!-- Ojo Derecho -->
-              <div class="col">
+              <div class="col border-left border-info rounded">
                 <h3>Ojo Derecho</h3>
                 <div class="form-group">
                   <label for="agudezaVisualScOjoDerecho">Agudeza Visual SC</label>
@@ -77,7 +75,7 @@
                     placeholder="Sin Corrección">
                 </div>
                 <div class="form-group">
-                  <label for="agudezaVisualOcOjoDerecho">Agudeza Visual OC</label>
+                  <label for="agudezaVisualOcOjoDerecho">Agudeza Visual CC</label>
                   <input type="number" class="form-control" name="agudezaVisualOcOjoDerecho"
                     placeholder="Con Corrección">
                 </div>
@@ -90,73 +88,105 @@
             </div>
 
             <!-- M, K, and W Values -->
-            <div class="row">
-              <!-- M Values -->
-              <div class="col">
-                <h3>M Values</h3>
-                <div class="form-group">
-                  <label for="mSph">SPH</label>
-                  <input type="number" step="0.01" class="form-control" name="mSph" placeholder="Esfera">
-                </div>
-                <div class="form-group">
-                  <label for="mCyl">CYL</label>
-                  <input type="number" step="0.01" class="form-control" name="mCyl" placeholder="Cilindro">
-                </div>
-                <div class="form-group">
-                  <label for="mAxs">AXS</label>
-                  <input type="number" step="0.01" class="form-control" name="mAxs" placeholder="Eje">
-                </div>
 
+            <!-- M Values -->
+            <div class="section-title">
+              <h4>M Values</h4>
+            </div>
+            <div class="row">
+              <div class="form-group col border-left border-primary rounded">
+                <label for="mSph">SPH</label>
+                <input type="number" step="0.01" class="form-control" name="M_SPH_OjoIzquierdo" placeholder="Esfera">
               </div>
-              <!-- K Values -->
-              <div class="col">
-                <h3>K Values</h3>
-                <div class="form-group">
-                  <label for="k1">K1</label>
-                  <input type="number" step="0.01" class="form-control" name="k1" placeholder="K1">
-                </div>
-                <div class="form-group">
-                  <label for="k2">K2</label>
-                  <input type="number" step="0.01" class="form-control" name="k2" placeholder="K2">
-                </div>
+              <div class="form-group col">
+                <label for="mCyl">CYL</label>
+                <input type="number" step="0.01" class="form-control" name="M_CYS_OjoIzquierdo" placeholder="Cilindro">
               </div>
-              <!-- W Values -->
-              <div class="col">
-                <h3>W Values</h3>
-                <div class="form-group">
-                  <label for="wSph">W SPH</label>
-                  <input type="number" step="0.01" class="form-control" name="wSph" placeholder="W Esfera">
-                </div>
-                <div class="form-group">
-                  <label for="wCyl">W CYL</label>
-                  <input type="number" step="0.01" class="form-control" name="wCyl" placeholder="W Cilindro">
-                </div>
-                <div class="form-group">
-                  <label for="wAxs">W AXS</label>
-                  <input type="number" step="0.01" class="form-control" name="wAxs" placeholder="W Eje">
-                </div>
-                <div class="form-group">
-                  <label for="wPsm">W PSM</label>
-                  <input type="number" step="0.01" class="form-control" name="wPsm" placeholder="W Prisma">
-                </div>
-                <div class="form-group">
-                  <label for="wBas">W BAS</label>
-                  <input type="number" step="0.01" class="form-control" name="wBas" placeholder="W Base">
-                </div>
+              <div class="form-group col">
+                <label for="mAxs">AXS</label>
+                <input type="number" step="0.01" class="form-control" name="M_AXS_OjoIzquierdo" placeholder="Eje">
+              </div>
+              <div class="form-group col border-left border-info rounded">
+                <label for="mSph">SPH</label>
+                <input type="number" step="0.01" class="form-control" name="M_SPH_OjoDerecho" placeholder="Esfera">
+              </div>
+              <div class="form-group col">
+                <label for="mCyl">CYL</label>
+                <input type="number" step="0.01" class="form-control" name="M_CYS_OjoDerecho" placeholder="Cilindro">
+              </div>
+              <div class="form-group col">
+                <label for="mAxs">AXS</label>
+                <input type="number" step="0.01" class="form-control" name="M_AXS_OjoDerecho" placeholder="Eje">
               </div>
             </div>
 
+            <!-- K Values -->
+            <div class="section-title">
+              <h4>K Values</h4>
+            </div>
+            <div class="row">
+              <div class="form-group col border-left border-primary rounded">
+                <label for="k1">K1</label>
+                <input type="number" step="0.01" class="form-control" name="k1" placeholder="K1">
+              </div>
+              <div class="form-group col">
+                <label for="mAxs">K1 AXS</label>
+                <input type="number" step="0.01" class="form-control" name="k1Axs" placeholder="K1 Eje">
+              </div>
+              <div class="form-group col border-left border-info rounded">
+                <label for="k2">K2</label>
+                <input type="number" step="0.01" class="form-control" name="k2" placeholder="K2">
+              </div>
+              <div class="form-group col">
+                <label for="mAxs">K2 AXS</label>
+                <input type="number" step="0.01" class="form-control" name="k2Axs" placeholder="K2 Eje">
+              </div>
+
+
+            </div>
+
+            <!-- W Values -->
+            <div class="section-title">
+              <h4>W Values</h4>
+            </div>
+            <div class="row">
+              <div class="form-group col border-left border-primary rounded">
+                <label for="wSph">SPH</label>
+                <input type="number" step="0.01" class="form-control" name="W_SPH_OjoIzquierdo" placeholder="W Esfera">
+              </div>
+              <div class="form-group col">
+                <label for="wCyl">CYL</label>
+                <input type="number" step="0.01" class="form-control" name="W_CYL_OjoIzquierdo"
+                  placeholder="W Cilindro">
+              </div>
+              <div class="form-group col">
+                <label for="wAxs">AXS</label>
+                <input type="number" step="0.01" class="form-control" name="W_AXS_OjoIzquierdo" placeholder="W Eje">
+              </div>
+              <div class="form-group col border-left border-info rounded">
+                <label for="wSph">SPH</label>
+                <input type="number" step="0.01" class="form-control" name="W_SPH_OjoDerecho" placeholder="W Esfera">
+              </div>
+              <div class="form-group col">
+                <label for="wCyl">CYL</label>
+                <input type="number" step="0.01" class="form-control" name="W_CYL_OjoDerecho" placeholder="W Cilindro">
+              </div>
+              <div class="form-group col">
+                <label for="wAxs">AXS</label>
+                <input type="number" step="0.01" class="form-control" name="W_AXS_OjoDerecho" placeholder="W Eje">
+              </div>
+            </div>
 
 
 
             <!-- Diagnostico y Tratamiento -->
             <div class="form-group">
               <label for="diagnostico">Diagnóstico</label>
-              <input type="text" class="form-control" name="diagnostico" placeholder="Diagnóstico del examen">
+              <textarea name="diagnostico" class="form-control" placeholder="Diagnóstico del examen"></textarea>
             </div>
             <div class="form-group">
               <label for="tratamiento">Tratamiento</label>
-              <input type="text" class="form-control" name="tratamiento" placeholder="Tratamiento sugerido">
+              <textarea name="tratamiento" class="form-control" placeholder="Tratamiento sugerido"></textarea>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Enviar</button>
     </div>

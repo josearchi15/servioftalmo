@@ -36,16 +36,18 @@ export const createConsulta = async (req, res) => {
     // const bday = Date(req.body.fechaNacimiento)
     const pool = await getConnection()
     const spCreateConsulta = await pool.request().query
-        (`EXEC spCreateConsulta '${req.body.nombres}','${req.body.apellidos}','${req.body.apellidoDeCasada}','${req.body.fechaNacimiento}','spRegistro',
-    	'${req.body.dpi}','${req.body.telCel}','${req.body.email}','${req.body.direccion}','${req.body.profesion}','${req.body.emergencyContact1}','${req.body.emergencyContact1Tel}','${req.body.emergencyContact2}','${req.body.emergencyContact1Tel}',
-    	'${req.body.diabetes}','${req.body.especifique}','${req.body.otrosAntecedentes}'`)
+        (`EXEC spCreateConsulta ${req.params.id},'${req.body.diagnostico}'`)
 
-    const spCreateDatosFacturacion = await pool.request().query(`exec spCreateDatosFacturacion '${req.body.facturacionNombre}','${req.body.facturacionNit}','${req.body.facturacionDireccion}'`)
+    const idConsulta = await pool.request().query
+        (`SELECT TOP 1 Id_consulta FROM CONSULTA WHERE Id_paciente = ${req.params.id} ORDER BY Id_consulta DESC`)
+    console.log('******************', idConsulta.recordset[0])
 
-    const spCreateDatosSeguro = await pool.request().query(`exec spCreateSeguroMedico '${req.body.seguroAfiliado}','${req.body.poliza}','${req.body.idAsegurado}','${req.body.noCarnet}'`)
+    // const spCreateDatosFacturacion = await pool.request().query(`exec spCreateDatosFacturacion '${req.body.facturacionNombre}','${req.body.facturacionNit}','${req.body.facturacionDireccion}'`)
+
+    // const spCreateDatosSeguro = await pool.request().query(`exec spCreateSeguroMedico '${req.body.seguroAfiliado}','${req.body.poliza}','${req.body.idAsegurado}','${req.body.noCarnet}'`)
     // res.send('Consulta created')
     // res.redirect("/consulta/" + ConsultaId);
-    res.redirect("/consulta/");
+    res.redirect(`/`);
 }
 
 export const updateConsulta = async (req, res) => {

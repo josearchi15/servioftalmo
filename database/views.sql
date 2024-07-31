@@ -1,0 +1,12 @@
+CREATE VIEW viewPacientesActivos AS
+SELECT 
+FROM PACIENTE
+WHERE Estado = 1;
+
+UPDATE PACIENTE SET Estado = 0 WHERE Id_paciente < 1013
+
+SELECT * FROM viewPacientesActivos
+
+SELECT * FROM PACIENTE
+
+SELECT * FROM GetPacienteById(1015)

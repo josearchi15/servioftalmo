@@ -27,3 +27,21 @@ ORDER BY Id_paciente DESC
 
 exec spCreateSeguroMedico 'Seguros El Roble','164-202401-3','1325686','659980-5500'
 exec spCreateDatosFacturacion 'PacienteFact','4650356-K','direccion facturacion 1'
+
+CREATE VIEW getPacienteInfo
+SELECT * FROM PACIENTE 
+LEFT JOIN DATOS_DE_FACTURACION 
+ON PACIENTE.Id_paciente = DATOS_DE_FACTURACION.Id_paciente 
+LEFT JOIN SEGURO_MEDICO
+ON PACIENTE.Id_paciente  = SEGURO_MEDICO.Id_paciente
+WHERE PACIENTE.Id_paciente = 1016
+
+SELECT * FROM GetPacienteByID(1013)
+
+EXEC spCreateConsulta 1015,'Miopia'
+SELECT * FROM CONSULTA
+
+SELECT * FROM EXAMEN_OFTALMOLOGICO
+EXEC spCreateExamenOftalmologico 2, 'Primer registro examen', 'miopia',1,1,1,1,1,1,2.1,1.1,1.3,1.4,3.2,2.3,6.1,1.6,2.3,3.2,'miopia grave','colocarse lentes'
+
+SELECT * FROM getConsultaById(2)

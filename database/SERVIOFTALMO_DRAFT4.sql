@@ -67,15 +67,19 @@ CREATE TABLE CONSULTA (
     FOREIGN KEY (Id_paciente) REFERENCES PACIENTE(Id_paciente) --ON DELETE CASCADE
 );
 GO
-
+--DROP TABLE EXAMEN_OFTALMOLOGICO
 -- Create EXAMEN_OFTALMOLOGICO table
 CREATE TABLE EXAMEN_OFTALMOLOGICO (
     Id_examen_oftalmologico INT IDENTITY(1,1) PRIMARY KEY,
     Id_consulta INT,
     Historia_clinica VARCHAR(255),
     Antecedentes VARCHAR(255),
-    Agudeza_sc_de INT,
-    Agudeza_sc_iz INT,
+    Agudeza_visual_sc_OjoDerecho INT,
+	Agudeza_visual_oc_OjoDerecho INT,
+	Tension_ocular_OjoDerecho INT,
+    Agudeza_visual_sc_OjoIzquierdo INT,
+	Agudeza_visual_oc_OjoIzquierdo INT,
+	Tension_ocular_OjoIzquierdo INT,
     M_SPH DECIMAL(5,2),
     M_CYS DECIMAL(5,2),
     M_AXS DECIMAL(5,2),

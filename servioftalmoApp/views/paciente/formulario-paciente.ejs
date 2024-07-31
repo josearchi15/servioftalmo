@@ -2,126 +2,129 @@
 
   <div class="container">
     <div class="registration-form">
-      <h2 class="text-center">Formulario de registro</h2>
+      <h2 class="text-center">Formulario de registro</h2><br>
       <form id="registrationForm" action="/pacientes/new" method="POST">
         <!-- Step 1 -->
         <div class="form-step active" id="step-1">
-          <div class="form-group">
-            <label for="nombres">Nombres <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" name="nombres" placeholder="Ingrese sus nombres" required>
+          <div class="row">
+            <div class="form-group col">
+              <label for="nombres">Nombres <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="nombres" placeholder="Ingrese sus nombres" required>
+            </div>
+            <div class="form-group col">
+              <label for="apellidos">Apellidos <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="apellidos" placeholder="Ingrese sus apellidos" required>
+            </div>
+            <div class="form-group col">
+              <label for="apellidoDeCasada">Apellido de casada</label>
+              <input type="text" class="form-control" name="apellidoDeCasada"
+                placeholder="Ingrese su apellido de casada (si aplica)">
+            </div>
           </div>
-          <div class="form-group">
-            <label for="apellidos">Apellidos <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" name="apellidos" placeholder="Ingrese sus apellidos" required>
+          <div class="row">
+            <div class="form-group col">
+              <label for="fechaNacimiento">Fecha de nacimiento<span class="text-danger">*</span></label>
+              <input type="date" class="form-control" name="fechaNacimiento" required>
+            </div>
+            <div class="form-group col">
+              <label for="dpi">DPI <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" name="dpi" placeholder="Ingrese su DPI" required>
+            </div>
+            <div class="form-group col">
+              <label for="No_Registro">No. Registro o Pasaporte<span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" name="No_Registro" required>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="apellidoDeCasada">Apellido de casada</label>
-            <input type="text" class="form-control" name="apellidoDeCasada"
-              placeholder="Ingrese su apellido de casada (si aplica)">
-          </div>
-          <div class="form-group">
-            <label for="fechaNacimiento">Fecha de nacimiento</label>
-            <input type="date" class="form-control" name="fechaNacimiento">
-          </div>
-          <div class="form-group">
-            <label for="No_Registro">No. Registro</label>
-            <input type="text" class="form-control" name="No_Registro">
-          </div>
-          <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="form-step" id="step-2">
-          <div class="form-group">
-            <label for="dpi">DPI <span class="text-danger">*</span></label>
-            <input type="number" class="form-control" name="dpi" placeholder="Ingrese su DPI" required>
-          </div>
-          <div class="form-group">
-            <label for="telCel">Tel/Cel <span class="text-danger">*</span></label>
-            <input type="number" class="form-control" name="telCel" placeholder="Ingrese su teléfono o celular"
-              required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email <span class="text-danger">*</span></label>
-            <input type="email" class="form-control" name="email" placeholder="Ingrese su email" required>
+          <div class="row">
+            <div class="form-group col">
+              <label for="telCel">Tel/Cel <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" name="telCel" placeholder="Ingrese su teléfono o celular"
+                required>
+            </div>
+            <div class="form-group col">
+              <label for="email">Email <span class="text-danger">*</span></label>
+              <input type="email" class="form-control" name="email" placeholder="Ingrese su email" required>
+            </div>
+            <div class="form-group col">
+              <label for="profesion">Profesión y Oficio</label>
+              <input type="text" class="form-control" name="profesion" placeholder="Ingrese su profesión y oficio">
+            </div>
           </div>
           <div class="form-group">
             <label for="direccion">Dirección</label>
-            <textarea class="form-control" name="direccion" rows="3" placeholder="Ingrese su dirección"></textarea>
+            <input type="text" class="form-control" name="direccion" placeholder="Ingrese su dirección">
           </div>
-          <div class="form-group">
-            <label for="profesion">Profesión y Oficio</label>
-            <input type="text" class="form-control" name="profesion" placeholder="Ingrese su profesión y oficio">
+          <div class="row">
+            <div class="form-group col">
+              <label for="emergencyContact1">Contacto de emergencia 1</label>
+              <input type="text" class="form-control" name="emergencyContact1"
+                placeholder="Ingrese el nombre del primer contacto de emergencia">
+            </div>
+            <div class="form-group col">
+              <label for="emergencyContact1Tel">Tel/Cel del contacto de emergencia 1</label>
+              <input type="number" class="form-control" name="emergencyContact1Tel"
+                placeholder="Ingrese el teléfono del primer contacto de emergencia">
+            </div>
           </div>
-          <div class="form-group">
-            <label for="emergencyContact1">Contacto de emergencia 1</label>
-            <input type="text" class="form-control" name="emergencyContact1"
-              placeholder="Ingrese el nombre del primer contacto de emergencia">
+          <div class="row">
+            <div class="form-group col">
+              <label for="emergencyContact2">Contacto de emergencia 2</label>
+              <input type="text" class="form-control" name="emergencyContact2"
+                placeholder="Ingrese el nombre del segundo contacto de emergencia">
+            </div>
+            <div class="form-group col">
+              <label for="emergencyContact2Tel">Tel/Cel del contacto de emergencia 2</label>
+              <input type="number" class="form-control" name="emergencyContact2Tel"
+                placeholder="Ingrese el teléfono del segundo contacto de emergencia">
+            </div>
           </div>
-          <div class="form-group">
-            <label for="emergencyContact1Tel">Tel/Cel del contacto de emergencia 1</label>
-            <input type="number" class="form-control" name="emergencyContact1Tel"
-              placeholder="Ingrese el teléfono del primer contacto de emergencia">
-          </div>
-          <div class="form-group">
-            <label for="emergencyContact2">Contacto de emergencia 2</label>
-            <input type="text" class="form-control" name="emergencyContact2"
-              placeholder="Ingrese el nombre del segundo contacto de emergencia">
-          </div>
-          <div class="form-group">
-            <label for="emergencyContact2Tel">Tel/Cel del contacto de emergencia 2</label>
-            <input type="number" class="form-control" name="emergencyContact2Tel"
-              placeholder="Ingrese el teléfono del segundo contacto de emergencia">
-          </div>
-          <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
           <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
         </div>
-
-        <!-- Step 3 -->
-        <div class="form-step" id="step-3">
+        <!-- Step 2 -->
+        <div class="form-step" id="step-2">
           <div class="section-title">Datos de facturación</div>
-          <div class="form-group">
-            <label for="facturacionNombre">Nombre</label>
-            <input type="text" class="form-control" name="facturacionNombre" placeholder="Nombre para facturación">
-          </div>
-          <div class="form-group">
-            <label for="facturacionNit">NIT</label>
-            <input type="text" class="form-control" name="facturacionNit" placeholder="Ingresar NIT sin guion">
+          <div class="row">
+            <div class="form-group col">
+              <label for="facturacionNombre">Nombre</label>
+              <input type="text" class="form-control" name="facturacionNombre" placeholder="Nombre para facturación">
+            </div>
+            <div class="form-group col">
+              <label for="facturacionNit">NIT</label>
+              <input type="text" class="form-control" name="facturacionNit" placeholder="Ingresar NIT sin guion">
+            </div>
           </div>
           <div class="form-group">
             <label for="facturacionDireccion">Dirección de facturación</label>
-            <textarea class="form-control" name="facturacionDireccion" rows="3"
-              placeholder="Dirección para facturación"></textarea>
+            <input type="text" class="form-control" name="facturacionDireccion"
+              placeholder="Dirección para facturación">
           </div>
-          <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
-          <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
-        </div>
 
-        <!-- Step 4 -->
-        <div class="form-step" id="step-4">
           <div class="section-title">Información de asegurado</div>
-          <div class="form-group">
-            <label for="seguroAfiliado">Seguro Afiliado</label>
-            <input type="text" class="form-control" name="seguroAfiliado" placeholder="Ingrese su seguro afiliado">
+          <div class="row">
+            <div class="form-group col">
+              <label for="seguroAfiliado">Seguro Afiliado</label>
+              <input type="text" class="form-control" name="seguroAfiliado" placeholder="Ingrese su seguro afiliado">
+            </div>
+            <div class="form-group col">
+              <label for="poliza">Póliza</label>
+              <input type="text" class="form-control" name="poliza" placeholder="Ingrese su póliza">
+            </div>
           </div>
-          <div class="form-group">
-            <label for="poliza">Póliza</label>
-            <input type="text" class="form-control" name="poliza" placeholder="Ingrese su póliza">
-          </div>
-          <div class="form-group">
-            <label for="idAsegurado">ID Asegurado</label>
-            <input type="text" class="form-control" name="idAsegurado" placeholder="Ingrese su ID de asegurado">
-          </div>
-          <div class="form-group">
-            <label for="noCarnet">No. Carnet</label>
-            <input type="text" class="form-control" name="noCarnet" placeholder="Ingrese su número de carnet">
+          <div class="row">
+            <div class="form-group col">
+              <label for="idAsegurado">ID Asegurado</label>
+              <input type="text" class="form-control" name="idAsegurado" placeholder="Ingrese su ID de asegurado">
+            </div>
+            <div class="form-group col">
+              <label for="noCarnet">No. Carnet</label>
+              <input type="text" class="form-control" name="noCarnet" placeholder="Ingrese su número de carnet">
+            </div>
           </div>
           <button type="button" class="btn btn-secondary btn-block" onclick="prevStep()">Anterior</button>
           <button type="button" class="btn btn-primary btn-block" onclick="nextStep()">Siguiente</button>
         </div>
-
-        <!-- Step 5 -->
-        <div class="form-step" id="step-5">
+        <!-- Step 3 -->
+        <div class="form-step" id="step-3">
           <div class="section-title">Historial clínico</div>
           <div class="form-group">
             <label>Indique si ha tenido cirugías previas, tratamientos, alergias o si ha padecido o padece de alguna de
