@@ -13,8 +13,7 @@
         <div class="row">
           <div class="form-group col">
             <label for="nombres">Nombres</label>
-            <input type="text" class="form-control" id="nombres" name="nombres" value="<%= Paciente.Nombres %>"
-              readonly>
+            <input type="text" class="form-control" id="nombres" name="nombres" value="<%= Paciente.Nombres %>">
             <!-- <input type="text" class="form-control" id="nombres" name="nombres"> -->
           </div>
           <div class="form-group col">
@@ -28,90 +27,109 @@
           </div>
         </div>
 
+        <div class="row">
+          <div class="form-group col">
+            <label for="fechaNacimiento">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento"
+              value="<%= Paciente.Fecha_Nacimiento %>">
+          </div>
+          <div class="form-group col">
+            <label for="dpi">DPI</label>
+            <input type="text" class="form-control" id="dpi" name="dpi" value="<%= Paciente.DPI %>">
+          </div>
+          <div class="form-group col">
+            <label for="No_Registro">No. Registro</label>
+            <input type="text" class="form-control" name="No_Registro" value="<%= Paciente.No_Registro %>">
+          </div>
+        </div>
 
-        <div class="form-group">
-          <label for="fechaNacimiento">Fecha de Nacimiento</label>
-          <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento"
-            value="<%= Paciente.Fecha_Nacimiento %>">
-        </div>
-        <div class="form-group">
-          <label for="No_Registro">No. Registro</label>
-          <input type="text" class="form-control" name="No_Registro" value="<%= Paciente.No_Registro %>">
-        </div>
-        <div class="form-group">
-          <label for="dpi">DPI</label>
-          <input type="text" class="form-control" id="dpi" name="dpi" value="<%= Paciente.DPI %>">
-        </div>
-        <div class="form-group">
-          <label for="telCel">Tel/Cel</label>
-          <input type="text" class="form-control" id="telCel" name="telCel" value="<%= Paciente.Celular %>">
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" name="email" value="<%= Paciente.Email %>">
+        <div class="row">
+          <div class="form-group col">
+            <label for="telCel">Tel/Cel</label>
+            <input type="text" class="form-control" id="telCel" name="telCel" value="<%= Paciente.Celular %>">
+          </div>
+          <div class="form-group col">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="<%= Paciente.Email %>">
+          </div>
+          <div class="form-group col">
+            <label for="profesion">Profesión y Oficio</label>
+            <input type="text" class="form-control" id="profesion" name="profesion"
+              value="<%= Paciente.Profesion_u_oficio %>">
+          </div>
         </div>
         <div class="form-group">
           <label for="direccion">Dirección</label>
           <input type="text" class="form-control" id="direccion" name="direccion" value="<%= Paciente.Direccion %>">
         </div>
-        <div class="form-group">
-          <label for="profesion">Profesión y Oficio</label>
-          <input type="text" class="form-control" id="profesion" name="profesion"
-            value="<%= Paciente.Profesion_u_oficio %>" value="<%= Paciente.Profesion_u_oficio %>">
-        </div>
 
         <!-- Contactos de Emergencia -->
-        <div class="form-group">
-          <label for="emergencyContact1">Contacto de Emergencia 1</label>
-          <input type="text" class="form-control" id="emergencyContact1" name="emergencyContact1"
-            value="<%= Paciente.Contacto_emergencia1 %>">
+        <div class="row">
+          <div class="form-group col">
+            <label for="emergencyContact1">Contacto de Emergencia 1</label>
+            <input type="text" class="form-control" id="emergencyContact1" name="emergencyContact1"
+              value="<%= Paciente.Contacto_emergencia1 %>">
+          </div>
+          <div class="form-group col">
+            <label for="emergencyContact1Tel">Tel/Cel de Emergencia 1</label>
+            <input type="text" class="form-control" id="emergencyContact1Tel" name="emergencyContact1Tel"
+              value="<%= Paciente.Telefono_emergencia1 %>">
+          </div>
         </div>
-        <div class="form-group">
-          <label for="emergencyContact1Tel">Tel/Cel de Emergencia 1</label>
-          <input type="text" class="form-control" id="emergencyContact1Tel" name="emergencyContact1Tel"
-            value="<%= Paciente.Telefono_emergencia1 %>">
-        </div>
-        <div class="form-group">
-          <label for="emergencyContact2">Contacto de Emergencia 2</label>
-          <input type="text" class="form-control" id="emergencyContact2" name="emergencyContact2"
-            value="<%= Paciente.Contacto_emergencia2 %>">
-        </div>
-        <div class="form-group">
-          <label for="emergencyContact2Tel">Tel/Cel de Emergencia 2</label>
-          <input type="text" class="form-control" id="emergencyContact2Tel" name="emergencyContact2Tel"
-            value="<%= Paciente.Telefono_emergencia2 %>">
+        <div class="row">
+          <div class="form-group col">
+            <label for="emergencyContact2">Contacto de Emergencia 2</label>
+            <input type="text" class="form-control" id="emergencyContact2" name="emergencyContact2"
+              value="<%= Paciente.Contacto_emergencia2 %>">
+          </div>
+          <div class="form-group col">
+            <label for="emergencyContact2Tel">Tel/Cel de Emergencia 2</label>
+            <input type="text" class="form-control" id="emergencyContact2Tel" name="emergencyContact2Tel"
+              value="<%= Paciente.Telefono_emergencia2 %>">
+          </div>
         </div>
 
         <!-- Datos de Facturación -->
-        <div class="form-group">
-          <label for="facturacionNombre">Nombre de Facturación</label>
-          <input type="text" class="form-control" id="facturacionNombre" name="facturacionNombre">
-        </div>
-        <div class="form-group">
-          <label for="facturacionNit">NIT</label>
-          <input type="text" class="form-control" id="facturacionNit" name="facturacionNit">
+        <div class="row">
+          <div class="form-group col">
+            <label for="facturacionNombre">Nombre de Facturación</label>
+            <input type="text" class="form-control" id="facturacionNombre" name="facturacionNombre"
+              value="<%= Paciente.Nombre_Facturacion %>">
+          </div>
+          <div class="form-group col">
+            <label for="facturacionNit">NIT</label>
+            <input type="text" class="form-control" id="facturacionNit" name="facturacionNit"
+              value="<%= Paciente.NIT %>">
+          </div>
         </div>
         <div class="form-group">
           <label for="facturacionDireccion">Dirección de Facturación</label>
-          <input type="text" class="form-control" id="facturacionDireccion" name="facturacionDireccion">
+          <input type="text" class="form-control" id="facturacionDireccion" name="facturacionDireccion"
+            value="<%= Paciente.DIRECION_FACTURACION %>">
         </div>
 
         <!-- Información de Asegurado -->
-        <div class="form-group">
-          <label for="seguroAfiliado">Seguro Afiliado</label>
-          <input type="text" class="form-control" id="seguroAfiliado" name="seguroAfiliado">
+        <div class="row">
+          <div class="form-group col">
+            <label for="seguroAfiliado">Seguro Afiliado</label>
+            <input type="text" class="form-control" id="seguroAfiliado" name="seguroAfiliado"
+              value="<%= Paciente.Nombre_aseguradora %>">
+          </div>
+          <div class="form-group col">
+            <label for="poliza">Póliza</label>
+            <input type="text" class="form-control" id="poliza" name="poliza" value="<%= Paciente.Poliza %>">
+          </div>
         </div>
-        <div class="form-group">
-          <label for="poliza">Póliza</label>
-          <input type="text" class="form-control" id="poliza" name="poliza">
-        </div>
-        <div class="form-group">
-          <label for="idAsegurado">ID Asegurado</label>
-          <input type="text" class="form-control" id="idAsegurado" name="idAsegurado">
-        </div>
-        <div class="form-group">
-          <label for="noCarnet">No. Carnet</label>
-          <input type="text" class="form-control" id="noCarnet" name="noCarnet">
+        <div class="row">
+          <div class="form-group col">
+            <label for="idAsegurado">ID Asegurado</label>
+            <input type="text" class="form-control" id="idAsegurado" name="idAsegurado"
+              value="<%= Paciente.Id_asegurado %>">
+          </div>
+          <div class="form-group col">
+            <label for="noCarnet">No. Carnet</label>
+            <input type="text" class="form-control" id="noCarnet" name="noCarnet" value="<%= Paciente.No_carnet %>">
+          </div>
         </div>
 
         <!-- Historial Clínico -->
@@ -150,13 +168,15 @@
             <label class="form-check-label" for="problemasTorax">Problemas en Tórax, Corazón, Pulmones y
               Abdomen</label>
           </div>
+          <br>
           <div class="form-group">
             <label for="especificar">Especifique</label>
-            <input type="text" class="form-control" id="especificar" name="especificar">
+            <textarea class="form-control" id="especificar" name="especificar"><%= Paciente.Especifique %></textarea>
           </div>
           <div class="form-group">
             <label for="antecedentesImportantes">Antecedentes Importantes</label>
-            <input type="text" class="form-control" id="antecedentesImportantes" name="antecedentesImportantes">
+            <textarea class="form-control" id="antecedentesImportantes"
+              name="antecedentesImportantes"><%= Paciente.Antecedente_importante %></textarea>
           </div>
         </div>
 

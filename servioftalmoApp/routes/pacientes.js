@@ -12,9 +12,9 @@ router.post("/new", createPaciente)
 
 router.get("/:id", getPaciente)
 
-router.get("/:id/edit", getPaciente)
+router.put("/:id", updatePaciente)
 
-router.put("/:id/edit", updatePaciente)
+// router.get("/:id/edit", getPaciente)
 
 router.delete("/:id", deletePaciente)
 
