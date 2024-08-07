@@ -4,7 +4,7 @@ import { createConsulta, deleteConsulta, getConsulta, getConsultas, newConsulta,
 
 const router = Router({ mergeParams: true })
 
-router.get("/", newConsulta)
+router.get("/", newConsulta) //CONSULTAS DEL PACIENTE
 
 router.get("/new", newConsulta)
 

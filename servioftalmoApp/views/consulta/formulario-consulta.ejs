@@ -2,7 +2,7 @@
 
   <div class="container">
     <div class="registration-form">
-      <h2 class="text-center">Consulta</h2>
+      <h1 class="text-center">Consulta</h1>
       <% if(Paciente) {%>
         <form id="registrationForm" action="/pacientes/<%= Paciente.Id_paciente %>/consulta/new" method="POST">
           <div class="row">
@@ -27,9 +27,9 @@
           </div>
           <% } %>
 
-            <div class="section-title">Historial clínico</div>
-
-            <h2>Examen Oftalmológico</h2>
+            <div class="section-title">
+              <h2>Examen Oftalmológico</h2>
+            </div>
 
             <!-- Historia Clinica -->
             <div class="form-group">
@@ -53,16 +53,18 @@
                 <h3>Ojo Izquierdo</h3>
                 <div class="form-group">
                   <label for="agudezaVisualScOjoIzquierdo">Agudeza Visual SC</label>
-                  <input type="number" class="form-control" name="Agudeza_sc_OjoIzquierdo" placeholder="Sin Corrección">
+                  <input type="number" step="0.01" class="form-control" name="Agudeza_sc_OjoIzquierdo" min="0.00"
+                    max="999.99" placeholder="Sin Corrección">
                 </div>
                 <div class="form-group">
                   <label for="agudezaVisualOcOjoIzquierdo">Agudeza Visual CC</label>
-                  <input type="number" class="form-control" name="Agudeza_cc_OjoIzquierdo" placeholder="Con Corrección">
+                  <input type="number" step="0.01" class="form-control" name="Agudeza_cc_OjoIzquierdo" min="0.00"
+                    max="999.99" placeholder="Con Corrección">
                 </div>
                 <div class="form-group">
                   <label for="tensionOcularOjoIzquierdo">Tensión Ocular</label>
-                  <input type="number" class="form-control" name="TensionOcular_OjoIzquierdo"
-                    placeholder="Medida en mmHg">
+                  <input type="number" step="0.01" class="form-control" name="TensionOcular_OjoIzquierdo" min="0.00"
+                    max="999.99" placeholder="Medida en mmHg">
                 </div>
               </div>
 
@@ -71,17 +73,18 @@
                 <h3>Ojo Derecho</h3>
                 <div class="form-group">
                   <label for="agudezaVisualScOjoDerecho">Agudeza Visual SC</label>
-                  <input type="number" class="form-control" name="agudezaVisualScOjoDerecho"
-                    placeholder="Sin Corrección">
+                  <input type="number" step="0.01" class="form-control" name="Agudeza_sc_OjoDerecho" min="0.00"
+                    max="999.99" placeholder="Sin Corrección">
                 </div>
                 <div class="form-group">
                   <label for="agudezaVisualOcOjoDerecho">Agudeza Visual CC</label>
-                  <input type="number" class="form-control" name="agudezaVisualOcOjoDerecho"
-                    placeholder="Con Corrección">
+                  <input type="number" step="0.01" class="form-control" name="Agudeza_cc_OjoDerecho" min="0.00"
+                    max="999.99" placeholder="Con Corrección">
                 </div>
                 <div class="form-group">
                   <label for="tensionOcularOjoDerecho">Tensión Ocular</label>
-                  <input type="number" class="form-control" name="tensionOcularOjoDerecho" placeholder="Medida en mmHg">
+                  <input type="number" step="0.01" class="form-control" name="TensionOcular_OjoDerecho" min="0.00"
+                    max="999.99" placeholder="Medida en mmHg">
                 </div>
 
               </div>
@@ -96,27 +99,33 @@
             <div class="row">
               <div class="form-group col border-left border-primary rounded">
                 <label for="mSph">SPH</label>
-                <input type="number" step="0.01" class="form-control" name="M_SPH_OjoIzquierdo" placeholder="Esfera">
+                <input type="number" step="0.01" class="form-control" name="M_SPH_OjoIzquierdo" placeholder="Esfera"
+                  min="0.00" max="999.99">
               </div>
               <div class="form-group col">
                 <label for="mCyl">CYL</label>
-                <input type="number" step="0.01" class="form-control" name="M_CYS_OjoIzquierdo" placeholder="Cilindro">
+                <input type="number" step="0.01" class="form-control" name="M_CYS_OjoIzquierdo" placeholder="Cilindro"
+                  min="0.00" max="999.99">
               </div>
               <div class="form-group col">
                 <label for="mAxs">AXS</label>
-                <input type="number" step="0.01" class="form-control" name="M_AXS_OjoIzquierdo" placeholder="Eje">
+                <input type="number" step="0.01" class="form-control" name="M_AXS_OjoIzquierdo" placeholder="Eje"
+                  min="0.00" max="999.99">
               </div>
               <div class="form-group col border-left border-info rounded">
                 <label for="mSph">SPH</label>
-                <input type="number" step="0.01" class="form-control" name="M_SPH_OjoDerecho" placeholder="Esfera">
+                <input type="number" step="0.01" class="form-control" name="M_SPH_OjoDerecho" placeholder="Esfera"
+                  min="0.00" max="999.99">
               </div>
               <div class="form-group col">
                 <label for="mCyl">CYL</label>
-                <input type="number" step="0.01" class="form-control" name="M_CYS_OjoDerecho" placeholder="Cilindro">
+                <input type="number" step="0.01" class="form-control" name="M_CYS_OjoDerecho" placeholder="Cilindro"
+                  min="0.00" max="999.99">
               </div>
               <div class="form-group col">
                 <label for="mAxs">AXS</label>
-                <input type="number" step="0.01" class="form-control" name="M_AXS_OjoDerecho" placeholder="Eje">
+                <input type="number" step="0.01" class="form-control" name="M_AXS_OjoDerecho" placeholder="Eje"
+                  min="0.00" max="999.99">
               </div>
             </div>
 
@@ -125,24 +134,61 @@
               <h4>K Values</h4>
             </div>
             <div class="row">
-              <div class="form-group col border-left border-primary rounded">
-                <label for="k1">K1</label>
-                <input type="number" step="0.01" class="form-control" name="k1" placeholder="K1">
-              </div>
-              <div class="form-group col">
-                <label for="mAxs">K1 AXS</label>
-                <input type="number" step="0.01" class="form-control" name="k1Axs" placeholder="K1 Eje">
-              </div>
-              <div class="form-group col border-left border-info rounded">
-                <label for="k2">K2</label>
-                <input type="number" step="0.01" class="form-control" name="k2" placeholder="K2">
-              </div>
-              <div class="form-group col">
-                <label for="mAxs">K2 AXS</label>
-                <input type="number" step="0.01" class="form-control" name="k2Axs" placeholder="K2 Eje">
+              <!-- Ojo Izquierdo -->
+              <div class="col border-left border-primary rounded">
+                <div class="row">
+                  <div class="form-group col">
+                    <label for="k1">K1</label>
+                    <input type="number" step="0.01" class="form-control" name="K1_OjoIzquierdo" placeholder="K1"
+                      min="0.00" max="999.99">
+                  </div>
+                  <div class="form-group col">
+                    <label for="mAxs">K1 AXS</label>
+                    <input type="number" step="0.01" class="form-control" name="K1_eje_OjoIzquierdo"
+                      placeholder="K1 Eje" min="0.00" max="999.99">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col">
+                    <label for="k2">K2</label>
+                    <input type="number" step="0.01" class="form-control" name="K2_OjoIzquierdo" placeholder="K2"
+                      min="0.00" max="999.99">
+                  </div>
+                  <div class="form-group col">
+                    <label for="mAxs">K2 AXS</label>
+                    <input type="number" step="0.01" class="form-control" name="K2_eje_OjoIzquierdo"
+                      placeholder="K2 Eje" min="0.00" max="999.99">
+                  </div>
+                </div>
               </div>
 
-
+              <!-- Ojo Derecho -->
+              <div class="col border-left border-primary rounded">
+                <div class="row">
+                  <div class="form-group col">
+                    <label for="k1">K1</label>
+                    <input type="number" step="0.01" class="form-control" name="K1_OjoDerecho" placeholder="K1"
+                      min="0.00" max="999.99">
+                  </div>
+                  <div class="form-group col">
+                    <label for="mAxs">K1 AXS</label>
+                    <input type="number" step="0.01" class="form-control" name="k1_eje_OjoDerecho" placeholder="K1 Eje"
+                      min="0.00" max="999.99">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col">
+                    <label for="k2">K2</label>
+                    <input type="number" step="0.01" class="form-control" name="K2_OjoDerecho" placeholder="K2"
+                      min="0.00" max="999.99">
+                  </div>
+                  <div class="form-group col">
+                    <label for="mAxs">K2 AXS</label>
+                    <input type="number" step="0.01" class="form-control" name="K2_eje_OjoDerecho" placeholder="K2 Eje"
+                      min="0.00" max="999.99">
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- W Values -->
@@ -152,28 +198,33 @@
             <div class="row">
               <div class="form-group col border-left border-primary rounded">
                 <label for="wSph">SPH</label>
-                <input type="number" step="0.01" class="form-control" name="W_SPH_OjoIzquierdo" placeholder="W Esfera">
+                <input type="number" step="0.01" class="form-control" name="W_SPH_OjoIzquierdo" placeholder="W Esfera"
+                  min="0.00" max="999.99">
               </div>
               <div class="form-group col">
                 <label for="wCyl">CYL</label>
-                <input type="number" step="0.01" class="form-control" name="W_CYL_OjoIzquierdo"
-                  placeholder="W Cilindro">
+                <input type="number" step="0.01" class="form-control" name="W_CYL_OjoIzquierdo" placeholder="W Cilindro"
+                  min="0.00" max="999.99">
               </div>
               <div class="form-group col">
                 <label for="wAxs">AXS</label>
-                <input type="number" step="0.01" class="form-control" name="W_AXS_OjoIzquierdo" placeholder="W Eje">
+                <input type="number" step="0.01" class="form-control" name="W_AXS_OjoIzquierdo" placeholder="W Eje"
+                  min="0.00" max="999.99">
               </div>
               <div class="form-group col border-left border-info rounded">
                 <label for="wSph">SPH</label>
-                <input type="number" step="0.01" class="form-control" name="W_SPH_OjoDerecho" placeholder="W Esfera">
+                <input type="number" step="0.01" class="form-control" name="W_SPH_OjoDerecho" placeholder="W Esfera"
+                  min="0.00" max="999.99">
               </div>
               <div class="form-group col">
                 <label for="wCyl">CYL</label>
-                <input type="number" step="0.01" class="form-control" name="W_CYL_OjoDerecho" placeholder="W Cilindro">
+                <input type="number" step="0.01" class="form-control" name="W_CYL_OjoDerecho" placeholder="W Cilindro"
+                  min="0.00" max="999.99">
               </div>
               <div class="form-group col">
                 <label for="wAxs">AXS</label>
-                <input type="number" step="0.01" class="form-control" name="W_AXS_OjoDerecho" placeholder="W Eje">
+                <input type="number" step="0.01" class="form-control" name="W_AXS_OjoDerecho" placeholder="W Eje"
+                  min="0.00" max="999.99">
               </div>
             </div>
 

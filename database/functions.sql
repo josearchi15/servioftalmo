@@ -4,7 +4,8 @@ AS
 RETURN
 (
     SELECT 
-		P.*, DF.Nombre_facturacion, DF.NIT, DF.Direccion AS DIRECION_FACTURACION, 
+		P.*, 
+		DF.Nombre_facturacion, DF.NIT, DF.Direccion AS DIRECION_FACTURACION, 
 		SG.Id_asegurado, SG.Nombre_aseguradora, SG.No_carnet, SG.Poliza
 	FROM PACIENTE AS P
 	LEFT JOIN DATOS_DE_FACTURACION AS DF
