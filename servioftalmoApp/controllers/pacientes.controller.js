@@ -63,13 +63,13 @@ export const updatePaciente = async (req, res) => {
 }
 
 export const deletePaciente = async (req, res) => {
-    const pool = await getConnection()
-    const result = await pool.request().query(`DELETE FROM PACIENTE WHERE Id_paciente = ${req.params.id}`)
-    console.log(result.recordset)
+    try {
+        const pool = await getConnection()
+        const result = await pool.request().query(`EXEC spDeletePacienteById ${req.params.id}`)
+        res.redirect("/pacientes/");
 
-    if (result.rowsAffected[0] == 0) {
-        return res.status(404).json({ message: "Paciente not found" })
+    } catch (error) {
+        console.log(error)
+        res.redirect("/pacientes/");
     }
-
-    return res.json({ message: "Paciente deleted" })
 }

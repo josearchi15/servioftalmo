@@ -14,8 +14,8 @@ router.get("/:id", getPaciente)
 
 router.put("/:id", updatePaciente)
 
+router.delete("/:id", deletePaciente)
 // router.get("/:id/edit", getPaciente)
 
-router.delete("/:id", deletePaciente)
 
 export default router
