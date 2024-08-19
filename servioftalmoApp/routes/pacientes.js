@@ -4,17 +4,17 @@ import { getPacientes, getPaciente, createPaciente, updatePaciente, deletePacien
 
 const router = Router()
 
-router.get("/", getPacientes)
+router.get("/", getPacientes) //READ
 
-router.get("/new", newPaciente)
+router.get("/new", newPaciente) //CREATE
 
-router.post("/new", createPaciente)
+router.post("/new", createPaciente) //CREATE
 
-router.get("/:id", getPaciente)
+router.get("/:id", getPaciente) //READ
 
-router.put("/:id", updatePaciente)
+router.put("/:id", updatePaciente)  //UPDATE
 
-router.delete("/:id", deletePaciente)
+router.delete("/:id", deletePaciente) //DELETE
 // router.get("/:id/edit", getPaciente)
 
 
