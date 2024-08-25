@@ -18,37 +18,34 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>DPI</th>
+            <th>Fecha</th>
+            <th>Nombre y apellido</th>
+            <th>Diagnostico</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody id="patientTableBody">
-          <!-- Filas de pacientes se insertarán aquí -->
+          <!-- Filas de consultas se insertarán aquí -->
           <% if(Consultas) { %>
             <tr>
-              <% Consultas.forEach(paciente=> { %>
+              <% Consultas.forEach(consulta=> { %>
                 <td>
-                  <%= paciente.Id_paciente %>
+                  <%= consulta.FECHA_CONSULTA %>
                 </td>
                 <td>
-                  <%= paciente.Nombres %>
+                  <%= consulta.PACIENTE %>
                 </td>
                 <td>
-                  <%= paciente.Apellidos %>
+                  <%= consulta.Diagnostico %>
                 </td>
                 <td>
-                  <%= paciente.DPI %>
-                </td>
-                <td>
-                  <form class="succes-form" action="/pacientes/<%= paciente.Id_paciente %>?_method=PUT" method="GET">
-                    <button class="btn btn-sm btn-primaey btn-block">Editar</button>
-                  </form>
-                  <form class="delete-form" action="/pacientes/<%= paciente.Id_paciente %>?_method=DELETE"
+                  <a href="/pacientes/<%= PacienteId %>/consulta/<%= consulta.Id_consulta %>" class="btn btn-secondary"
+                    title="Consultas">
+                    <i class="bi bi-pencil-square"></i></a>
+                  <form class="delete-form d-inline-block"
+                    action="/pacientes/<%= PacienteId %>/consulta/<%= consulta.Id_consulta %>?_method=DELETE"
                     method="POST">
-                    <button class="btn btn-sm btn-danger">Eliminar</button>
+                    <button class="btn btn btn-danger"><i class="bi bi-trash3"></i></button>
                   </form>
                 </td>
             </tr>

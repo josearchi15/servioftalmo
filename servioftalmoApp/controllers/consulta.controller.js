@@ -3,8 +3,8 @@ import { getConnection } from "../database/connection.js"
 export const getConsultas = async (req, res) => {
     console.log('Obtener todos los Consulta')
     const pool = await getConnection()
-    const result = await pool.request().query("SELECT * FROM CONSULTA")
-    res.render('consulta/formulario-consulta', { Consultas: result.recordset })
+    const result = await pool.request().query(`SELECT * FROM getConsultasByPacienteId(${req.params.id})`)
+    res.render('consulta/buscar-consulta', { PacienteId: req.params.id, Consultas: result.recordset })
 
 }
 
@@ -96,13 +96,15 @@ export const updateConsulta = async (req, res) => {
 }
 
 export const deleteConsulta = async (req, res) => {
-    const pool = await getConnection()
-    const result = await pool.request().query(`DELETE FROM CONSULTA WHERE Id_consulta = ${req.params.id}`)
-    console.log(result.recordset)
+    console.log(`EXEC spDeleteConsulta ${req.params.id}, ${req.paramas.id_consulta}`)
+    try {
+        const pool = await getConnection()
+        const result = await pool.request().query(`EXEC spDeleteConsulta ${req.params.id}, ${req.params.id_consulta}`)
+        console.log("Consulta deleted")
+        console.log(result.recordset)
 
-    if (result.rowsAffected[0] == 0) {
-        return res.status(404).json({ message: "Consulta not found" })
+    } catch (error) {
+        console.log(error)
+        res.redirect(`/pacientes/${req.params.id}/consulta`);
     }
-
-    return res.json({ message: "Consulta deleted" })
 }

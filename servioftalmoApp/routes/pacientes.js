@@ -10,12 +10,10 @@ router.get("/new", newPaciente) //CREATE
 
 router.post("/new", createPaciente) //CREATE
 
-router.get("/:id", getPaciente) //READ
+router.get("/:id", getPaciente) //READ   PEDNIENTE DETALLES
 
-router.put("/:id", updatePaciente)  //UPDATE
+router.put("/:id", updatePaciente)  //UPDATE  PENDIENTE
 
 router.delete("/:id", deletePaciente) //DELETE
-// router.get("/:id/edit", getPaciente)
-
 
 export default router
