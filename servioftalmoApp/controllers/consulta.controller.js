@@ -96,12 +96,13 @@ export const updateConsulta = async (req, res) => {
 }
 
 export const deleteConsulta = async (req, res) => {
-    console.log(`EXEC spDeleteConsulta ${req.params.id}, ${req.paramas.id_consulta}`)
+    console.log(`EXEC spDeleteConsulta ${req.params.id}`)
     try {
         const pool = await getConnection()
         const result = await pool.request().query(`EXEC spDeleteConsulta ${req.params.id}, ${req.params.id_consulta}`)
         console.log("Consulta deleted")
         console.log(result.recordset)
+        res.redirect(`/pacientes/${req.params.id}/consulta`);
 
     } catch (error) {
         console.log(error)
