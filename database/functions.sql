@@ -30,3 +30,18 @@ RETURN
 	INNER JOIN EXAMEN_OFTALMOLOGICO AS EX
 	ON C.Id_consulta = @Id_Consulta
 )
+
+
+ALTER FUNCTION getConsultasByPacienteId (@Id_PACIENTE INT)
+RETURNS TABLE
+AS
+RETURN(
+SELECT 
+	C.Id_consulta, 
+	CAST(C.Fecha AS VARCHAR(10)) AS FECHA_CONSULTA, 
+	CONCAT(P.Nombres, ' ', P.Apellidos) AS PACIENTE, 
+	C.Diagnostico
+FROM PACIENTE AS P INNER JOIN
+     CONSULTA AS C ON P.Id_paciente = C.Id_paciente 
+WHERE 
+	C.Estado = 1 and C.Id_paciente = @Id_PACIENTE)

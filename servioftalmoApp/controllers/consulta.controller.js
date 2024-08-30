@@ -92,7 +92,8 @@ export const createConsulta = async (req, res) => {
 }
 
 export const updateConsulta = async (req, res) => {
-    return res.json({ message: "CONSULTA updated" })
+    console.log("consulta updated")
+    res.redirect("/")
 }
 
 export const deleteConsulta = async (req, res) => {
