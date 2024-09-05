@@ -1,35 +1,44 @@
 import { getConnection } from "../database/connection.js"
 
 export const getConsultas = async (req, res) => {
-    console.log('Obtener todos los Consulta')
-    const pool = await getConnection()
-    const result = await pool.request().query(`SELECT * FROM getConsultasByPacienteId(${req.params.id})`)
-    res.render('consulta/buscar-consulta', { PacienteId: req.params.id, Consultas: result.recordset })
+    try {
+        console.log('Obtener todos los Consulta')
+        const pool = await getConnection()
+        const result = await pool.request().query(`SELECT * FROM getConsultasByPacienteId(${req.params.id})`)
+        res.render('consulta/buscar-consulta', { PacienteId: req.params.id, Consultas: result.recordset })
+
+    } catch (error) {
+        res.redirect(`/pacientes/`)
+    }
 
 }
 
 export const newConsulta = async (req, res) => {
-    const pool = await getConnection()
-    const result = await pool.request().query(`SELECT * FROM GetPacienteByID(${req.params.id})`)
-    const paciente = result.recordset[0]
-    res.render('consulta/formulario-consulta', { Paciente: paciente })
+    try {
+        const pool = await getConnection()
+        const result = await pool.request().query(`SELECT * FROM GetPacienteByID(${req.params.id})`)
+        const paciente = result.recordset[0]
+        res.render('consulta/formulario-consulta', { Paciente: paciente })
+    } catch (error) {
+        res.redirect(`/pacientes/`)
+    }
 }
 
 export const getConsulta = async (req, res) => {
-
-    const pool = await getConnection()
-    const result = await pool.request().query(`SELECT * FROM CONSULTA WHERE Id_consulta = ${req.params.id}`)
-    console.log(result.recordset)
-    const Consulta = result.recordset[0]
-
-    res.render('consulta/editar-consulta', { Consulta: Consulta }) //{ Consulta: consulta }
-
+    try {
+        const pool = await getConnection()
+        const result = await pool.request().query(`SELECT * FROM getConsultaByPacienteIdConsultaId(${req.params.id}, ${req.params.id_consulta})`)
+        console.log(`Respuesta consulta ${result.recordset[0]}`)
+        const Consulta = result.recordset[0]
+        res.render('consulta/editar-consulta', { Consulta: Consulta })
+    } catch (error) {
+        res.redirect(`/pacientes/${req.params.id}/consultas`)
+    }
 }
 
 export const createConsulta = async (req, res) => {
-    // const bday = Date(req.body.fechaNacimiento)
-
     try {
+        // const bday = Date(req.body.fechaNacimiento)
         const pool = await getConnection()
         const spCreateConsulta = await pool.request().query(`EXEC spCreateConsulta ${req.params.id},'${req.body.diagnostico}'`)
         const consulta = await pool.request().query(`SELECT TOP 1 Id_consulta FROM CONSULTA WHERE Id_paciente = ${req.params.id} ORDER BY Id_consulta DESC`)
@@ -65,7 +74,7 @@ export const createConsulta = async (req, res) => {
         const W_AXS_OjoDerecho = Number(req.body.W_AXS_OjoDerecho)
 
         const spCreateExamenOftalmologico = await pool.request().query
-            (`EXEC spCreateExamenOftalmologico2 
+            (`EXEC spCreateExamenOftalmologico 
             ${idConsulta},'${req.body.historiaClinica}','${req.body.antecedentes}',
 
             ${Agudeza_sc_OjoIzquierdo}, ${Agudeza_cc_OjoIzquierdo}, ${TensionOcular_OjoIzquierdo},
@@ -82,12 +91,12 @@ export const createConsulta = async (req, res) => {
 
         console.log("Consulta creada")
         // res.redirect("/consulta/" + ConsultaId);
-        res.redirect(`/`);
+        res.redirect(`/pacientes/${req.params.id}/`);
 
     } catch (error) {
         console.log(error)
         console.log("Consulta no creada")
-        res.redirect(`/`);
+        res.redirect(`/pacientes/${req.params.id}/`);
     }
 }
 
@@ -97,7 +106,6 @@ export const updateConsulta = async (req, res) => {
 }
 
 export const deleteConsulta = async (req, res) => {
-    console.log(`EXEC spDeleteConsulta ${req.params.id}`)
     try {
         const pool = await getConnection()
         const result = await pool.request().query(`EXEC spDeleteConsulta ${req.params.id}, ${req.params.id_consulta}`)

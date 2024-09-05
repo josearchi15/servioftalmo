@@ -1,16 +1,25 @@
 import { getConnection } from "../database/connection.js"
 
 export const newPaciente = async (req, res) => {
-    console.log('Nuevo Paciente')
-    res.render('paciente/formulario-paciente')
+    try {
+        console.log('Nuevo Paciente')
+        res.render('paciente/formulario-paciente')
+
+    } catch (error) {
+        res.redirect('/')
+    }
 }
 
 export const getPacientes = async (req, res) => {
-    console.log('Obtener todos los pacientes')
-    const pool = await getConnection()
-    const result = await pool.request().query("SELECT * FROM viewPacientesActivos")
-    res.render('paciente/buscar-paciente', { Pacientes: result.recordset })
-    // res.render('paciente/index')
+    try {
+        console.log('Obtener todos los pacientes')
+        const pool = await getConnection()
+        const result = await pool.request().query("SELECT * FROM viewPacientesActivos")
+        res.render('paciente/buscar-paciente', { Pacientes: result.recordset })
+
+    } catch (error) {
+        res.redirect('/paciente/')
+    }
 }
 
 export const getPaciente = async (req, res) => {
@@ -19,14 +28,13 @@ export const getPaciente = async (req, res) => {
         const pool = await getConnection()
         const result = await pool.request().query(`SELECT * FROM GetPacienteByID(${req.params.id})`)
         const Paciente = result.recordset[0]
-        // console.log(Paciente)
         const fecha = Paciente["Fecha_Nacimiento"]
         const objFecha = JSON.stringify(fecha)
         const fecha_front = objFecha.slice(1, 11)
         console.log(fecha_front)
         console.log(`Prueba: ${typeof (objFecha)}`)
 
-        res.render('paciente/editar-paciente', { Paciente: Paciente, Fecha_Nacimiento: fecha_front }) //{ Paciente: paciente }
+        res.render('paciente/editar-paciente', { Paciente: Paciente, Fecha_Nacimiento: fecha_front })
 
     } catch (error) {
         console.log(error)
@@ -53,7 +61,7 @@ export const createPaciente = async (req, res) => {
 
     } catch (error) {
         console.log(error)
-        res.redirect("/");
+        res.redirect("/pacientes/");
     }
 }
 
@@ -70,7 +78,7 @@ export const updatePaciente = async (req, res) => {
             `EXEC spUpdateDatosFacturacionByPacienteId ${req.params.id},'${req.body.facturacionNombre}','${req.body.facturacionNit}','${req.body.facturacionDireccion}'`)
 
         const udpateSeguroMedico = await pool.request().query(
-            `EXEC spUpdateSeguroMedicoByPacienteID ${req.params.id},'${req.body.facturacionNombre}','${req.body.facturacionNit}','${req.body.facturacionDireccion}'`)
+            `EXEC spUpdateSeguroMedicoByPacienteID ${req.params.id},'${req.body.seguroAfiliado}','${req.body.poliza}','${req.body.idAsegurado}','${req.body.noCarnet}'`)
 
         res.redirect("/pacientes/");
 
