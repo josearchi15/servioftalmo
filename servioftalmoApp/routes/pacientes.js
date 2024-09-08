@@ -1,10 +1,12 @@
 import { Router } from "express"
-import { getPacientes, getPaciente, createPaciente, updatePaciente, deletePaciente, newPaciente } from "../controllers/pacientes.controller.js"
+import { getPacientes, getPaciente, createPaciente, updatePaciente, deletePaciente, newPaciente, searchPaciente } from "../controllers/pacientes.controller.js"
 
 
 const router = Router()
 
 router.get("/", getPacientes) //READ
+
+router.get("/buscar-paciente", searchPaciente)
 
 router.get("/new", newPaciente) //CREATE
 

@@ -1,5 +1,19 @@
 import { getConnection } from "../database/connection.js"
 
+export const searchPaciente = async (req, res) => {
+    try {
+        console.log(`SELECT * FROM searchPacienteByIdDPI('${req.query.PacienteIdDPI}')`)
+        const pool = await getConnection()
+        const result = await pool.request().query(
+            `SELECT * FROM viewPacientesActivos 
+            WHERE CAST(Id_paciente AS varchar) LIKE '${req.query.PacienteIdDPI}%' 
+            OR CAST(DPI AS nvarchar) LIKE '${req.query.PacienteIdDPI}%'`)
+        res.render('paciente/buscar-paciente', { Pacientes: result.recordset })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const newPaciente = async (req, res) => {
     try {
         console.log('Nuevo Paciente')

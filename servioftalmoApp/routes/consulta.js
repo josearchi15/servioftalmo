@@ -12,8 +12,6 @@ router.post("/new", createConsulta)
 
 router.get("/:id_consulta", getConsulta)
 
-// router.get("/:id_consulta/edit", getConsulta)
-
 router.put("/:id_consulta/", updateConsulta)
 
 router.delete("/:id_consulta", deleteConsulta)

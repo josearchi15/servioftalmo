@@ -2,12 +2,21 @@ import { getConnection } from "../database/connection.js"
 
 export const getConsultas = async (req, res) => {
     try {
-        console.log('Obtener todos los Consulta')
+        console.log('Obtener todas las Consultas')
         const pool = await getConnection()
         const result = await pool.request().query(`SELECT * FROM getConsultasByPacienteId(${req.params.id})`)
-        res.render('consulta/buscar-consulta', { PacienteId: req.params.id, Consultas: result.recordset })
+        const Consultas = result.recordset
+        console.log(Consultas.length)
+
+        const message = Consultas.length == 0 ? "No existen consultas para este paciente" : "Consultas mostradas exitosamente"
+        req.flash('success_msg', message);
+
+
+        res.render('consulta/buscar-consulta', { PacienteId: req.params.id, Consultas: Consultas, success_msg: req.flash('success_msg') })
 
     } catch (error) {
+
+        req.flash('error_msg', 'No se pudieron mostrar las consultas');
         res.redirect(`/pacientes/`)
     }
 

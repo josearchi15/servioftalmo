@@ -2,10 +2,11 @@
   <div class="container">
     <div class="search-form">
       <h2 class="text-center">Buscar paciente</h2>
-      <form id="searchForm">
+      <form id="searchForm" action="/pacientes/buscar-paciente" method="GET">
         <div class="form-group">
           <label for="searchParameter">Id Paciente / DPI</label>
-          <input type="number" class="form-control" id="searchId" placeholder="Ingrese Id Paciente o DPI" required>
+          <input type="number" class="form-control" id="searchId" name="PacienteIdDPI"
+            placeholder="Ingrese Id Paciente o DPI" required>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Buscar</button>
       </form>
