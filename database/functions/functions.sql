@@ -45,3 +45,33 @@ FROM PACIENTE AS P INNER JOIN
      CONSULTA AS C ON P.Id_paciente = C.Id_paciente 
 WHERE 
 	C.Estado = 1 and C.Id_paciente = @Id_PACIENTE)
+
+
+ALTER FUNCTION searchPacienteByIdDPI(@datoBusqueda varchar)
+RETURNS TABLE
+AS 
+RETURN
+(
+	SELECT * FROM viewPacientesActivos 
+	WHERE 
+		CAST(Id_paciente AS varchar) LIKE @datoBusqueda 
+		OR CAST(DPI AS varchar) LIKE @datoBusqueda
+)
+SELECT * FROM searchPacienteByIdDPI('2415')
+--SELECT * FROM viewPacientesActivos 
+--WHERE 
+--	CAST(Id_paciente AS varchar) LIKE '51516%' 
+--	OR CAST(DPI AS nvarchar) LIKE '51516%'
+
+
+SELECT * FROM viewPacientesActivos
+SELECT * FROM PACIENTE WHERE Id_paciente = 6
+
+SELECT * FROM searchPacienteByIdDPI('4563')
+SELECT * FROM searchPacienteByIdDPI('51516262')
+SELECT * FROM viewPacientesActivos 
+WHERE 
+	CAST(Id_paciente AS varchar) LIKE '51516262%' 
+	OR CAST(DPI AS nvarchar) LIKE '51516262%'
+
+

@@ -29,10 +29,12 @@ export const getPacientes = async (req, res) => {
         console.log('Obtener todos los pacientes')
         const pool = await getConnection()
         const result = await pool.request().query("SELECT * FROM viewPacientesActivos")
+
         res.render('paciente/buscar-paciente', { Pacientes: result.recordset })
 
     } catch (error) {
-        res.redirect('/paciente/')
+        console.log(error)
+        res.redirect('/pacientes/')
     }
 }
 
@@ -67,15 +69,18 @@ export const createPaciente = async (req, res) => {
             '${req.body.dpi}','${req.body.telCel}','${req.body.email}','${req.body.profesion}','${req.body.direccion}','${req.body.emergencyContact1}','${req.body.emergencyContact1Tel}','${req.body.emergencyContact2}','${req.body.emergencyContact1Tel}',
             '${req.body.diabetes} ${req.body.presionAltaBaja} ${req.body.enfermedadesCardiacas} ${req.body.doloresDeCabeza} ${req.body.asma} ${req.body.fracturas} ${req.body.convulsiones} ${req.body.problemasTorax}',
             '${req.body.especifique}','${req.body.otrosAntecedentes}'`)
-
         const spCreateDatosFacturacion = await pool.request().query(`EXEC spCreateDatosFacturacion '${req.body.facturacionNombre}','${req.body.facturacionNit}','${req.body.facturacionDireccion}'`)
-
         const spCreateDatosSeguro = await pool.request().query(`EXEC spCreateSeguroMedico '${req.body.seguroAfiliado}','${req.body.poliza}','${req.body.idAsegurado}','${req.body.noCarnet}'`)
-        res.redirect("/pacientes/");
+
+        const message = "Paciente creado exitosamente"
+        req.flash('success_msg', message);
+        res.redirect("/pacientes/", { success_msg: req.flash('success_msg') });
 
     } catch (error) {
         console.log(error)
-        res.redirect("/pacientes/");
+        const message = "Hubo un error en la creacion del paciente, intentelo de nuevo en unos minutos"
+        req.flash('error_msg', message);
+        res.render("paciente/buscar-paciente", { error_msg: req.flash('success_msg') });
     }
 }
 

@@ -17,7 +17,8 @@ export const getConsultas = async (req, res) => {
     } catch (error) {
 
         req.flash('error_msg', 'No se pudieron mostrar las consultas');
-        res.redirect(`/pacientes/`)
+        res.render('paciente/buscar', { PacienteId: req.params.id, success_msg: req.flash('error_msg') })
+        // res.redirect(`/pacientes/`)
     }
 
 }
