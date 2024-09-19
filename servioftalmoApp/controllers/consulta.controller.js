@@ -101,12 +101,17 @@ export const createConsulta = async (req, res) => {
 
         console.log("Consulta creada")
         // res.redirect("/consulta/" + ConsultaId);
-        res.redirect(`/pacientes/${req.params.id}/`);
+        // res.redirect(`/pacientes/`);
+        const Paciente = await pool.request().query(
+            `SELECT * FROM viewPacientesActivos 
+            WHERE CAST(Id_paciente AS varchar) LIKE '${req.query.PacienteIdDPI}%' 
+            OR CAST(DPI AS nvarchar) LIKE '${req.query.PacienteIdDPI}%'`)
+        res.render('paciente/buscar-paciente', { Pacientes: Paciente.recordset })
 
     } catch (error) {
         console.log(error)
         console.log("Consulta no creada")
-        res.redirect(`/pacientes/${req.params.id}/`);
+        res.redirect(`/pacientes/`);
     }
 }
 

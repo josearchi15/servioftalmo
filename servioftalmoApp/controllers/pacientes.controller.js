@@ -74,13 +74,18 @@ export const createPaciente = async (req, res) => {
 
         const message = "Paciente creado exitosamente"
         req.flash('success_msg', message);
-        res.redirect("/pacientes/", { success_msg: req.flash('success_msg') });
+        console.log("antes del error")
+
+        // const pool = await getConnection()
+        const Pacientes = await pool.request().query("SELECT * FROM viewPacientesActivos")
+
+        res.render("paciente/buscar-paciente", { Pacientes: Pacientes.recordset, success_msg: req.flash('success_msg') });
 
     } catch (error) {
         console.log(error)
         const message = "Hubo un error en la creacion del paciente, intentelo de nuevo en unos minutos"
         req.flash('error_msg', message);
-        res.render("paciente/buscar-paciente", { error_msg: req.flash('success_msg') });
+        res.render("paciente/buscar-paciente", { error_msg: req.flash('error_msg') });  //***********************************revisar el render por redirect */
     }
 }
 
