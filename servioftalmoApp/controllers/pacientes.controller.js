@@ -81,13 +81,19 @@ export const createPaciente = async (req, res) => {
         // const pool = await getConnection()
         const Pacientes = await pool.request().query("SELECT * FROM viewPacientesActivos")
 
+        // throw new Error("Error lanzado a proposito*****create");
+
         res.render("paciente/buscar-paciente", { Pacientes: Pacientes.recordset, success_msg: req.flash('success_msg') });
 
     } catch (error) {
         console.log(error)
+
+        const pool = await getConnection()
+        const result = await pool.request().query("SELECT * FROM viewPacientesActivos")
+
         const message = "Hubo un error en la creacion del paciente, intentelo de nuevo en unos minutos"
-        req.flash('error_msg', message);
-        res.render("paciente/buscar-paciente", { error_msg: req.flash('error_msg') });  //***********************************revisar el render por redirect */
+        req.flash('success_msg', message);
+        res.render("paciente/buscar-paciente", { Pacientes: result.recordset, success_msg: req.flash('error_msg') });  //***********************************revisar el render por redirect */
     }
 }
 
@@ -116,12 +122,31 @@ export const updatePaciente = async (req, res) => {
 
 export const deletePaciente = async (req, res) => {
     try {
+        throw new Error("**********Error de prueba");
+
         const pool = await getConnection()
-        const result = await pool.request().query(`EXEC spDeletePacienteById ${req.params.id}`)
-        res.redirect("/pacientes/");
+
+        const deleted = await pool.request().query(`EXEC spDeletePacienteById ${req.params.id}`)
+        const message = "Hubo un error en la creacion del paciente, intentelo de nuevo en unos minutos"
+        req.flash('success_msg', message);
+
+        const result = await pool.request().query("SELECT * FROM viewPacientesActivos")
+        console.log(`Eliminando paciente..`)
+        res.render("paciente/buscar-paciente", { Pacientes: result.recordset, success_msg: req.flash('success_msg') });
 
     } catch (error) {
+        // console.log(error)
+        // res.redirect("/pacientes/");
         console.log(error)
-        res.redirect("/pacientes/");
+
+        const pool = await getConnection()
+        const result = await pool.request().query("SELECT * FROM PACIENTE")
+
+        // const message = "Hubo un error en la eliminacion del paciente, intentelo de nuevo en unos minutos"
+        const message = "Hubo un error en la eliminacion del paciente, intentelo de nuevo mas tarde"
+
+        console.log(message)
+        req.flash('error_msg', message);
+        res.render("paciente/buscar-paciente", { Pacientes: result.recordset, success_msg: req.flash('error_msg') });
     }
 }

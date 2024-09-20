@@ -17,7 +17,7 @@ export const getConsultas = async (req, res) => {
     } catch (error) {
 
         req.flash('error_msg', 'No se pudieron mostrar las consultas');
-        res.render('paciente/buscar', { PacienteId: req.params.id, success_msg: req.flash('error_msg') })
+        res.render('paciente/buscar-paciente', { PacienteId: req.params.id, success_msg: req.flash('error_msg') })
         // res.redirect(`/pacientes/`)
     }
 
@@ -97,6 +97,8 @@ export const createConsulta = async (req, res) => {
             ${K1_OjoDerecho},${k1_eje_OjoDerecho},${K2_OjoDerecho},${K2_eje_OjoDerecho},
             ${W_SPH_OjoDerecho},${W_CYL_OjoDerecho},${W_AXS_OjoDerecho},
             '${req.body.diagnostico}','${req.body.tratamiento}'`)
+        throw new Error("Error lanzado a proposito");
+
 
 
         console.log("Consulta creada")
@@ -111,7 +113,9 @@ export const createConsulta = async (req, res) => {
     } catch (error) {
         console.log(error)
         console.log("Consulta no creada")
-        res.redirect(`/pacientes/`);
+        // res.redirect(`/pacientes/`);
+
+        res.render('paciente/buscar-paciente', { Pacientes: Paciente.recordset })
     }
 }
 
