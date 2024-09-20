@@ -122,12 +122,12 @@ export const updatePaciente = async (req, res) => {
 
 export const deletePaciente = async (req, res) => {
     try {
-        throw new Error("**********Error de prueba");
+        // throw new Error("**********Error de prueba");
 
         const pool = await getConnection()
-
         const deleted = await pool.request().query(`EXEC spDeletePacienteById ${req.params.id}`)
-        const message = "Hubo un error en la creacion del paciente, intentelo de nuevo en unos minutos"
+
+        const message = `El paciente con id: ${req.params.id} fue eliminado exitosamente.`
         req.flash('success_msg', message);
 
         const result = await pool.request().query("SELECT * FROM viewPacientesActivos")
@@ -135,18 +135,16 @@ export const deletePaciente = async (req, res) => {
         res.render("paciente/buscar-paciente", { Pacientes: result.recordset, success_msg: req.flash('success_msg') });
 
     } catch (error) {
-        // console.log(error)
-        // res.redirect("/pacientes/");
         console.log(error)
 
         const pool = await getConnection()
-        const result = await pool.request().query("SELECT * FROM PACIENTE")
+        const result = await pool.request().query("SELECT * FROM viewPacientesActivos")
 
         // const message = "Hubo un error en la eliminacion del paciente, intentelo de nuevo en unos minutos"
         const message = "Hubo un error en la eliminacion del paciente, intentelo de nuevo mas tarde"
+        req.flash('error_msg', message);
 
         console.log(message)
-        req.flash('error_msg', message);
-        res.render("paciente/buscar-paciente", { Pacientes: result.recordset, success_msg: req.flash('error_msg') });
+        res.render("paciente/buscar-paciente", { Pacientes: result.recordset, error_msg: req.flash('error_msg') });
     }
 }
