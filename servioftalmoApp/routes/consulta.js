@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { createConsulta, deleteConsulta, getConsulta, getConsultas, newConsulta, updateConsulta } from "../controllers/consulta.controller.js"
+import { createConsulta, deleteConsulta, getConsulta, getConsultas, newConsulta } from "../controllers/consulta.controller.js"
 
 
 const router = Router({ mergeParams: true })
@@ -12,7 +12,7 @@ router.post("/new", createConsulta)
 
 router.get("/:id_consulta", getConsulta)
 
-router.put("/:id_consulta/", updateConsulta)
+//router.put("/:id_consulta/", updateConsulta)      //no forma parte de la logica del negocio
 
 router.delete("/:id_consulta", deleteConsulta)
 

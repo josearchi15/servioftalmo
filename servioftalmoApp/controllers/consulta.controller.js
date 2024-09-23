@@ -47,6 +47,7 @@ export const getConsulta = async (req, res) => {
 }
 
 export const createConsulta = async (req, res) => {
+
     try {
         // const bday = Date(req.body.fechaNacimiento)
         const pool = await getConnection()
@@ -97,13 +98,11 @@ export const createConsulta = async (req, res) => {
             ${K1_OjoDerecho},${k1_eje_OjoDerecho},${K2_OjoDerecho},${K2_eje_OjoDerecho},
             ${W_SPH_OjoDerecho},${W_CYL_OjoDerecho},${W_AXS_OjoDerecho},
             '${req.body.diagnostico}','${req.body.tratamiento}'`)
-        throw new Error("Error lanzado a proposito");
+        // throw new Error("Error lanzado a proposito");
 
 
 
         console.log("Consulta creada")
-        // res.redirect("/consulta/" + ConsultaId);
-        // res.redirect(`/pacientes/`);
         const Paciente = await pool.request().query(
             `SELECT * FROM viewPacientesActivos 
             WHERE CAST(Id_paciente AS varchar) LIKE '${req.query.PacienteIdDPI}%' 
@@ -119,10 +118,11 @@ export const createConsulta = async (req, res) => {
     }
 }
 
-export const updateConsulta = async (req, res) => {
-    console.log("consulta updated")
-    res.redirect("/")
-}
+//no habra edit en consulta
+// export const updateConsulta = async (req, res) => {
+//     console.log("consulta updated")
+//     res.redirect("/")
+// }
 
 export const deleteConsulta = async (req, res) => {
     try {

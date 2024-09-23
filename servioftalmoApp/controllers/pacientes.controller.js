@@ -2,17 +2,27 @@ import { getConnection } from "../database/connection.js"
 
 export const searchPaciente = async (req, res) => {
     try {
-        console.log(`SELECT * FROM searchPacienteByIdDPI('${req.query.PacienteIdDPI}')`)
         const pool = await getConnection()
         const result = await pool.request().query(
             `SELECT * FROM viewPacientesActivos 
             WHERE CAST(Id_paciente AS varchar) LIKE '${req.query.PacienteIdDPI}%' 
             OR CAST(DPI AS nvarchar) LIKE '${req.query.PacienteIdDPI}%'
             OR Nombres LIKE '${req.query.PacienteIdDPI}%'
-		OR Apellidos LIKE '${req.query.PacienteIdDPI}%'`)
+            OR Apellidos LIKE '${req.query.PacienteIdDPI}%'`)
+        console.log(`Result: ${result.recordset[0]}`)
+        if (!result.recordset[0]) {
+            throw new Error("No existen coincidencias");
+
+        }
         res.render('paciente/buscar-paciente', { Pacientes: result.recordset })
     } catch (error) {
         console.log(error)
+        const pool = await getConnection()
+        const result = await pool.request().query("SELECT * FROM viewPacientesActivos")
+
+        const message = "Paciente no encontrado"
+        req.flash('error_msg', message);
+        res.render("paciente/buscar-paciente", { Pacientes: result.recordset, error_msg: req.flash('error_msg') });
     }
 }
 
@@ -92,8 +102,8 @@ export const createPaciente = async (req, res) => {
         const result = await pool.request().query("SELECT * FROM viewPacientesActivos")
 
         const message = "Hubo un error en la creacion del paciente, intentelo de nuevo en unos minutos"
-        req.flash('success_msg', message);
-        res.render("paciente/buscar-paciente", { Pacientes: result.recordset, success_msg: req.flash('error_msg') });  //***********************************revisar el render por redirect */
+        req.flash('error_msg', message);
+        res.render("paciente/buscar-paciente", { Pacientes: result.recordset, error_msg: req.flash('error_msg') });  //***********************************revisar el render por redirect */
     }
 }
 
