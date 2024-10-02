@@ -1,0 +1,114 @@
+<%- include("../partials/header") %>
+
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h2>Receta para Anteojos</h2>
+            </div>
+            <div class="card-body">
+                <form id="recetaForm" action="/receta-anteojos/new" method="POST">
+                    <!-- Lejos Section -->
+                    <h4>Lejos</h4>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Esfera (SPH)</th>
+                                <th>Cilindro (CYL)</th>
+                                <th>Eje (AXIS)</th>
+                                <th>Prisma</th>
+                                <th>Base</th>
+                                <th>Color</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- OD (Right Eye) Lejos -->
+                            <tr>
+                                <td>OD</td>
+                                <td><input type="number" step="0.01" class="form-control" name="Od_esfera_lejos"
+                                        placeholder="Esfera OD Lejos"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="Od_cilindro_lejos"
+                                        placeholder="Cilindro OD Lejos"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="Od_eje_lejos"
+                                        placeholder="Eje OD Lejos"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="Od_prisma_lejos"
+                                        placeholder="Prisma OD Lejos"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="Od_base_lejos"
+                                        placeholder="Base OD Lejos"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="Od_color_lejos"
+                                        placeholder="Color OD Lejos"></td>
+                            </tr>
+                            <!-- OS (Left Eye) Lejos -->
+                            <tr>
+                                <td>OS</td>
+                                <td><input type="number" step="0.01" class="form-control" name="Os_esfera_lejos"
+                                        placeholder="Esfera OS Lejos"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="Os_cilindro_lejos"
+                                        placeholder="Cilindro OS Lejos"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="Os_eje_lejos"
+                                        placeholder="Eje OS Lejos"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="Os_prisma_lejos"
+                                        placeholder="Prisma OS Lejos"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="Os_base_lejos"
+                                        placeholder="Base OS Lejos"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="Os_color_lejos"
+                                        placeholder="Color OS Lejos"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Adición Section -->
+                    <h4>Adición</h4>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Esfera (SPH)</th>
+                                <th>Cilindro (CYL)</th>
+                                <th>Eje (AXIS)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- OD (Right Eye) Adición -->
+                            <tr>
+                                <td>OD</td>
+                                <td><input type="number" step="0.01" class="form-control" name="Od_esfera_adicion"
+                                        placeholder="Esfera OD Adición"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="Od_cilindro_adicion"
+                                        placeholder="Cilindro OD Adición"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="Od_eje_adicion"
+                                        placeholder="Eje OD Adición"></td>
+                            </tr>
+                            <!-- OS (Left Eye) Adición -->
+                            <tr>
+                                <td>OS</td>
+                                <td><input type="number" step="0.01" class="form-control" name="Os_esfera_adicion"
+                                        placeholder="Esfera OS Adición"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="Os_cilindro_adicion"
+                                        placeholder="Cilindro OS Adición"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="Os_eje_adicion"
+                                        placeholder="Eje OS Adición"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Estilo y Observaciones -->
+                    <div class="form-group">
+                        <label for="estilo">Estilo</label>
+                        <input type="text" class="form-control" name="estilo" placeholder="Estilo de los lentes">
+                    </div>
+                    <div class="form-group">
+                        <label for="observaciones">Observaciones</label>
+                        <textarea class="form-control" name="observaciones" rows="3"
+                            placeholder="Ingrese observaciones adicionales"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-block">Guardar Receta</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include("../partials/footer") %>

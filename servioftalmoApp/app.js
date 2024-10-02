@@ -4,6 +4,7 @@ import methodOverride from "method-override";
 import indexRoutes from "./routes/index.js"
 import pacientesRoutes from "./routes/pacientes.js"
 import consultaRoutes from "./routes/consulta.js"
+import recetaAnteojosRoute from "./routes/receta-anteojos.js"
 import cookieSession from "cookie-session";
 import flash from "connect-flash/lib/flash.js";
 
@@ -44,6 +45,8 @@ app.use((req, res, next) => {
 app.use("/", indexRoutes)
 app.use("/pacientes", pacientesRoutes)
 app.use("/pacientes/:id/consulta", consultaRoutes)
+app.use("/pacientes/:id/receta-anteojos", recetaAnteojosRoute)
+
 app.use(express.static(join(__dirname, 'public')));
 
 

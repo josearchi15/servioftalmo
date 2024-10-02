@@ -27,18 +27,20 @@
               <input type="date" class="form-control" name="fechaNacimiento" required>
             </div>
             <div class="form-group col">
-              <label for="dpi">DPI <span class="text-danger">*</span></label>
-              <input type="number" class="form-control" name="dpi" placeholder="Ingrese su DPI" required>
+              <label for="dpi">DPI </label>
+              <input type="text" class="form-control" name="dpi" placeholder="Ingrese su DPI" maxlength="13"
+                pattern="\d{13}" title="Debe ingresar dígitos">
             </div>
             <div class="form-group col">
-              <label for="No_Registro">No. Registro o Pasaporte<span class="text-danger">*</span> </label>
-              <input type="text" class="form-control" name="No_Registro" required>
+              <label for="No_Registro">No. Registro o Pasaporte</label>
+              <input type="text" class="form-control" name="No_Registro" maxlength="20"
+                title="Debe ingresar exactamente 13 dígitos">
             </div>
           </div>
           <div class="row">
             <div class="form-group col">
               <label for="telCel">Tel/Cel <span class="text-danger">*</span></label>
-              <input type="number" class="form-control" name="telCel" placeholder="Ingrese su teléfono o celular"
+              <input type="text" class="form-control" name="telCel" placeholder="Ingrese su teléfono o celular"
                 required>
             </div>
             <div class="form-group col">
@@ -144,8 +146,8 @@
               <label class="form-check-label" for="enfermedadesCardiacas">Enfermedades cardíacas</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="dolorDeCabeza" value="dolorDeCabeza">
-              <label class="form-check-label" for="dolorDeCabeza">Dolor de cabeza severo</label>
+              <input class="form-check-input" type="checkbox" name="doloresDeCabeza" value="doloresDeCabeza">
+              <label class="form-check-label" for="doloresDeCabeza">Dolor de cabeza severo</label>
             </div>
             <div class="form-check">
               <input class="form-check-input" type="checkbox" name="asma" value="asma">

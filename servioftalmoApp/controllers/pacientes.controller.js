@@ -62,6 +62,13 @@ export const getPaciente = async (req, res) => {
         console.log(fecha_front)
         console.log(`Prueba: ${typeof (objFecha)}`)
 
+        const historial_clinico = Paciente["Historial_clinico"]
+        const arrHC = historial_clinico.split(',')
+
+        console.log(arrHC)
+
+        console.log(Paciente)
+
         res.render('paciente/editar-paciente', { Paciente: Paciente, Fecha_Nacimiento: fecha_front })
 
     } catch (error) {
@@ -72,26 +79,26 @@ export const getPaciente = async (req, res) => {
 }
 
 export const createPaciente = async (req, res) => {
-    // const bday = Date(req.body.fechaNacimiento)
-
     try {
+        console.log(req.body)
         const pool = await getConnection()
-        const spCreatePaciente = await pool.request().query(
-            `EXEC spCreatePaciente '${req.body.nombres}','${req.body.apellidos}','${req.body.apellidoDeCasada}','${req.body.fechaNacimiento}','${req.body.No_Registro}',
-            '${req.body.dpi}','${req.body.telCel}','${req.body.email}','${req.body.profesion}','${req.body.direccion}','${req.body.emergencyContact1}','${req.body.emergencyContact1Tel}','${req.body.emergencyContact2}','${req.body.emergencyContact1Tel}',
-            '${req.body.diabetes} ${req.body.presionAltaBaja} ${req.body.enfermedadesCardiacas} ${req.body.doloresDeCabeza} ${req.body.asma} ${req.body.fracturas} ${req.body.convulsiones} ${req.body.problemasTorax}',
+        await pool.request().query(
+            `EXEC spCreatePaciente 
+            '${req.body.nombres}','${req.body.apellidos}','${req.body.apellidoDeCasada}',
+            '${req.body.fechaNacimiento}','${req.body.dpi}','${req.body.No_Registro}',
+            '${req.body.telCel}','${req.body.email}','${req.body.profesion}',
+            '${req.body.direccion}',
+            '${req.body.emergencyContact1}','${req.body.emergencyContact1Tel}',
+            '${req.body.emergencyContact2}','${req.body.emergencyContact1Tel}',
+            '${req.body.diabetes ? req.body.diabetes + ',' : ""} ${req.body.presionAltaBaja ? req.body.presionAltaBaja + ',' : ""} ${req.body.enfermedadesCardiacas ? req.body.enfermedadesCardiacas + ',' : ""} ${req.body.doloresDeCabeza ? req.body.doloresDeCabeza + ',' : ""} ${req.body.asma ? req.body.asma + ',' : ""} ${req.body.fracturas ? req.body.fracturas + ',' : ""} ${req.body.convulsiones ? req.body.convulsiones + ',' : ""} ${req.body.problemasTorax ? req.body.problemasTorax + ',' : ""}',
             '${req.body.especifique}','${req.body.otrosAntecedentes}'`)
-        const spCreateDatosFacturacion = await pool.request().query(`EXEC spCreateDatosFacturacion '${req.body.facturacionNombre}','${req.body.facturacionNit}','${req.body.facturacionDireccion}'`)
-        const spCreateDatosSeguro = await pool.request().query(`EXEC spCreateSeguroMedico '${req.body.seguroAfiliado}','${req.body.poliza}','${req.body.idAsegurado}','${req.body.noCarnet}'`)
+        await pool.request().query(`EXEC spCreateDatosFacturacion '${req.body.facturacionNombre}','${req.body.facturacionNit}','${req.body.facturacionDireccion}'`)
+        await pool.request().query(`EXEC spCreateSeguroMedico '${req.body.seguroAfiliado}','${req.body.poliza}','${req.body.idAsegurado}','${req.body.noCarnet}'`)
 
         const message = "Paciente creado exitosamente"
         req.flash('success_msg', message);
-        console.log("antes del error")
 
-        // const pool = await getConnection()
         const Pacientes = await pool.request().query("SELECT * FROM viewPacientesActivos")
-
-        // throw new Error("Error lanzado a proposito*****create");
 
         res.render("paciente/buscar-paciente", { Pacientes: Pacientes.recordset, success_msg: req.flash('success_msg') });
 
@@ -99,27 +106,32 @@ export const createPaciente = async (req, res) => {
         console.log(error)
 
         const pool = await getConnection()
-        const result = await pool.request().query("SELECT * FROM viewPacientesActivos")
-
+        const Pacientes = await pool.request().query("SELECT * FROM viewPacientesActivos")
         const message = "Hubo un error en la creacion del paciente, intentelo de nuevo en unos minutos"
+
         req.flash('error_msg', message);
-        res.render("paciente/buscar-paciente", { Pacientes: result.recordset, error_msg: req.flash('error_msg') });  //***********************************revisar el render por redirect */
+        res.render("paciente/buscar-paciente", { Pacientes: Pacientes.recordset, error_msg: req.flash('error_msg') });
     }
 }
 
 export const updatePaciente = async (req, res) => {
     try {
         const pool = await getConnection()
-        const updatePaciente = await pool.request().query(
-            `EXEC spUpdatePacienteById ${req.params.id},'${req.body.nombres}','${req.body.apellidos}','${req.body.apellidoDeCasada}','${req.body.fechaNacimiento}','${req.body.No_Registro}',
-            '${req.body.dpi}','${req.body.telCel}','${req.body.email}','${req.body.profesion}','${req.body.direccion}','${req.body.emergencyContact1}','${req.body.emergencyContact1Tel}','${req.body.emergencyContact2}','${req.body.emergencyContact1Tel}',
-            '${req.body.diabetes} ${req.body.presionAltaBaja} ${req.body.enfermedadesCardiacas} ${req.body.doloresDeCabeza} ${req.body.asma} ${req.body.fracturas} ${req.body.convulsiones} ${req.body.problemasTorax}',
+        await pool.request().query(
+            `EXEC spUpdatePacienteById ${req.params.id},
+            '${req.body.nombres}','${req.body.apellidos}','${req.body.apellidoDeCasada}',
+            '${req.body.fechaNacimiento}','${req.body.dpi}','${req.body.No_Registro}',
+            '${req.body.telCel}','${req.body.email}','${req.body.profesion}',
+            '${req.body.direccion}',
+            '${req.body.emergencyContact1}','${req.body.emergencyContact1Tel}',
+            '${req.body.emergencyContact2}','${req.body.emergencyContact1Tel}',
+            '${req.body.diabetes ? req.body.diabetes + ',' : ""} ${req.body.presionAltaBaja ? req.body.presionAltaBaja + ',' : ""} ${req.body.enfermedadesCardiacas ? req.body.enfermedadesCardiacas + ',' : ""} ${req.body.doloresDeCabeza ? req.body.doloresDeCabeza + ',' : ""} ${req.body.asma ? req.body.asma + ',' : ""} ${req.body.fracturas ? req.body.fracturas + ',' : ""} ${req.body.convulsiones ? req.body.convulsiones + ',' : ""} ${req.body.problemasTorax ? req.body.problemasTorax + ',' : ""}',
             '${req.body.especifique}','${req.body.otrosAntecedentes}'`)
 
-        const updateDatosFacturacion = await pool.request().query(
+        await pool.request().query(
             `EXEC spUpdateDatosFacturacionByPacienteId ${req.params.id},'${req.body.facturacionNombre}','${req.body.facturacionNit}','${req.body.facturacionDireccion}'`)
 
-        const udpateSeguroMedico = await pool.request().query(
+        await pool.request().query(
             `EXEC spUpdateSeguroMedicoByPacienteID ${req.params.id},'${req.body.seguroAfiliado}','${req.body.poliza}','${req.body.idAsegurado}','${req.body.noCarnet}'`)
 
         res.redirect("/pacientes/");

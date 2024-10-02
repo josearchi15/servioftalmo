@@ -1,40 +1,37 @@
 import { getConnection } from "../database/connection.js"
 
-export const getConsultas = async (req, res) => {
+export const getRecetasAnteojos = async (req, res) => {
     try {
-        console.log('Obtener todas las Consultas')
-        const pool = await getConnection()
-        const result = await pool.request().query(`SELECT * FROM getConsultasByPacienteId(${req.params.id})`)
-        const Consultas = result.recordset
-        console.log(Consultas.length)
+        console.log('Obtener todas las Recetas de anteojos')
+        // const pool = await getConnection()
+        // const result = await pool.request().query(`SELECT * FROM getConsultasByPacienteId(${req.params.id})`)
+        // const Consultas = result.recordset
+        // console.log(Consultas.length)
 
-        const message = Consultas.length == 0 ? "No existen consultas para este paciente" : "Consultas mostradas exitosamente"
-        req.flash('success_msg', message);
+        // const message = Consultas.length == 0 ? "No existen consultas para este paciente" : "Consultas mostradas exitosamente"
+        // req.flash('success_msg', message);
 
 
-        res.render('consulta/buscar-consulta', { PacienteId: req.params.id, Consultas: Consultas, success_msg: req.flash('success_msg') })
+        res.render('receta-anteojos/receta-anteojos')
 
     } catch (error) {
 
         req.flash('error_msg', 'No se pudieron mostrar las consultas');
-        res.render('paciente/buscar-paciente', { PacienteId: req.params.id, error_msg: req.flash('error_msg') })
+        res.render('paciente/buscar-paciente', { PacienteId: req.params.id, success_msg: req.flash('error_msg') })
         // res.redirect(`/pacientes/`)
     }
 
 }
 
-export const newConsulta = async (req, res) => {
+export const newRecetaAnteojos = async (req, res) => {
     try {
-        const pool = await getConnection()
-        const result = await pool.request().query(`SELECT * FROM GetPacienteByID(${req.params.id})`)
-        const paciente = result.recordset[0]
-        res.render('consulta/formulario-consulta', { Paciente: paciente })
+        res.render('receta-anteojos/receta-anteojos')
     } catch (error) {
         res.redirect(`/pacientes/`)
     }
 }
 
-export const getConsulta = async (req, res) => {
+export const getRecetaAnteojos = async (req, res) => {
     try {
         const pool = await getConnection()
         const result = await pool.request().query(`SELECT * FROM getConsultaByPacienteIdConsultaId(${req.params.id}, ${req.params.id_consulta})`)
@@ -46,13 +43,12 @@ export const getConsulta = async (req, res) => {
     }
 }
 
-export const createConsulta = async (req, res) => {
+export const createRecetaAnteojos = async (req, res) => {
 
     try {
         // const bday = Date(req.body.fechaNacimiento)
         const pool = await getConnection()
-        // const spCreateConsulta = await pool.request().query(`EXEC spCreateConsulta ${req.params.id},'${req.body.diagnostico}'`)
-        await pool.request().query(`EXEC spCreateConsulta ${req.params.id},'${req.body.diagnostico}'`)
+        const spCreateConsulta = await pool.request().query(`EXEC spCreateConsulta ${req.params.id},'${req.body.diagnostico}'`)
         const consulta = await pool.request().query(`SELECT TOP 1 Id_consulta FROM CONSULTA WHERE Id_paciente = ${req.params.id} ORDER BY Id_consulta DESC`)
         const idConsulta = consulta.recordset[0].Id_consulta
         console.log('******************', consulta.recordset[0], idConsulta)
@@ -113,13 +109,9 @@ export const createConsulta = async (req, res) => {
     } catch (error) {
         console.log(error)
         console.log("Consulta no creada")
+        // res.redirect(`/pacientes/`);
 
-        req.flash('error_msg', 'Hubo un error en la crecion de la consulta');
-
-        const pool = await getConnection()
-        const result = await pool.request().query("SELECT * FROM viewPacientesActivos")
-
-        res.render('paciente/buscar-paciente', { Pacientes: result.recordset, error_msg: req.flash('error_msg') })
+        res.render('paciente/buscar-paciente', { Pacientes: Paciente.recordset })
     }
 }
 
@@ -128,7 +120,7 @@ export const createConsulta = async (req, res) => {
 //     res.redirect("/")
 // }
 
-export const deleteConsulta = async (req, res) => {
+export const deleteRecetaAnteojos = async (req, res) => {
     try {
         const pool = await getConnection()
         const result = await pool.request().query(`EXEC spDeleteConsulta ${req.params.id}, ${req.params.id_consulta}`)
