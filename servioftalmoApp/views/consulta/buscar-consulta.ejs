@@ -2,20 +2,18 @@
   <div class="container">
 
 
-    <div class="search-form">
-      <h2 class="text-center">Buscar Consulta</h2>
-      <form id="searchForm">
-        <div class="form-group">
-          <label for="searchParameter">Id Consulta / DPI</label>
-          <input type="number" class="form-control" id="searchId" placeholder="Ingrese Id Consulta o DPI" required>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Buscar</button>
-      </form>
-    </div>
-
     <!-- Tabla para Listar Consultas -->
     <div id="listContainer" class="mt-5">
-      <h2>Lista de Consultas</h2>
+      <div class="d-flex justify-content-between">
+        <div>
+          <h2>Lista de Consultas</h2>
+        </div>
+        <div><a href="/pacientes/<%= PacienteId %>/consulta/new" class="btn btn-primary " title="Nueva consulta">
+            <!-- <i class="bi bi-file-earmark-plus-fill"></i> -->
+            Nueva consulta
+          </a></div>
+      </div>
+
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -42,7 +40,7 @@
                 <td>
                   <a href="/pacientes/<%= PacienteId %>/consulta/<%= consulta.Id_consulta %>" class="btn btn-secondary"
                     title="Consultas">
-                    <i class="bi bi-pencil-square"></i></a>
+                    <i class="bi bi-search"></i></a>
                   <form class="delete-form d-inline-block"
                     action="/pacientes/<%= PacienteId %>/consulta/<%= consulta.Id_consulta %>?_method=DELETE"
                     method="POST">

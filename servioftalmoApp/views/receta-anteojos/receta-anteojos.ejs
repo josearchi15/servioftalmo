@@ -25,33 +25,33 @@
                             <!-- OD (Right Eye) Lejos -->
                             <tr>
                                 <td>OD</td>
-                                <td><input type="number" step="0.01" class="form-control" name="Od_esfera_lejos"
+                                <td><input type="number" step="0.25" class="form-control" name="Od_esfera_lejos"
                                         placeholder="Esfera OD Lejos"></td>
-                                <td><input type="number" step="0.01" class="form-control" name="Od_cilindro_lejos"
+                                <td><input type="number" step="0.25" class="form-control" name="Od_cilindro_lejos"
                                         placeholder="Cilindro OD Lejos"></td>
-                                <td><input type="number" step="0.01" class="form-control" name="Od_eje_lejos"
+                                <td><input type="number" step="0.25" class="form-control" name="Od_eje_lejos"
                                         placeholder="Eje OD Lejos"></td>
-                                <td><input type="number" step="0.01" class="form-control" name="Od_prisma_lejos"
+                                <td><input type="number" step="0.25" class="form-control" name="Od_prisma_lejos"
                                         placeholder="Prisma OD Lejos"></td>
-                                <td><input type="number" step="0.01" class="form-control" name="Od_base_lejos"
+                                <td><input type="number" step="0.25" class="form-control" name="Od_base_lejos"
                                         placeholder="Base OD Lejos"></td>
-                                <td><input type="number" step="0.01" class="form-control" name="Od_color_lejos"
+                                <td><input type="number" step="0.25" class="form-control" name="Od_color_lejos"
                                         placeholder="Color OD Lejos"></td>
                             </tr>
                             <!-- OS (Left Eye) Lejos -->
                             <tr>
                                 <td>OS</td>
-                                <td><input type="number" step="0.01" class="form-control" name="Os_esfera_lejos"
+                                <td><input type="number" step="0.25" class="form-control" name="Os_esfera_lejos"
                                         placeholder="Esfera OS Lejos"></td>
-                                <td><input type="number" step="0.01" class="form-control" name="Os_cilindro_lejos"
+                                <td><input type="number" step="0.25" class="form-control" name="Os_cilindro_lejos"
                                         placeholder="Cilindro OS Lejos"></td>
-                                <td><input type="number" step="0.01" class="form-control" name="Os_eje_lejos"
+                                <td><input type="number" step="0.25" class="form-control" name="Os_eje_lejos"
                                         placeholder="Eje OS Lejos"></td>
-                                <td><input type="number" step="0.01" class="form-control" name="Os_prisma_lejos"
+                                <td><input type="number" step="0.25" class="form-control" name="Os_prisma_lejos"
                                         placeholder="Prisma OS Lejos"></td>
-                                <td><input type="number" step="0.01" class="form-control" name="Os_base_lejos"
+                                <td><input type="number" step="0.25" class="form-control" name="Os_base_lejos"
                                         placeholder="Base OS Lejos"></td>
-                                <td><input type="number" step="0.01" class="form-control" name="Os_color_lejos"
+                                <td><input type="number" step="0.25" class="form-control" name="Os_color_lejos"
                                         placeholder="Color OS Lejos"></td>
                             </tr>
                         </tbody>
@@ -72,31 +72,87 @@
                             <!-- OD (Right Eye) Adición -->
                             <tr>
                                 <td>OD</td>
-                                <td><input type="number" step="0.01" class="form-control" name="Od_esfera_adicion"
+                                <td><input type="number" step="0.25" class="form-control" name="Od_esfera_adicion"
                                         placeholder="Esfera OD Adición"></td>
-                                <td><input type="number" step="0.01" class="form-control" name="Od_cilindro_adicion"
+                                <td><input type="number" step="0.25" class="form-control" name="Od_cilindro_adicion"
                                         placeholder="Cilindro OD Adición"></td>
-                                <td><input type="number" step="0.01" class="form-control" name="Od_eje_adicion"
+                                <td><input type="number" step="0.25" class="form-control" name="Od_eje_adicion"
                                         placeholder="Eje OD Adición"></td>
                             </tr>
                             <!-- OS (Left Eye) Adición -->
                             <tr>
                                 <td>OS</td>
-                                <td><input type="number" step="0.01" class="form-control" name="Os_esfera_adicion"
+                                <td><input type="number" step="0.25" class="form-control" name="Os_esfera_adicion"
                                         placeholder="Esfera OS Adición"></td>
-                                <td><input type="number" step="0.01" class="form-control" name="Os_cilindro_adicion"
+                                <td><input type="number" step="0.25" class="form-control" name="Os_cilindro_adicion"
                                         placeholder="Cilindro OS Adición"></td>
-                                <td><input type="number" step="0.01" class="form-control" name="Os_eje_adicion"
+                                <td><input type="number" step="0.25" class="form-control" name="Os_eje_adicion"
                                         placeholder="Eje OS Adición"></td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <!-- Estilo y Observaciones -->
                     <div class="form-group">
-                        <label for="estilo">Estilo</label>
-                        <input type="text" class="form-control" name="estilo" placeholder="Estilo de los lentes">
+                        <label for="estilo">D.I.P. (mm)</label>
+                        <input type="text" class="form-control" name="dip" placeholder="Distancia interpupilar">
                     </div>
+                    <!-- Estilo y Observaciones -->
+                    <label>Estilo:</label>
+                    <div class="form-group row">
+                        <div class="form-group col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Visión Simple"
+                                    value="Visión Simple">
+                                <label class="form-check-label" for="Visión Simple">Visión simple</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Bifocal" value="Bifocal">
+                                <label class="form-check-label" for="Bifocal">Bifocal</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Multifocal" value="Multifocal">
+                                <label class="form-check-label" for="Multifocal">Multifocal</label>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Antireflejante"
+                                    value="Antireflejante">
+                                <label class="form-check-label" for="Antireflejante">Antireflejante</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Blue Screen" value="Blue Screen">
+                                <label class="form-check-label" for="Blue Screen">Blue Screen</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Plástico" value="Plástico">
+                                <label class="form-check-label" for="Plástico">Plástico</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Policarbonato"
+                                    value="Policarbonato">
+                                <label class="form-check-label" for="Policarbonato">Policarbonato</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Polarizado" value="Polarizado">
+                                <label class="form-check-label" for="Polarizado">Polarizado</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Solo cerca" value="Solo cerca">
+                                <label class="form-check-label" for="Solo cerca">Solo cerca</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Dos pares" value="Dos pares">
+                                <label class="form-check-label" for="Dos pares">Dos pares</label>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="observaciones">Observaciones</label>
                         <textarea class="form-control" name="observaciones" rows="3"

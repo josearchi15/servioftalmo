@@ -8,7 +8,10 @@ export const getConsultas = async (req, res) => {
         const Consultas = result.recordset
         console.log(Consultas.length)
 
-        const message = Consultas.length == 0 ? "No existen consultas para este paciente" : "Consultas mostradas exitosamente"
+        const success_msg = req.flash('success_msg')
+        console.log(`Mensaje antes de ser seteado success: ${success_msg}  `)
+
+        const message = Consultas.length == 0 ? "No existen consultas para este paciente" : ""
         req.flash('success_msg', message);
 
 
@@ -17,8 +20,7 @@ export const getConsultas = async (req, res) => {
     } catch (error) {
 
         req.flash('error_msg', 'No se pudieron mostrar las consultas');
-        res.render('paciente/buscar-paciente', { PacienteId: req.params.id, error_msg: req.flash('error_msg') })
-        // res.redirect(`/pacientes/`)
+        res.redirect(`/pacientes/`)
     }
 
 }
@@ -51,8 +53,7 @@ export const createConsulta = async (req, res) => {
     try {
         // const bday = Date(req.body.fechaNacimiento)
         const pool = await getConnection()
-        // const spCreateConsulta = await pool.request().query(`EXEC spCreateConsulta ${req.params.id},'${req.body.diagnostico}'`)
-        await pool.request().query(`EXEC spCreateConsulta ${req.params.id},'${req.body.diagnostico}'`)
+        await pool.request().query(`EXEC spCreateConsulta ${req.params.id},'${req.body.diagnostico}','${req.body.fechaConsulta}'`)
         const consulta = await pool.request().query(`SELECT TOP 1 Id_consulta FROM CONSULTA WHERE Id_paciente = ${req.params.id} ORDER BY Id_consulta DESC`)
         const idConsulta = consulta.recordset[0].Id_consulta
         console.log('******************', consulta.recordset[0], idConsulta)
@@ -104,11 +105,10 @@ export const createConsulta = async (req, res) => {
 
 
         console.log("Consulta creada")
-        const Paciente = await pool.request().query(
-            `SELECT * FROM viewPacientesActivos 
-            WHERE CAST(Id_paciente AS varchar) LIKE '${req.query.PacienteIdDPI}%' 
-            OR CAST(DPI AS nvarchar) LIKE '${req.query.PacienteIdDPI}%'`)
-        res.render('paciente/buscar-paciente', { Pacientes: Paciente.recordset })
+        const Consultas = await pool.request().query(`SELECT * FROM getConsultasByPacienteId(${req.params.id})`)
+        req.flash('success_msg', 'Consulta creada con exito!')
+
+        res.render('consulta/buscar-consulta', { Consultas: Consultas.recordset, PacienteId: req.params.id, success_msg: req.flash('success_msg') })
 
     } catch (error) {
         console.log(error)
@@ -131,13 +131,14 @@ export const createConsulta = async (req, res) => {
 export const deleteConsulta = async (req, res) => {
     try {
         const pool = await getConnection()
-        const result = await pool.request().query(`EXEC spDeleteConsulta ${req.params.id}, ${req.params.id_consulta}`)
+        await pool.request().query(`EXEC spDeleteConsulta ${req.params.id}, ${req.params.id_consulta}`)
         console.log("Consulta deleted")
-        console.log(result.recordset)
+        req.flash('success_msg', 'Consulta eliminada con exito!')
         res.redirect(`/pacientes/${req.params.id}/consulta`);
 
     } catch (error) {
         console.log(error)
+        req.flash('error_msg', 'La consulta no se pudo eliminar, intente de nuevo')
         res.redirect(`/pacientes/${req.params.id}/consulta`);
     }
 }

@@ -232,18 +232,34 @@
           </div>
         </div>
 
+        <!-- Observaciones ojos -->
+        <div class="form-group">
+          <div class="section-title">
+            <h4>Observaciones</h4>
+          </div>
+          <div class="row">
+            <!-- Ojo derecho -->
+            <div class="col">
+              <textarea name="ObservacionOjoDerecho" class="form-control" placeholder="Ojo Derecho"></textarea>
+            </div>
+            <!-- Ojo Izquierdo -->
+            <div class="col">
+              <textarea name="ObservacionOjoIzquierdo" class="form-control" placeholder="Ojo Izquierdo"></textarea>
+            </div>
+          </div>
+        </div>
 
 
         <!-- Diagnostico y Tratamiento -->
         <div class="form-group">
           <label for="diagnostico">Diagnóstico</label>
           <textarea name="diagnostico" class="form-control"
-            placeholder="Diagnóstico del examen"><%= Consulta.diagnostico %>"</textarea>
+            placeholder="Diagnóstico del examen"><%= Consulta.Diagnostico %>"</textarea>
         </div>
         <div class="form-group">
           <label for="tratamiento">Tratamiento</label>
           <textarea name="tratamiento" class="form-control"
-            placeholder="Tratamiento sugerido"><%= Consulta.tratamiento %>"</textarea>
+            placeholder="Tratamiento sugerido"><%= Consulta.Tratamiento %>"</textarea>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Enviar</button>
     </div>

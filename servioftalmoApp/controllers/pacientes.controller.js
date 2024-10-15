@@ -1,4 +1,5 @@
 import { getConnection } from "../database/connection.js"
+import { fnEnfermedades } from "../public/js/utils.js"
 
 export const searchPaciente = async (req, res) => {
     try {
@@ -62,14 +63,13 @@ export const getPaciente = async (req, res) => {
         console.log(fecha_front)
         console.log(`Prueba: ${typeof (objFecha)}`)
 
-        const historial_clinico = Paciente["Historial_clinico"]
-        const arrHC = historial_clinico.split(',')
-
-        console.log(arrHC)
+        // console.log(fnEnfermedades(Paciente["Historial_clinico"]))
+        const enfermedades = fnEnfermedades(Paciente["Historial_clinico"])
+        // console.log(`------- ${enfermedades.Diabetes}`)
 
         console.log(Paciente)
 
-        res.render('paciente/editar-paciente', { Paciente: Paciente, Fecha_Nacimiento: fecha_front })
+        res.render('paciente/editar-paciente', { Paciente: Paciente, Fecha_Nacimiento: fecha_front, Enfermedades: enfermedades })
 
     } catch (error) {
         console.log(error)
@@ -126,7 +126,7 @@ export const updatePaciente = async (req, res) => {
             '${req.body.emergencyContact1}','${req.body.emergencyContact1Tel}',
             '${req.body.emergencyContact2}','${req.body.emergencyContact1Tel}',
             '${req.body.diabetes ? req.body.diabetes + ',' : ""} ${req.body.presionAltaBaja ? req.body.presionAltaBaja + ',' : ""} ${req.body.enfermedadesCardiacas ? req.body.enfermedadesCardiacas + ',' : ""} ${req.body.doloresDeCabeza ? req.body.doloresDeCabeza + ',' : ""} ${req.body.asma ? req.body.asma + ',' : ""} ${req.body.fracturas ? req.body.fracturas + ',' : ""} ${req.body.convulsiones ? req.body.convulsiones + ',' : ""} ${req.body.problemasTorax ? req.body.problemasTorax + ',' : ""}',
-            '${req.body.especifique}','${req.body.otrosAntecedentes}'`)
+            '${req.body.especificar}','${req.body.antecedentesImportantes}'`)
 
         await pool.request().query(
             `EXEC spUpdateDatosFacturacionByPacienteId ${req.params.id},'${req.body.facturacionNombre}','${req.body.facturacionNit}','${req.body.facturacionDireccion}'`)
@@ -134,6 +134,9 @@ export const updatePaciente = async (req, res) => {
         await pool.request().query(
             `EXEC spUpdateSeguroMedicoByPacienteID ${req.params.id},'${req.body.seguroAfiliado}','${req.body.poliza}','${req.body.idAsegurado}','${req.body.noCarnet}'`)
 
+        const message = `El paciente con id: ${req.params.id} ha sido actualizado.`
+        console.log(req.body)
+        req.flash('success_msg', message)
         res.redirect("/pacientes/");
 
     } catch (error) {
