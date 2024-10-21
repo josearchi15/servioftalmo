@@ -33,7 +33,7 @@
 
             <div class="form-group">
               <label for="fechaConsulta">Fecha consulta</label>
-              <input class="form-control" name="fechaConsulta" type="date"></input>
+              <input class="form-control" name="fechaConsulta" id="fechaConsulta" type="date"></input>
             </div>
 
             <!-- Historia Clinica -->
@@ -259,5 +259,10 @@
   </div>
   </div>
 
-  <!-- <script src="/js/formulario-paciente.js"></script> -->
+
+  <script>
+    // Get today's date in the format "YYYY-MM-DD"
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('fechaConsulta').value = today;
+  </script>
   <%- include("../partials/footer") %>

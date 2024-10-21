@@ -58,3 +58,12 @@
 body {
   padding-top: 70px;
 }
+
+
+
+.footer {
+  display: flex;
+  align-self: flex-end;
+  margin-top: 100%;
+  flex-shrink: 0;
+}

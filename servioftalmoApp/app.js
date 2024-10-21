@@ -5,6 +5,7 @@ import indexRoutes from "./routes/index.js"
 import pacientesRoutes from "./routes/pacientes.js"
 import consultaRoutes from "./routes/consulta.js"
 import recetaAnteojosRoute from "./routes/receta-anteojos.js"
+import uploadRoutes from "./routes/uploads.js"
 import cookieSession from "cookie-session";
 import flash from "connect-flash/lib/flash.js";
 
@@ -15,6 +16,7 @@ import { fileURLToPath } from 'node:url';
 
 // Global variables
 const __dirname = dirname(fileURLToPath(import.meta.url));
+console.log(__dirname)
 
 const app = express();
 
@@ -47,6 +49,7 @@ app.use("/", indexRoutes)
 app.use("/pacientes", pacientesRoutes)
 app.use("/pacientes/:id/consulta", consultaRoutes)
 app.use("/pacientes/:id/receta-anteojos", recetaAnteojosRoute)
+app.use("/pacientes/:id/files", uploadRoutes)
 
 app.use(express.static(join(__dirname, 'public')));
 

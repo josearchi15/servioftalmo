@@ -1,3 +1,15 @@
+// utils/pathHelper.mjs
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+
+
+// Create a function to get __dirname for a module
+export function getDirname(meta) {
+    const __filename = fileURLToPath(meta.url);
+    return dirname(__filename);
+}
+
 export const fnEnfermedades = (strEnfermedades) => {
     let arrHC = strEnfermedades.split(',')
     arrHC = arrHC.map(item => item.trimStart().trimEnd())
