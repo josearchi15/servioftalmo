@@ -1,19 +1,17 @@
 import { Router } from "express"
-import { getRecetasAnteojos, newRecetaAnteojos, createRecetaAnteojos, getRecetaAnteojos, deleteRecetaAnteojos } from "../controllers/receta-anteojos.controlletr.js"
+import { getRecetasAnteojos, newRecetaAnteojos, createRecetaAnteojos, getRecetaAnteojos, deleteRecetaAnteojos } from "../controllers/receta-anteojos.controller.js"
 
 
 const router = Router({ mergeParams: true }) //hereda los params de la ruta
 
-router.get("/", getRecetasAnteojos) //CONSULTAS DEL PACIENTE
-
-router.get("/new", newRecetaAnteojos)
+router.get("/new", newRecetaAnteojos) //nueva receta
 
 router.post("/new", createRecetaAnteojos)
 
-router.get("/:id_consulta", getRecetaAnteojos)
+// router.get("/", newRecetaAnteojos)
 
-//router.put("/:id_consulta/", updateConsulta)      //no forma parte de la logica del negocio
+router.get("/:id_receta", getRecetaAnteojos)
 
-router.delete("/:id_consulta", deleteRecetaAnteojos)
+router.delete("/:id_receta", deleteRecetaAnteojos)
 
 export default router

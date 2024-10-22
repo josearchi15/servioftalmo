@@ -10,7 +10,7 @@ export const searchPaciente = async (req, res) => {
             OR CAST(DPI AS nvarchar) LIKE '${req.query.PacienteIdDPI}%'
             OR Nombres LIKE '${req.query.PacienteIdDPI}%'
             OR Apellidos LIKE '${req.query.PacienteIdDPI}%'`)
-        console.log(`Result: ${result.recordset[0]}`)
+        // console.log(`Result: ${result.recordset[0]}`)
         if (!result.recordset[0]) {
             throw new Error("No existen coincidencias");
 
@@ -47,7 +47,9 @@ export const getPacientes = async (req, res) => {
 
     } catch (error) {
         console.log(error)
-        res.redirect('/pacientes/')
+        const message = "Hubo un error intente de nuevo"
+        req.flash('error_msg', message);
+        res.redirect('/')
     }
 }
 

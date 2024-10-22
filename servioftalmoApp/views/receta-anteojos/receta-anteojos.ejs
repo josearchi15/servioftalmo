@@ -6,7 +6,13 @@
                 <h2>Receta para Anteojos</h2>
             </div>
             <div class="card-body">
-                <form id="recetaForm" action="/receta-anteojos/new" method="POST">
+                <form id="recetaForm" action="/pacientes/<%= Paciente.Id_paciente %>/receta-anteojos/new" method="POST">
+
+                    <div class="form-group">
+                        <label for="fechaReceta">Fecha receta</label>
+                        <input class="form-control" name="fechaReceta" id="fechaReceta" type="date"></input>
+                    </div>
+
                     <!-- Lejos Section -->
                     <h4>Lejos</h4>
                     <table class="table table-bordered">
@@ -93,7 +99,7 @@
                     </table>
 
                     <div class="form-group">
-                        <label for="estilo">D.I.P. (mm)</label>
+                        <label for="dip">D.I.P. (mm)</label>
                         <input type="text" class="form-control" name="dip" placeholder="Distancia interpupilar">
                     </div>
                     <!-- Estilo y Observaciones -->
@@ -166,5 +172,9 @@
         </div>
     </div>
 
-
+    <script>
+        // Get today's date in the format "YYYY-MM-DD"
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('fechaReceta').value = today;
+    </script>
     <%- include("../partials/footer") %>

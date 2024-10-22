@@ -4,7 +4,7 @@ const dbSettings = {
     user: "sa",
     password: "jcagdb95",
     server: "localhost",
-    database: "SERVIOFTALMO_DRAFT5",
+    database: "SERVIOFTALMO_DRAFT6",
     options: {
         encrypt: false,
         trustServerCertificate: true

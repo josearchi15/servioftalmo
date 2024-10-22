@@ -1,7 +1,3 @@
-// const path = require('path');
-
-
-
 import { exec } from 'child_process'
 import fs from 'fs'
 import { join } from 'path';
@@ -32,8 +28,8 @@ export const openFolder = async (req, res) => {
             }
 
             console.log('Patient folder created at:', folderPath);
-            req.flash('success_msg', 'Paciente creado exitosamente.');
-            res.redirect(`/pacientes/${pacienteId}`);
+            // req.flash('success_msg', 'Paciente creado exitosamente.');
+            // res.redirect(`/pacientes/${pacienteId}`);
         });
     }
 
@@ -57,11 +53,11 @@ export const openFolder = async (req, res) => {
         if (err) {
             console.error('Error opening folder:', err);
             req.flash('error_msg', 'No se pudo abrir la carpeta del paciente.');
-            return res.redirect(`/pacientes/${pacienteId}`);
+            return res.redirect(`/pacientes/`);
         }
 
         req.flash('success_msg', 'Carpeta del paciente abierta exitosamente.');
-        res.redirect(`/pacientes/${pacienteId}`);
+        res.redirect(`/pacientes/`);
     });
 };
 

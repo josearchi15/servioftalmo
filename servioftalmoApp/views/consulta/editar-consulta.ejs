@@ -51,46 +51,46 @@
 
         <!-- Ojos Izquierdo y derecho -->
         <div class="row">
+          <!-- Ojo Derecho -->
+          <div class="col border-left border-info rounded">
+            <h3>Ojo Derecho</h3>
+            <div class="form-group">
+              <label for="agudezaVisualScOjoDerecho">Agudeza Visual SC</label>
+              <input type="text" class="form-control" name="Agudeza_sc_OjoDerecho" placeholder="Sin Corrección"
+                value="<%= Consulta.Agudeza_sc_OjoDerecho %>">
+            </div>
+            <div class="form-group">
+              <label for="agudezaVisualOcOjoDerecho">Agudeza Visual CC</label>
+              <input type="text" class="form-control" name="Agudeza_cc_OjoDerecho" placeholder="Con Corrección"
+                value="<%= Consulta.Agudeza_cc_OjoDerecho %>">
+            </div>
+            <div class="form-group">
+              <label for="tensionOcularOjoDerecho">Tensión Ocular</label>
+              <input type="number" step="0.25" class="form-control" name="TensionOcular_OjoDerecho" min="0.00"
+                max="999.99" placeholder="Medida en mmHg" value="<%= Consulta.TensionOcular_OjoDerecho %>">
+            </div>
+
+          </div>
+
           <!-- Ojo Izquierdo -->
           <div class="col border-left border-primary rounded">
 
             <h3>Ojo Izquierdo</h3>
             <div class="form-group">
               <label for="agudezaVisualScOjoIzquierdo">Agudeza Visual SC</label>
-              <input type="number" step="0.01" class="form-control" name="Agudeza_sc_OjoIzquierdo" min="0.00"
-                max="999.99" placeholder="Sin Corrección" value="<%= Consulta.Agudeza_sc_OjoIzquierdo %>">
+              <input type="text" class="form-control" name="Agudeza_sc_OjoIzquierdo" placeholder="Sin Corrección"
+                value="<%= Consulta.Agudeza_sc_OjoIzquierdo %>">
             </div>
             <div class="form-group">
               <label for="agudezaVisualOcOjoIzquierdo">Agudeza Visual CC</label>
-              <input type="number" step="0.01" class="form-control" name="Agudeza_cc_OjoIzquierdo" min="0.00"
-                max="999.99" placeholder="Con Corrección" value="<%= Consulta.Agudeza_cc_OjoIzquierdo %>">
+              <input type="text" class="form-control" name="Agudeza_cc_OjoIzquierdo" placeholder="Con Corrección"
+                value="<%= Consulta.Agudeza_cc_OjoIzquierdo %>">
             </div>
             <div class="form-group">
               <label for="tensionOcularOjoIzquierdo">Tensión Ocular</label>
-              <input type="number" step="0.01" class="form-control" name="TensionOcular_OjoIzquierdo" min="0.00"
+              <input type="number" step="0.25" class="form-control" name="TensionOcular_OjoIzquierdo" min="0.00"
                 max="999.99" placeholder="Medida en mmHg" value="<%= Consulta.TensionOcular_OjoIzquierdo %>">
             </div>
-          </div>
-
-          <!-- Ojo Derecho -->
-          <div class="col border-left border-info rounded">
-            <h3>Ojo Derecho</h3>
-            <div class="form-group">
-              <label for="agudezaVisualScOjoDerecho">Agudeza Visual SC</label>
-              <input type="number" step="0.01" class="form-control" name="Agudeza_sc_OjoDerecho" min="0.00" max="999.99"
-                placeholder="Sin Corrección" value="<%= Consulta.Agudeza_sc_OjoDerecho %>">
-            </div>
-            <div class="form-group">
-              <label for="agudezaVisualOcOjoDerecho">Agudeza Visual CC</label>
-              <input type="number" step="0.01" class="form-control" name="Agudeza_cc_OjoDerecho" min="0.00" max="999.99"
-                placeholder="Con Corrección" value="<%= Consulta.Agudeza_cc_OjoDerecho %>">
-            </div>
-            <div class="form-group">
-              <label for="tensionOcularOjoDerecho">Tensión Ocular</label>
-              <input type="number" step="0.01" class="form-control" name="TensionOcular_OjoDerecho" min="0.00"
-                max="999.99" placeholder="Medida en mmHg" value="<%= Consulta.TensionOcular_OjoDerecho %>">
-            </div>
-
           </div>
         </div>
 
@@ -103,32 +103,32 @@
         <div class="row">
           <div class="form-group col border-left border-primary rounded">
             <label for="mSph">SPH</label>
-            <input type="number" step="0.01" class="form-control" name="M_SPH_OjoIzquierdo" placeholder="Esfera"
-              min="0.00" max="999.99" value="<%= Consulta.M_SPH_OjoIzquierdo %>">
+            <input type="number" step="0.25" class="form-control" name="M_SPH_OjoIzquierdo" placeholder="Esfera"
+              value="<%= Consulta.M_SPH_OjoIzquierdo %>">
           </div>
           <div class="form-group col">
             <label for="mCyl">CYL</label>
-            <input type="number" step="0.01" class="form-control" name="M_CYS_OjoIzquierdo" placeholder="Cilindro"
-              min="0.00" max="999.99" value="<%= Consulta.M_CYS_OjoIzquierdo %>">
+            <input type="number" step="0.25" class="form-control" name="M_CYS_OjoIzquierdo" placeholder="Cilindro"
+              value="<%= Consulta.M_CYS_OjoIzquierdo %>">
           </div>
           <div class="form-group col">
             <label for="mAxs">AXS</label>
-            <input type="number" step="0.01" class="form-control" name="M_AXS_OjoIzquierdo" placeholder="Eje" min="0.00"
+            <input type="number" step="0.25" class="form-control" name="M_AXS_OjoIzquierdo" placeholder="Eje" min="0.00"
               max="999.99" value="<%= Consulta.M_AXS_OjoIzquierdo %>">
           </div>
           <div class="form-group col border-left border-info rounded">
             <label for="mSph">SPH</label>
-            <input type="number" step="0.01" class="form-control" name="M_SPH_OjoDerecho" placeholder="Esfera"
-              min="0.00" max="999.99" value="<%= Consulta.M_SPH_OjoDerecho %>">
+            <input type="number" step="0.25" class="form-control" name="M_SPH_OjoDerecho" placeholder="Esfera"
+              value="<%= Consulta.M_SPH_OjoDerecho %>">
           </div>
           <div class="form-group col">
             <label for="mCyl">CYL</label>
-            <input type="number" step="0.01" class="form-control" name="M_CYS_OjoDerecho" placeholder="Cilindro"
-              min="0.00" max="999.99" value="<%= Consulta.M_CYS_OjoDerecho %>">
+            <input type="number" step="0.25" class="form-control" name="M_CYS_OjoDerecho" placeholder="Cilindro"
+              value="<%= Consulta.M_CYS_OjoDerecho %>">
           </div>
           <div class="form-group col">
             <label for="mAxs">AXS</label>
-            <input type="number" step="0.01" class="form-control" name="M_AXS_OjoDerecho" placeholder="Eje" min="0.00"
+            <input type="number" step="0.25" class="form-control" name="M_AXS_OjoDerecho" placeholder="Eje" min="0.00"
               max="999.99" value="<%= Consulta.M_AXS_OjoDerecho %>">
           </div>
         </div>
@@ -138,58 +138,58 @@
           <h4>K Values</h4>
         </div>
         <div class="row">
-          <!-- Ojo Izquierdo -->
-          <div class="col border-left border-primary rounded">
-            <div class="row">
-              <div class="form-group col">
-                <label for="k1">K1</label>
-                <input type="number" step="0.01" class="form-control" name="K1_OjoIzquierdo" placeholder="K1" min="0.00"
-                  max="999.99" value="<%= Consulta.K1_OjoIzquierdo %>">
-              </div>
-              <div class="form-group col">
-                <label for="mAxs">K1 AXS</label>
-                <input type="number" step="0.01" class="form-control" name="K1_eje_OjoIzquierdo" placeholder="K1 Eje"
-                  min="0.00" max="999.99" value="<%= Consulta.K1_eje_OjoIzquierdo %>">
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col">
-                <label for="k2">K2</label>
-                <input type="number" step="0.01" class="form-control" name="K2_OjoIzquierdo" placeholder="K2" min="0.00"
-                  max="999.99" value="<%= Consulta.K2_OjoIzquierdo %>">
-              </div>
-              <div class="form-group col">
-                <label for="mAxs">K2 AXS</label>
-                <input type="number" step="0.01" class="form-control" name="K2_eje_OjoIzquierdo" placeholder="K2 Eje"
-                  min="0.00" max="999.99" value="<%= Consulta.K2_eje_OjoIzquierdo %>">
-              </div>
-            </div>
-          </div>
-
           <!-- Ojo Derecho -->
           <div class="col border-left border-primary rounded">
             <div class="row">
               <div class="form-group col">
                 <label for="k1">K1</label>
-                <input type="number" step="0.01" class="form-control" name="K1_OjoDerecho" placeholder="K1" min="0.00"
+                <input type="number" step="0.25" class="form-control" name="K1_OjoDerecho" placeholder="K1" min="0.00"
                   max="999.99" value="<%= Consulta.K1_OjoDerecho %>">
               </div>
               <div class="form-group col">
                 <label for="mAxs">K1 AXS</label>
-                <input type="number" step="0.01" class="form-control" name="k1_eje_OjoDerecho" placeholder="K1 Eje"
-                  min="0.00" max="999.99" value="<%= Consulta.k1_eje_OjoDerecho %>">
+                <input type="number" step="0.25" class="form-control" name="k1_eje_OjoDerecho" placeholder="K1 Eje"
+                  value="<%= Consulta.k1_eje_OjoDerecho %>">
               </div>
             </div>
             <div class="row">
               <div class="form-group col">
                 <label for="k2">K2</label>
-                <input type="number" step="0.01" class="form-control" name="K2_OjoDerecho" placeholder="K2" min="0.00"
+                <input type="number" step="0.25" class="form-control" name="K2_OjoDerecho" placeholder="K2" min="0.00"
                   max="999.99" value="<%= Consulta.K2_OjoDerecho %>">
               </div>
               <div class="form-group col">
                 <label for="mAxs">K2 AXS</label>
-                <input type="number" step="0.01" class="form-control" name="K2_eje_OjoDerecho" placeholder="K2 Eje"
-                  min="0.00" max="999.99" value="<%= Consulta.K2_eje_OjoDerecho %>">
+                <input type="number" step="0.25" class="form-control" name="K2_eje_OjoDerecho" placeholder="K2 Eje"
+                  value="<%= Consulta.K2_eje_OjoDerecho %>">
+              </div>
+            </div>
+          </div>
+
+          <!-- Ojo Izquierdo -->
+          <div class="col border-left border-primary rounded">
+            <div class="row">
+              <div class="form-group col">
+                <label for="k1">K1</label>
+                <input type="number" step="0.25" class="form-control" name="K1_OjoIzquierdo" placeholder="K1" min="0.00"
+                  max="999.99" value="<%= Consulta.K1_OjoIzquierdo %>">
+              </div>
+              <div class="form-group col">
+                <label for="mAxs">K1 AXS</label>
+                <input type="number" step="0.25" class="form-control" name="K1_eje_OjoIzquierdo" placeholder="K1 Eje"
+                  value="<%= Consulta.K1_eje_OjoIzquierdo %>">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col">
+                <label for="k2">K2</label>
+                <input type="number" step="0.25" class="form-control" name="K2_OjoIzquierdo" placeholder="K2" min="0.00"
+                  max="999.99" value="<%= Consulta.K2_OjoIzquierdo %>">
+              </div>
+              <div class="form-group col">
+                <label for="mAxs">K2 AXS</label>
+                <input type="number" step="0.25" class="form-control" name="K2_eje_OjoIzquierdo" placeholder="K2 Eje"
+                  value="<%= Consulta.K2_eje_OjoIzquierdo %>">
               </div>
             </div>
           </div>
@@ -200,35 +200,35 @@
           <h4>W Values</h4>
         </div>
         <div class="row">
-          <div class="form-group col border-left border-primary rounded">
-            <label for="wSph">SPH</label>
-            <input type="number" step="0.01" class="form-control" name="W_SPH_OjoIzquierdo" placeholder="W Esfera"
-              min="0.00" max="999.99" value="<%= Consulta.W_SPH_OjoIzquierdo %>">
-          </div>
-          <div class="form-group col">
-            <label for="wCyl">CYL</label>
-            <input type="number" step="0.01" class="form-control" name="W_CYL_OjoIzquierdo" placeholder="W Cilindro"
-              min="0.00" max="999.99" value="<%= Consulta.W_CYL_OjoIzquierdo %>">
-          </div>
-          <div class="form-group col">
-            <label for="wAxs">AXS</label>
-            <input type="number" step="0.01" class="form-control" name="W_AXS_OjoIzquierdo" placeholder="W Eje"
-              min="0.00" max="999.99" value="<%= Consulta.W_AXS_OjoIzquierdo %>">
-          </div>
           <div class="form-group col border-left border-info rounded">
             <label for="wSph">SPH</label>
-            <input type="number" step="0.01" class="form-control" name="W_SPH_OjoDerecho" placeholder="W Esfera"
-              min="0.00" max="999.99" value="<%= Consulta.W_SPH_OjoDerecho %>">
+            <input type="number" step="0.25" class="form-control" name="W_SPH_OjoDerecho" placeholder="W Esfera"
+              value="<%= Consulta.W_SPH_OjoDerecho %>">
           </div>
           <div class="form-group col">
             <label for="wCyl">CYL</label>
-            <input type="number" step="0.01" class="form-control" name="W_CYL_OjoDerecho" placeholder="W Cilindro"
-              min="0.00" max="999.99" value="<%= Consulta.W_CYL_OjoDerecho %>">
+            <input type="number" step="0.25" class="form-control" name="W_CYL_OjoDerecho" placeholder="W Cilindro"
+              value="<%= Consulta.W_CYL_OjoDerecho %>">
           </div>
           <div class="form-group col">
             <label for="wAxs">AXS</label>
-            <input type="number" step="0.01" class="form-control" name="W_AXS_OjoDerecho" placeholder="W Eje" min="0.00"
+            <input type="number" step="0.25" class="form-control" name="W_AXS_OjoDerecho" placeholder="W Eje" min="0.00"
               max="999.99" value="<%= Consulta.W_AXS_OjoDerecho %>">
+          </div>
+          <div class="form-group col border-left border-primary rounded">
+            <label for="wSph">SPH</label>
+            <input type="number" step="0.25" class="form-control" name="W_SPH_OjoIzquierdo" placeholder="W Esfera"
+              value="<%= Consulta.W_SPH_OjoIzquierdo %>">
+          </div>
+          <div class="form-group col">
+            <label for="wCyl">CYL</label>
+            <input type="number" step="0.25" class="form-control" name="W_CYL_OjoIzquierdo" placeholder="W Cilindro"
+              value="<%= Consulta.W_CYL_OjoIzquierdo %>">
+          </div>
+          <div class="form-group col">
+            <label for="wAxs">AXS</label>
+            <input type="number" step="0.25" class="form-control" name="W_AXS_OjoIzquierdo" placeholder="W Eje"
+              value="<%= Consulta.W_AXS_OjoIzquierdo %>">
           </div>
         </div>
 
@@ -240,11 +240,13 @@
           <div class="row">
             <!-- Ojo derecho -->
             <div class="col">
-              <textarea name="ObservacionOjoDerecho" class="form-control" placeholder="Ojo Derecho"></textarea>
+              <textarea name="ObservacionOjoDerecho" class="form-control"
+                placeholder="Ojo Derecho"><%= Consulta.ObservacionOjoDerecho %></textarea>
             </div>
             <!-- Ojo Izquierdo -->
             <div class="col">
-              <textarea name="ObservacionOjoIzquierdo" class="form-control" placeholder="Ojo Izquierdo"></textarea>
+              <textarea name="ObservacionOjoIzquierdo" class="form-control"
+                placeholder="Ojo Izquierdo"><%= Consulta.ObservacionOjoIzquierdo %></textarea>
             </div>
           </div>
         </div>
@@ -254,14 +256,14 @@
         <div class="form-group">
           <label for="diagnostico">Diagnóstico</label>
           <textarea name="diagnostico" class="form-control"
-            placeholder="Diagnóstico del examen"><%= Consulta.Diagnostico %>"</textarea>
+            placeholder="Diagnóstico del examen"><%= Consulta.Diagnostico %></textarea>
         </div>
         <div class="form-group">
           <label for="tratamiento">Tratamiento</label>
           <textarea name="tratamiento" class="form-control"
-            placeholder="Tratamiento sugerido"><%= Consulta.Tratamiento %>"</textarea>
+            placeholder="Tratamiento sugerido"><%= Consulta.Tratamiento %></textarea>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+        <a href="/pacientes/<%= Consulta.Id_paciente %>/consulta" class="btn btn-warning" id="cancelUpdate">Cancelar</a>
     </div>
     </form>
   </div>

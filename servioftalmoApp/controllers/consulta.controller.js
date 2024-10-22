@@ -59,47 +59,51 @@ export const createConsulta = async (req, res) => {
         console.log('******************', consulta.recordset[0], idConsulta)
         console.log('******************', req.body)
 
-        const Agudeza_sc_OjoIzquierdo = Number(req.body.Agudeza_sc_OjoIzquierdo)
-        const Agudeza_cc_OjoIzquierdo = Number(req.body.Agudeza_cc_OjoIzquierdo)
-        const TensionOcular_OjoIzquierdo = Number(req.body.TensionOcular_OjoIzquierdo)
-        const M_SPH_OjoIzquierdo = Number(req.body.M_SPH_OjoIzquierdo)
-        const M_CYS_OjoIzquierdo = Number(req.body.M_CYS_OjoIzquierdo)
-        const M_AXS_OjoIzquierdo = Number(req.body.M_AXS_OjoIzquierdo)
-        const K1_OjoIzquierdo = Number(req.body.K1_OjoIzquierdo)
-        const K1_eje_OjoIzquierdo = Number(req.body.K1_eje_OjoIzquierdo)
-        const K2_OjoIzquierdo = Number(req.body.K2_OjoIzquierdo)
-        const K2_eje_OjoIzquierdo = Number(req.body.K2_eje_OjoIzquierdo)
-        const W_SPH_OjoIzquierdo = Number(req.body.W_SPH_OjoIzquierdo)
-        const W_CYL_OjoIzquierdo = Number(req.body.W_CYL_OjoIzquierdo)
-        const W_AXS_OjoIzquierdo = Number(req.body.W_AXS_OjoIzquierdo)
-        const Agudeza_sc_OjoDerecho = Number(req.body.Agudeza_sc_OjoDerecho)
-        const Agudeza_cc_OjoDerecho = Number(req.body.Agudeza_cc_OjoDerecho)
-        const TensionOcular_OjoDerecho = Number(req.body.TensionOcular_OjoDerecho)
-        const M_SPH_OjoDerecho = Number(req.body.M_SPH_OjoDerecho)
-        const M_CYS_OjoDerecho = Number(req.body.M_CYS_OjoDerecho)
-        const M_AXS_OjoDerecho = Number(req.body.M_AXS_OjoDerecho)
-        const K1_OjoDerecho = Number(req.body.K1_OjoDerecho)
-        const k1_eje_OjoDerecho = Number(req.body.k1_eje_OjoDerecho)
-        const K2_OjoDerecho = Number(req.body.K2_OjoDerecho)
-        const K2_eje_OjoDerecho = Number(req.body.K2_eje_OjoDerecho)
-        const W_SPH_OjoDerecho = Number(req.body.W_SPH_OjoDerecho)
-        const W_CYL_OjoDerecho = Number(req.body.W_CYL_OjoDerecho)
-        const W_AXS_OjoDerecho = Number(req.body.W_AXS_OjoDerecho)
+        const {
+            Agudeza_sc_OjoIzquierdo,
+            Agudeza_cc_OjoIzquierdo,
+            TensionOcular_OjoIzquierdo,
+            M_SPH_OjoIzquierdo,
+            M_CYS_OjoIzquierdo,
+            M_AXS_OjoIzquierdo,
+            K1_OjoIzquierdo,
+            K1_eje_OjoIzquierdo,
+            K2_OjoIzquierdo,
+            K2_eje_OjoIzquierdo,
+            W_SPH_OjoIzquierdo,
+            W_CYL_OjoIzquierdo,
+            W_AXS_OjoIzquierdo,
+            Agudeza_sc_OjoDerecho,
+            Agudeza_cc_OjoDerecho,
+            TensionOcular_OjoDerecho,
+            M_SPH_OjoDerecho,
+            M_CYS_OjoDerecho,
+            M_AXS_OjoDerecho,
+            K1_OjoDerecho,
+            k1_eje_OjoDerecho,
+            K2_OjoDerecho,
+            K2_eje_OjoDerecho,
+            W_SPH_OjoDerecho,
+            W_CYL_OjoDerecho,
+            W_AXS_OjoDerecho,
+            diagnostico, tratamiento, ObservacionOjoDerecho, ObservacionOjoIzquierdo,
+            historiaClinica, antecedentes
+        } = req.body;
 
-        const spCreateExamenOftalmologico = await pool.request().query
+        await pool.request().query
             (`EXEC spCreateExamenOftalmologico 
-            ${idConsulta},'${req.body.historiaClinica}','${req.body.antecedentes}',
+            ${idConsulta},'${historiaClinica}','${antecedentes}',
 
-            ${Agudeza_sc_OjoIzquierdo}, ${Agudeza_cc_OjoIzquierdo}, ${TensionOcular_OjoIzquierdo},
-            ${M_SPH_OjoIzquierdo},${M_CYS_OjoIzquierdo},${M_AXS_OjoIzquierdo},
-            ${K1_OjoIzquierdo},${K1_eje_OjoIzquierdo},${K2_OjoIzquierdo},${K2_eje_OjoIzquierdo},
-            ${W_SPH_OjoIzquierdo},${W_CYL_OjoIzquierdo},${W_AXS_OjoIzquierdo},
+            '${Agudeza_sc_OjoIzquierdo}', '${Agudeza_cc_OjoIzquierdo}', '${TensionOcular_OjoIzquierdo}',
+            '${M_SPH_OjoIzquierdo}','${M_CYS_OjoIzquierdo}','${M_AXS_OjoIzquierdo}',
+            '${K1_OjoIzquierdo}','${K1_eje_OjoIzquierdo}','${K2_OjoIzquierdo}','${K2_eje_OjoIzquierdo}',
+            '${W_SPH_OjoIzquierdo}','${W_CYL_OjoIzquierdo}','${W_AXS_OjoIzquierdo}',
 
-            ${Agudeza_sc_OjoDerecho},${Agudeza_cc_OjoDerecho},${TensionOcular_OjoDerecho},
-            ${M_SPH_OjoDerecho},${M_CYS_OjoDerecho},${M_AXS_OjoDerecho},
-            ${K1_OjoDerecho},${k1_eje_OjoDerecho},${K2_OjoDerecho},${K2_eje_OjoDerecho},
-            ${W_SPH_OjoDerecho},${W_CYL_OjoDerecho},${W_AXS_OjoDerecho},
-            '${req.body.diagnostico}','${req.body.tratamiento}'`)
+            '${Agudeza_sc_OjoDerecho}','${Agudeza_cc_OjoDerecho}','${TensionOcular_OjoDerecho}',
+            '${M_SPH_OjoDerecho}','${M_CYS_OjoDerecho}','${M_AXS_OjoDerecho}',
+            '${K1_OjoDerecho}','${k1_eje_OjoDerecho}','${K2_OjoDerecho}','${K2_eje_OjoDerecho}',
+            '${W_SPH_OjoDerecho}','${W_CYL_OjoDerecho}','${W_AXS_OjoDerecho}',
+            '${diagnostico}','${tratamiento}', '${ObservacionOjoDerecho}','${ObservacionOjoIzquierdo}'`)
         // throw new Error("Error lanzado a proposito");
 
 
