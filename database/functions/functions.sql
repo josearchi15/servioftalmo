@@ -75,3 +75,18 @@ WHERE
 	OR CAST(DPI AS nvarchar) LIKE '51516262%'
 
 
+
+CREATE FUNCTION getRecetaAnteojosByPacienteId (@IdPaciente int)
+RETURNS TABLE 
+AS 
+RETURN (
+	SELECT
+		RA.Id_receta_anteojos,
+		CAST(RA.Fecha AS VARCHAR(10)) AS Fecha_Receta,
+		CONCAT(P.Nombres, ' ', P.Apellidos) AS Nombre,
+		RA.Observaciones
+	FROM RECETA_ANTEOJOS AS RA
+	INNER JOIN PACIENTE AS P
+	ON RA.Id_paciente = P.Id_paciente
+	WHERE P.Id_paciente = @IdPaciente AND P.Estado = 1 AND RA.Estado = 1
+)

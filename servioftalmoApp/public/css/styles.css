@@ -57,11 +57,14 @@
 
 body {
   padding-top: 70px;
+  padding-bottom: 100px;
 }
 
 
 
 .footer {
+  height: 200px;
+  background-color: black;
   display: flex;
   align-self: flex-end;
   margin-top: 100%;

@@ -4,6 +4,8 @@ import { getRecetasAnteojos, newRecetaAnteojos, createRecetaAnteojos, getRecetaA
 
 const router = Router({ mergeParams: true }) //hereda los params de la ruta
 
+router.get("/", getRecetasAnteojos) //nueva receta
+
 router.get("/new", newRecetaAnteojos) //nueva receta
 
 router.post("/new", createRecetaAnteojos)

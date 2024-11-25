@@ -1,0 +1,52 @@
+<%- include("../partials/header") %>
+
+    <div class="container mt-5">
+        <h2>Recetas del Paciente</h2>
+        <a href="/pacientes/<%= PacienteId %>/receta-anteojos/new" class="btn btn-primary mb-3">Nueva Receta</a>
+        <!-- <% if (success_msg) { %>
+            <div class="alert alert-success">
+                <%= success_msg %>
+            </div>
+            <% } %> -->
+        <% if (Recetas.length===0) { %>
+            <p>No se encontraron recetas.</p>
+            <% } else { %>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Nombre</th>
+                            <th>Observaciones</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% Recetas.forEach(receta=> { %>
+                            <tr>
+                                <td>
+                                    <%= receta.Id_receta_anteojos %>
+                                </td>
+                                <td>
+                                    <%= receta.Fecha_Receta %>
+                                </td>
+                                <td>
+                                    <%= receta.Nombre %>
+                                </td>
+                                <td>
+                                    <%= receta.Observaciones %>
+                                </td>
+                                <td>
+                                    <a href="/pacientes/<%= PacienteId %>/receta-anteojos/<%= receta.Id_receta_anteojos %>"
+                                        class="btn btn-info">Ver</a>
+                                    <a href="/pacientes/<%= PacienteId %>/receta-anteojos/<%= receta.Id_receta_anteojos %>?_method=DELETE"
+                                        class="btn btn-danger">Eliminar</a>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+                <% } %>
+    </div>
+
+    <%- include("../partials/footer") %>
